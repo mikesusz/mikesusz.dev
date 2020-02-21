@@ -12,7 +12,6 @@ import Header from '../components/Header';
 import aboutBackground from '../assets/images/about-background.png';
 import demoImage1 from '../assets/images/demo-image-01.jpg';
 import demoImage2 from '../assets/images/demo-image-02.jpg';
-import bgMaster from '../assets/images/bg-masthead.jpg';
 
 const IndexPage = () => (
   <Layout>
