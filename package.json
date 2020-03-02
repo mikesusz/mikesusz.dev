@@ -1,14 +1,14 @@
 {
-  "name": "gatsby-starter-grayscale",
+  "name": "mikesusz-dot-dev",
   "version": "0.0.1",
-  "description": "Gatsby.js V2 starter template based on Grayscale by startbootstrap",
+  "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anubhavsrivastava/gatsby-starter-grayscale.git"
+    "url": "git+https://github.com/mikesusz/mikesusz.dev.git"
   },
   "author": {
-    "name": "Anubhav Srivastava",
-    "email": "anubhav.srivastava00@gmail.com"
+    "name": "Mike Susz",
+    "email": "user@example.com"
   },
   "dependencies": {
     "gatsby": "^2.4.3",
@@ -40,9 +40,6 @@
     "rimraf": "^2.6.3"
   },
   "keywords": [
-    "gatsby",
-    "gatsby-starter",
-    "gatsby-starter-grayscale"
   ],
   "license": "MIT",
   "bugs": {
