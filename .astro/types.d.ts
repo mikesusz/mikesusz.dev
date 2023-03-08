@@ -67,6 +67,34 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"blog": {
+"astro-again.md": {
+  id: "astro-again.md",
+  slug: "astro-again",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+},
+"astro.md": {
+  id: "astro.md",
+  slug: "astro",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+},
+"carbon-design.md": {
+  id: "carbon-design.md",
+  slug: "carbon-design",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+},
+"chakra-ui.md": {
+  id: "chakra-ui.md",
+  slug: "chakra-ui",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+},
 "first-post.md": {
   id: "first-post.md",
   slug: "first-post",
@@ -74,9 +102,9 @@ declare module 'astro:content' {
   collection: "blog",
   data: InferEntrySchema<"blog">
 },
-"markdown-style-guide.md": {
-  id: "markdown-style-guide.md",
-  slug: "markdown-style-guide",
+"netlify.md": {
+  id: "netlify.md",
+  slug: "netlify",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
@@ -84,6 +112,13 @@ declare module 'astro:content' {
 "second-post.md": {
   id: "second-post.md",
   slug: "second-post",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+},
+"tailwind.md": {
+  id: "tailwind.md",
+  slug: "tailwind",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
