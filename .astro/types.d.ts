@@ -1,7 +1,33 @@
 declare module 'astro:content' {
+	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+declare module 'astro:content' {
+	interface Render {
+		'.md': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+
+declare module 'astro:content' {
 	export { z } from 'astro/zod';
 	export type CollectionEntry<C extends keyof typeof entryMap> =
-		(typeof entryMap)[C][keyof (typeof entryMap)[C]] & Render;
+		(typeof entryMap)[C][keyof (typeof entryMap)[C]];
+
+	export const image: () => import('astro/zod').ZodObject<{
+		src: import('astro/zod').ZodString;
+		width: import('astro/zod').ZodNumber;
+		height: import('astro/zod').ZodNumber;
+		format: import('astro/zod').ZodString;
+	}>;
 
 	type BaseSchemaWithoutEffects =
 		| import('astro/zod').AnyZodObject
@@ -57,14 +83,6 @@ declare module 'astro:content' {
 		Required<ContentConfig['collections'][C]>['schema']
 	>;
 
-	type Render = {
-		render(): Promise<{
-			Content: import('astro').MarkdownInstance<{}>['Content'];
-			headings: import('astro').MarkdownHeading[];
-			remarkPluginFrontmatter: Record<string, any>;
-		}>;
-	};
-
 	const entryMap: {
 		"blog": {
 "astro-again.md": {
@@ -73,70 +91,70 @@ declare module 'astro:content' {
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "astro.md": {
   id: "astro.md",
   slug: "astro",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "carbon-design.md": {
   id: "carbon-design.md",
   slug: "carbon-design",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "chakra-ui.md": {
   id: "chakra-ui.md",
   slug: "chakra-ui",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "first-post.md": {
   id: "first-post.md",
   slug: "first-post",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "netlify.md": {
   id: "netlify.md",
   slug: "netlify",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "second-post.md": {
   id: "second-post.md",
   slug: "second-post",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "tailwind.md": {
   id: "tailwind.md",
   slug: "tailwind",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "third-post.md": {
   id: "third-post.md",
   slug: "third-post",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".md"] },
 "using-mdx.mdx": {
   id: "using-mdx.mdx",
   slug: "using-mdx",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
-},
+} & { render(): Render[".mdx"] },
 },
 
 	};
