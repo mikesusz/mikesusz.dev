@@ -5,6 +5,13 @@
 
 	Primary colors include: #9F00FF, #004CFF, #FFAF00, #FF3E3E, #9FEF00
  */
+
+ :root {
+	--link-color-initial: #5cecc6;
+	--link-color-active: #004CFF;
+	--link-color-visited: #5cb2ff;
+}
+
 body {
 	font-family: Verdana, sans-serif;
 	font-size: 18px;
@@ -53,13 +60,13 @@ b {
 	color: #c5d1eb;
 }
 a {
-	color: #5cecc6;
+	color: var(--link-color-initial);
 }
 a:hover, a:active, a:focus {
-	color: #004CFF;
+	color: var(--link-color-active);
 }
 a:visited {
-	color: #5cb2ff;
+	color: var(--link-color-visited);
 }
 
 nav a {

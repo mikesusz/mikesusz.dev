@@ -14,6 +14,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 	a {
 		display: inline-block;
 		text-decoration: none;
+		color: var(--link-color-initial);
 	}
 	a.active {
 		font-weight: bolder;
@@ -21,6 +22,6 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 	}
 
 	a:visited {
-		color: inherit;
+		color: var(--link-color-initial);
 	}
 </style>
