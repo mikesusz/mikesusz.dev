@@ -1,19 +1,46 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+  The CSS for mikesusz.dev was created with inspiration from several sources, including:
+	- The HackTheBox color scheme https://github.com/silofy/hackthebox
+	- New Order's "Blue Monday" album cover https://en.wikipedia.org/wiki/Blue_Monday_%28New_Order_song%29#Packaging
+
+	Primary colors include: #9F00FF, #004CFF, #FFAF00, #FF3E3E, #9FEF00
  */
 body {
 	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
+	font-size: 18px;
+	margin: 0;
+	padding: 0;
+	/* max-width: 65ch; */
 	text-align: left;
-	background-color: #fff;
+	background: #141D2B;
+	background: linear-gradient(
+		180deg,
+		#9fef00 0%,
+		#9fef00 20%,
+		#FF3E3E 20%,
+		#FF3E3E 40%,
+		#004CFF 40%,
+		#004CFF 60%,
+		#FFAF00 60%,
+		#FFAF00 80%,
+		#9F00FF 80%,
+		#9F00FF 100%
+	);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #444;
+}
+.page {
+	position: relative;
+	color: #c5d1eb;
+	background: #141D2B;
+	min-height: 100vh;
+	margin-left: 8vw;
+	padding: 8vw;
+}
+
+main {
+	max-width: 65ch;
 }
 h1,
 h2,
@@ -23,11 +50,18 @@ h5,
 h6,
 strong,
 b {
-	color: #222;
+	color: #c5d1eb;
 }
 a {
-	color: #3273dc;
+	color: #5cecc6;
 }
+a:hover, a:active, a:focus {
+	color: #004CFF;
+}
+a:visited {
+	color: #5cb2ff;
+}
+
 nav a {
 	margin-right: 10px;
 }
@@ -50,7 +84,7 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: #f2f2f2;
+	background-color: #c5d1eb;
 }
 pre {
 	padding: 1rem;
@@ -60,8 +94,17 @@ pre > code {
 }
 blockquote {
 	border: 1px solid #999;
-	color: #222;
+	color: #a4b1cd;
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
+}
+
+.site-title {
+	font-size: 8vw;
+	font-weight: bolder;
+}
+
+.site-title::first-letter {
+	color: #9fef00;
 }

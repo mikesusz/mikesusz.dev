@@ -18,38 +18,35 @@ const posts = (await getCollection('blog')).sort(
 		<style>
 			ul {
 				list-style-type: none;
-				padding: unset;
+				padding-left: 0;
 			}
-
-			ul li :global(time) {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
-			}
-			ul li a:visited {
-				color: #8e32dc;
+			li {
+				border-left: 1vw solid #004CFF;
+				padding-left: 1vw;
 			}
 		</style>
 	</head>
 	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => {
-							if(!post.data.draft) return(
-								<li>
-									<div><FormattedDate date={post.data.pubDate} />
-									<a href={`/blog/${post.slug}/`} style={{display: "block"}}>{post.data.title}</a></div>
-									<p>{post.data.description}</p>
-								</li>
-								)
-						})
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
+		<div class="page">
+			<Header />
+			<main>
+				<section>
+					<ul>
+						{
+							posts.map((post) => {
+								if(!post.data.draft) return(
+									<li>
+										<div><FormattedDate date={post.data.pubDate} />
+										<a href={`/blog/${post.slug}/`} style={{display: "block"}}>{post.data.title}</a></div>
+										<p>{post.data.description}</p>
+									</li>
+									)
+							})
+						}
+					</ul>
+				</section>
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
