@@ -40,7 +40,7 @@ body {
 }
 
 main {
-	max-width: 65ch;
+	max-width: 72ch;
 }
 h1,
 h2,
@@ -92,6 +92,11 @@ pre {
 pre > code {
 	all: unset;
 }
+
+cite, .sig {
+	font-style: italic;
+}
+
 blockquote {
 	border: 1px solid #999;
 	color: #a4b1cd;

@@ -146,6 +146,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] },
+"inspired.md": {
+  id: "inspired.md",
+  slug: "inspired",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
 "netlify.md": {
   id: "netlify.md",
   slug: "netlify",
