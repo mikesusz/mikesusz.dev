@@ -11,4 +11,4 @@ Tailwild is built on the principle of using shorthand CSS classes to produce pow
 
 This would probably be a great solution for projects like client websites, where another developer might take over and maintain the site in the future, and not have to mentally de-compile a mountain of custom CSS attributes assigned to semantically named class elements.
 
-FOr this iteration of the site, I'd paired it for development with a lightweight local hot-reloading web server called [Live Server](http://tapiov.net/live-server/).
+For this iteration of the site, I'd paired it for development with a lightweight local hot-reloading web server called [Live Server](http://tapiov.net/live-server/).

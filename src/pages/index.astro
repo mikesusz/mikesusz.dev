@@ -13,16 +13,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>Hello!</h1>
+		<div class="page">
+			<Header title={SITE_TITLE} />
+			<main>
+				<h1>Hello!</h1>
 
-			<p>Please don't mind the dust, again, as I've recently upgraded to Astro 2.0! So far this has been pleasant, hopefully the structures and APIs will be stable for a while and I can commit some time to developing here without having to do another huge migration.</p>
+				<p>My name is Mike and I like to solve problems with websites.</p>
 
-			<p>My future plans (after making sure my content is migrated/meta data is updated) are to use my 'blog' as a general place to write, instead of just being focused on new things I'm learning. So, there will probably be more frequent updates there when i have 'reckons' about them.</p>
+				<p>To learn more about me, you can read the <a href="/about">About Me</a> page.</p>
 
-			<p>- mike</p>
-		</main>
-		<Footer />
+				<p>If you're interested in what I'm learning or what I'm thinking about, check out <a href="/blog">My Blog</a>.</p>
+
+				<p>If you want details about the work i've done in the past, you can check out my <a href="/files/Michael.Susz.Resume.Online.pdf">Resume</a>.</p>
+
+				<p>If you want to get in touch, you can connect with me on the socials linked above.
+
+				<p>Thanks for stopping by!</p>
+
+
+
+				<p class="sig">&mdash; mike</p>
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
