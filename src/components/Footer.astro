@@ -3,11 +3,20 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Mike Susz. All rights reserved.
+	<p>&copy; {today.getFullYear()} Mike Susz. All rights reserved.</p>
+	<p>
+		<a href="sitemap-index.xml">Sitemap</a>
+		<a href="/rss.xml">RSS</a>
+		<a href="https://github.com/mikesusz/mikesusz.dev">Source</a>
+		<a href="https://www.netlify.com/">Hosted on Netlify</a>
+	</p>
 </footer>
 <style>
 	footer {
 		padding: 25px;
 		text-align: center;
+	}
+	footer a {
+		font-size: smaller;
 	}
 </style>
