@@ -7,7 +7,7 @@ draft: false
 
 I haven't felt like this in a long time.
 
-Recently I've spent some time enhancing my local development environment(s), taking advantage of new plugins and resources to enchance the speed and accuracy (and dare I say, enjoyment) of my work.
+Recently I've spent some time enhancing my local development environment(s), taking advantage of new plugins and resources to increase the speed and accuracy (and dare I say, enjoyment) of my work.
 
 While I am sometimes critical of people who constantly spend time tweaking their development environment (doing meta-work but not real work) I realized that my aversion to doing this meant that I dealt with day-to-day task friction that could be eliminated with a bit of maintenance.
 
