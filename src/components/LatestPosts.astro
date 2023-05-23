@@ -1,0 +1,58 @@
+---
+
+import { getCollection } from 'astro:content';
+
+import FormattedDate from './FormattedDate.astro';
+
+const posts = (await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+})).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 3);
+
+---
+
+<section id="latest_posts" aria-label="Latest Blog Posts">
+
+  <h2>Latest from my Blog:</h2>
+
+  <ul>
+    {
+      posts.map((post) => {
+        return (
+          <li>
+            <div class="post_data">
+              <a href={`/blog/${post.slug}/`} style={{display: "block"}}>{post.data.title}</a>
+              <FormattedDate date={post.data.pubDate} />
+            </div>
+            <p>{post.data.description}</p>
+          </li>
+          )
+    })
+    }
+  </ul>
+
+</section>
+
+<style>
+	ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 2rem;
+    padding-left: 2vw;
+    font-size: medium;
+  }
+  .post_data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  li:first-child {
+    border-left: 1vw solid #9FEF00;
+    padding-left: 1vw;
+    font-size: inherit;
+  }
+</style>

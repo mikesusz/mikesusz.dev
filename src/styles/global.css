@@ -120,3 +120,7 @@ blockquote {
 .site-title::first-letter {
 	color: #9fef00;
 }
+
+.formatted_time {
+	font-style: italic;
+}
