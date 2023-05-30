@@ -2,7 +2,17 @@
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
+<style>
+.site-title {
+	font-family: "IBM Plex Serif Bold", Georgia, serif;
+	font-size: 8vw;
+	font-weight: 700;
+}
 
+.site-title::first-letter {
+	color: #9fef00;
+}
+</style>
 <header>
 	<div class="site-title">
 		{SITE_TITLE}
