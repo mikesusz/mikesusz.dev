@@ -42,10 +42,11 @@ body {
 	color: #c5d1eb;
 	background: #141D2B;
 	background: linear-gradient(
-		180deg,
+		140deg,
 		#141d2b 0%,
+		#0d2242 60%,
 		#0d2242 80%,
-		#0d2242 100%
+		#141d2b 100%
 	);
 	min-height: 100vh;
 	margin-left: 8vw;
