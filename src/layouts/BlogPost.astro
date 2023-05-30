@@ -15,6 +15,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 
+	<style>
+		article {
+			text-align: justify;
+		}
+		.blog-navigation {
+			margin-top: 2rem;
+			text-align: center;
+		}
+	</style>
+
 	<body>
 		<div class="page">
 			<Header />
@@ -36,6 +46,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					<hr />
 					<slot />
 				</article>
+
+				<div class="blog-navigation">
+					<a href="/blog">Back to blog</a> | <a href="/">Back to home</a>
+				</div>
 			</main>
 			<Footer />
 		</div>
