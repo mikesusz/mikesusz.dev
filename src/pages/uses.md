@@ -24,6 +24,10 @@ Theme: [HackTheBox](https://github.com/silofy/hackthebox) I love this, obviously
 - [peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) - changes the color of some of the chrome of VSCode. i find this super useful to have different colors for different projects, so when i have multiple windows open i can quickly figure out where each project is located.
 - [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) - AI powered pair-programmer, I have been finding this useful for syntax auto-completion where I might normally get caught up in small formatting errors. I haven't yet used it for creating new projects, I'm not comfortable with outsourcing 'big' things.
 
+here's a quick screenshot of my VSCode window:
+
+![a screenshot of my VSCode window](/images/uses-code-editor.png)
+
 ## Terminal
 
 My terminal of choice on a Mac is [iTerm2](https://iterm2.com/), it's brilliant and the creator/maintainer has [ways to support](https://iterm2.com/donate.html) them including a Patreon that I gladly contribute to.
