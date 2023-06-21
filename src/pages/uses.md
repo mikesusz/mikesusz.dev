@@ -8,15 +8,15 @@ This is about the software tools that I use.
 
 ## Code Editing
 
-[Visual Studio Code](https://code.visualstudio.com/) is my primary development environment. I have the configuration synched across all my computers using [settings sync built into VSCode](https://code.visualstudio.com/docs/editor/settings-sync)
+[Visual Studio Code](https://code.visualstudio.com/) is my primary development environment. I have the configuration synched across all my computers using [settings sync built into VSCode](https://code.visualstudio.com/docs/editor/settings-sync).
 
-Theme: [HackTheBox](https://github.com/silofy/hackthebox) I love this, obviously as you can tell from the design of my website. I'm using [a fork of it] where I've made a few minor changes, notably increasing the contrast between inactive items and the background (line numbers, tab titles) and added colors for the scroll thumb.
+Theme: [HackTheBox](https://github.com/silofy/hackthebox) I love this, obviously as you can tell from the design of my website. I'm using [a fork of it] where I've made a few minor changes, including increasing the contrast between inactive items and the background (line numbers, tab titles) and added colors for the scroll thumb.
 
-Notable Extensions:
+### Notable Extensions:
 
-- [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) - Language support for Astro
+- [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) - language support for Astro
 - [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - learn to code by making the squiggles go away
-- [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - formatting
+- [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - formatting everything consistently
 - [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) - good for viewing simple projects that don't create their own http server
 - [colorize](https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-colorize)- is a really cool extension that shows you the colors of css variables inline in your code
 - [indent rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) - makes a rainbow out of your indents. this is really useful for deeply nested files (like terrible html email templates)
@@ -42,23 +42,21 @@ My professional work often involves large applications that are deployed at ente
 
 Building and deploying Apps has varied also, my teams have used [Jenkins](https://www.jenkins.io/), [Travis ci](https://www.travis-ci.com/), and [Azure Pipelines](https://azure.microsoft.com/en-us/products/devops/pipelines). I'm usually not the deployment engineer, but I've looked under the hood and gotten to understand how these work and are configured.
 
-For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). Recently started using Netlify for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, and deployed via Netlify.
+For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). Recently I started using Netlify for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, built and deployed via Netlify.
 
 The deploy pipeline for Netlify is probably the way I'm migrating towards in the future -- it's just so easy to have a github hosted repository and configure a Netlify site to build from it.
 
 ## Browsers
 
-In short, I use and test in modern browsers (and a few not-so-modern ones). I believe that only testing your code in Chrome is a disservice to your users. Each has a specific purpose in my day-to-day work.
+In short, I use and test in all modern browsers (and a few not-so-modern ones). I believe that only testing your code in Chrome is a disservice to your users. Each has a specific purpose in my day-to-day work.
 
 - [Chrome](https://www.google.com/chrome/) for development as I've come to enjoy the debugging and developer tools
-- [Firefox](https://www.mozilla.org/en-US/firefox/new/) is my primary browser for work (IBM) use
+- [Firefox](https://www.mozilla.org/en-US/firefox/new/) is the browser I use for work
 - [Edge](https://www.microsoft.com/en-us/edge) is my primary browser on my personal PC
-- [Safari](https://www.apple.com/safari/) I use for all my personal browsing on Mac/iPadOS/iOS.
+- [Safari](https://www.apple.com/safari/) I use for all my personal browsing on Mac/iPadOS/iOS
 
-I will occasionally, as a litmus test, use elinks or lynx to make sure my sites still work in a text-based browser. This isn't a requirement for any of my professional work, and quite a few of the sites I build for work aren't able to load in them, but for my personal sites I still check.
+I will occasionally, as a minimum-common-denominator test, use [lynx](https://lynx.invisible-island.net/) to make sure my sites still work in a text-based browser. This isn't a requirement for any of my professional work, but I like to know that my personal sites are usable in as many scenarios as possible.
 
 --
 
 As I think of other things I will update.
-
-
