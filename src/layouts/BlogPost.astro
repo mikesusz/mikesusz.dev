@@ -13,17 +13,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-	</head>
-
-	<style>
-		article {
-			text-align: justify;
-		}
-		.blog-navigation {
-			margin-top: 2rem;
-			text-align: center;
-		}
-	</style>
+		<style>
+			article {
+				/* text-align: justify; */
+				text-wrap-style: pretty;
+			}
+			.blog-navigation {
+				margin-top: 2rem;
+				text-align: center;
+			}
+		</style></head
+	>
 
 	<body>
 		<div class="page">
@@ -32,10 +32,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<article>
 					{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
 					<h1 class="title">{title}</h1>
-					{
-						pubDate &&
-							<FormattedDate class="last-updated-on" date={pubDate} />
-					}
+					{pubDate && <FormattedDate class="last-updated-on" date={pubDate} />}
 					{
 						updatedDate && (
 							<div class="last-updated-on">
