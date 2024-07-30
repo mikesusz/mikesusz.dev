@@ -15,15 +15,21 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<style>
 			article {
-				/* text-align: justify; */
+				font-size: 125%;
 				text-wrap-style: pretty;
+				h2,
+				h3 {
+					margin-top: 1.5em;
+					border-left: 1em #9fef00 solid;
+					padding-left: 0.5em;
+				}
 			}
 			.blog-navigation {
 				margin-top: 2rem;
 				text-align: center;
 			}
-		</style></head
-	>
+		</style>
+	</head>
 
 	<body>
 		<div class="page">
