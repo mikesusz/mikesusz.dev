@@ -1,6 +1,6 @@
 ---
 title: "Don't Forget - You're Making Web Pages"
-description: "Don't Forget - You're Making Web Pages"
+description: "The Web that was, how we lost our way, and how to fulfill our promise to The Future."
 pubDate: '1 Aug 2024'
 draft: false
 ---
