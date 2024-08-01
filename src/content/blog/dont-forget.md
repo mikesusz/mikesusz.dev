@@ -19,7 +19,7 @@ In college, I spent a lot of time in computer labs. Since I was studying Archite
 
 Some time after my account on the VAX[^VAX] was created, I noticed a `'public_html'` directory appear inside my home directory. I asked the lab monitor what that was - and they explained I could put documents in there that could be be seen by other people on the web. (I can make as many web pages as I want? they can be seen by anyone? for free??)
 
-My first 'homepage' was written with the vi[^VI] editor on a terminal. I usually viewed it (any any other web site I wanted to read) using Lynx[^Lynx].
+My first 'homepage' was written with the vi[^VI] editor on a terminal. I usually viewed it (and any other web site I wanted to read) using Lynx[^Lynx].
 
 I was hooked. I didn't know it at the time, but I would ultimately end up dropping out of the Architecture program, and be hired as the first full-time employee Webmaster[^Webmaster] of my college. But I'm getting ahead of myself.
 
