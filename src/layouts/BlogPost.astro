@@ -20,8 +20,24 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				h2,
 				h3 {
 					margin-top: 1.5em;
-					border-left: 1em #9fef00 solid;
+					border-left-width: 2em;
+					border-left-color: var(--accent-color-1);
+					border-left-style: solid;
 					padding-left: 0.5em;
+				}
+
+				h3 {
+					border-left-width: 1em;
+				}
+
+				h2:nth-of-type(2),
+				h3:nth-of-type(2) {
+					border-left-color: var(--accent-color-2);
+				}
+
+				h2:nth-of-type(3),
+				h3:nth-of-type(3) {
+					border-left-color: var(--accent-color-3);
 				}
 			}
 			.blog-navigation {

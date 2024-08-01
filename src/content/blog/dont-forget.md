@@ -5,15 +5,17 @@ pubDate: '30 Jul 2024'
 draft: true
 ---
 
-![Don't Forget](/images/dont-forget.png)
+![Don't Forget](/images/dont-forget.webp)
 
 As I roll off of an intense assignment at work, I've got a bit of free brain space to reflect on the kind of work we've been doing, how we have done it, and how this affects -- _The Future._
+
+(_about 15 minutes to read, unless you skip all the footnotes_ 😉)
 
 ## We have to go back...
 
 In college, I spent a lot of time in computer labs. Since I was studying Architecture[^WIT] and this was the year 1991[^Nineties], this time was split between PCs running DOS[^DOS] with AutoCAD[^AutoCAD], and VT terminals[^VT220] where I used Pine[^Pine] to send emails to my brother and my friends at different schools (I can send as many messages as I want? to anyone? for free??)
 
-![VT220](/images/DEC_VT220_terminal.jpg)
+![VT220](/images/DEC_VT220_terminal.webp)
 
 Some time after my account on the VAX[^VAX] was created, I noticed a `'public_html'` directory appear inside my home directory. I asked the lab monitor what that was - and they explained I could put documents in there that could be be seen by other people on the web. (I can make as many web pages as I want? they can be seen by anyone? for free??)
 
@@ -27,19 +29,19 @@ Eventually, I started to notice `[INLINE]` markup in people's homepages. I asked
 
 ### When I first saw Mosaic, everything changed
 
-![Screenshot of Mosaic browser](/images/NCSA_Mosaic_Browser_Screenshot.png)
+![Screenshot of Mosaic browser](/images/NCSA_Mosaic_Browser_Screenshot.webp)
 
-Mosaic[^Mosaic] changed everything for me when I realized that it was possible to embed images, and to add _style_ to your web pages (beyond the **bold** and _italic_ that I had managed to render in Gopher). I was an Architecture student, and my interests in design dovetailed into industrial and graphic design also. Having more control over the presentation of my content appealed to me greatly.
+Mosaic[^Mosaic] changed everything for me when I realized that it was possible to embed images, and to add _style_ to your web pages (beyond the **bold** and _italic_ that I had managed to render in Lynx). I was an Architecture student, and my interests in design dovetailed into industrial and graphic design also. Having more control over the presentation of my content appealed to me greatly.
 
 ### You can make (almost) anything you want
 
-So while learning new and different ways to affect the display of my web pages, there was always a retropective step -- "Does this still work in Lynx?" Why would we care? **We refused to sacrifice access to our content in the pursuit of something new and shiny.** We always checked in other/older browsers.
+So while learning new and different ways to affect the display of my web pages, there was always a retropective step -- "Does this still work in Lynx?" Why would we care so much? **We refused to sacrifice access to our content in the pursuit of something new and shiny.** We always checked in other/older browsers.
 
 **We hand-wrote HTML.** The code that we typed was the exact markup being parsed by the browser. If you saved an HTML document from the web, and opened it up in your text editor right next to your source-code, they would be identical.
 
 This is basic to some of us, but perhaps revelatory to others. And maybe even preposterous to others, still. But this was important, for several reasons.
 
-We cared about the final markup because we were building something to be consumed now _and in perpetutity_. Web browsers were new, and new ones were being invented all the time. These were not only copycats of functionality with a different wrapper, they were _different types of interaction_ with the content we were producing. Gopher and Lynx were text-only. Mosaic (and Netscape Navigator[^NN] and Opera[^Opera] and Internet Explorer[^IE] and even Cyberdog[^Cyberdog] and others[^Others]!) were graphical. What was next? 3D[^3D]?
+We cared about the final markup because we were building something to be consumed now _and in perpetutity_. Web browsers were new, and new ones were being invented all the time. These were not only copycats of functionality with a different wrapper, they were _different types of interaction_ with the content we were producing. Lynx was text-only. Mosaic (and Netscape Navigator[^NN] and Opera[^Opera] and Internet Explorer[^IE] and even Cyberdog[^Cyberdog] and others[^Others]!) were graphical. What was next? 3D[^3D]?
 
 We never assumed what was next. Or, more specifically -- **we never assumed that what would come next would be identical to what we had now**. It was easy to see a future where our content would be consumed via (something) that hadn't been invented yet. And for the most part, we were correct. Eventually we got Web Spiders[^Spiders] and Search Engines[^SE] and Indexes[^Indexes]. We got mobile phones with WAP[^WAP] browsers that would display a pared-down version of our content.
 
@@ -47,7 +49,7 @@ How could we ensure that our content would be readable using technology that has
 
 ### Standards
 
-![Developers - Standards - Browsers](/images/developers-standards-browsers.jpg)
+![Developers - Standards - Browsers](/images/developers-standards-browsers.webp)
 
 So much of what I learned early on was by viewing the source of other websites, changing my markup, reloading. We were just about to get the O'reilly HTML[^HTML] book. Plus the mid-1990s gave us WebMonkey[^WebMonkey] and of course the W3C[^W3C]. By now, (most of)[^Layer] the browser makers were creating engines to render standard HTML, so we began writing standard HTML.
 
@@ -59,15 +61,17 @@ As time went on, our focus evolved to not only writing _standard_ HTML, but to u
 
 My biggest concern about the future is -- am I the only one who is concerned about _The Future?_ This might sound like a small thing, but it's a big thing.
 
-A lot of the technology we've added to the modern UI development stack is intended to make the _developer experience_ better - to help us to write "better" software, faster. I use the term _software_ here because in terms of complexity, that seems to be what we're making.
+A lot of the technology we've added to the modern UI development stack is intended to make the _developer experience_ better - to help us to write "better" software, faster. I use the term _software_ here because in terms of complexity, that's what we're making.
 
 The practitioners of today have learned about web development in Computer Science curriculums, where they also learned about (compilers, object-oriented languages, databases, etc.). They are conditioned to write _software_.
 
 ## And the outlook is ... not great
 
-Increasing complexity of the web will necessarily require increasingly complex code. I understand this, and the average device that our audience is using has more capability to parse and understand it than the simple machines that I began using. But lately what I've been seeing disgorged into the browser DOM is not commensurate with this escalation.
+Increasing functionality on the web will necessarily require increasingly complex code. I understand this. And technology-wise, the average device that our audience is using has more capability to parse and understand it than the simple machines that I began using (as long as you have signal and bandwidth). But lately what I've been seeing disgorged into the browser DOM is not commensurate with this escalation.
 
-I'm not arguing that we should reload and view our source with every saved change, read it thoroughly and make sure it's valid. This would be taxing, and the incremental benefit would not justify the time and expense. But we should do what we can to assure that it is **valid and only as complex as it needs to be.** Remember, we are still honoring that unwritten agreement between developers and browsers and 🦋.
+I've accepted that libraries and shared components are necessary for modern web development. The days of twee artisanal hand-crafted top-to-bottom websites are probably over (at least, outside of hobbyist pursuits).
+
+I'm not arguing that we should reload and view the built source that is served to the browser with every saved change, read it thoroughly and make sure it's valid. This would be taxing, and the incremental benefit would not justify the time and expense. But we should do what we can to assure that it is **valid and only as complex as it needs to be.** Remember, we are still honoring that unwritten agreement between developers and browsers and 🦋.
 
 This is especially important if we are the ones creating libraries, components, and design systems that will be re-used. Our consumers and ultimately their users are relying on us to have put in the dilligence to make sure that are honoring this agreement with all possible _Future(s)_.
 
@@ -75,11 +79,11 @@ But mike - we are time-constrained. Sprint deliverables, deadlines, launch dates
 
 ## We have the technology
 
-![Stop it. Get some help.](/images/get-some-help.png)
+![Stop it. Get some help.](/images/get-some-help.webp)
 
-We have reference websites for CSS browser compatibility. We have linters that can check the built output of our websites. We have browser dev tools and extensions that can parse for validity and accessibility. We have automated testing frameworks that can render our code and interact with it sight-unseen, and report any difficulties they encounter.
+There are tools to help[^Tools]. We have reference websites for CSS browser compatibility. We have linters that can check the built output of our websites. We have browser dev tools and extensions that can parse for validity and accessibility. We have automated testing frameworks that can render our code and interact with it sight-unseen, and report any difficulties they encounter.
 
-Perhaps most importantly, we have development servers that can hot-reload web _browsers_ when you save changes to documents. I said browsers with an S on the end - how wonderous it is to save a document and see it refresh in a variety of windows / devices / sizes / shapes!
+Perhaps most importantly, we have development servers that can hot-reload web _browsers_ when you save changes to documents. I said browsers with an **S** on the end - how wonderous it is to save a document and see it refresh in a variety of windows / devices / sizes / shapes!
 
 More to my point: **"it looks good in Chrome" is not acceptable** as your sole success criteria.
 
@@ -87,32 +91,38 @@ If that is how you develop, you are not only _abandoning your promise to the Fut
 
 ## We have to make the choice
 
-![Red Pill or Blue Pill](/images/Red_and_blue_pill.jpg)
+![Red Pill or Blue Pill](/images/Red_and_blue_pill.webp)
 
 Doing the right thing is a conscious choice. With the pressure we get in our jobs, it's difficult to justify the time and effort to business people who don't 'get it' and just want the tickets closed as quickly as possible.
 
 So we spend time optimizing our tools and our workflows to be fast. We need to also optimize our tools and our workflows to do the right thing.
 
-like Merlin Mann often [says](https://github.com/merlinmann/wisdom/blob/master/wisdom.md), **make the right thing the easy thing.**
+We are the only ones who can advocate for our code, our users, and _The Future_. So extend your cleverness with tooling and optimization (or even your manual routines) to help you create something that will endure.
+
+like Merlin Mann often [says](https://github.com/merlinmann/wisdom/blob/master/wisdom.md) (attributed to Jeff Veen), **make the right thing the easy thing.**
 
 ## Summary
 
-![Old Man Yells at Cloud](/images/yells-at-cloud.jpg)
+![Old Man Yells at Cloud](/images/yells-at-cloud.webp)
 
-I didn't write all this to yell at you. (no, really). I implore you to think about the _Future_ in what you build. I guess the fundamental difference between how I started and maybe how you started is, for you it was a **Career**. For me, it was a **Frontier**.
+I didn't write all this to yell at you. (no, really). I implore you to think about the _Future_ in what you build. This was inherent in my journey when I started. I'm not sure where we strayed from this focus.
 
-### So, TL;DR:
+Maybe newer developers view this as a **Career**. When I started out, it was a **Frontier**.
+
+### Takeaways, or TL;DR:
 
 - refuse to sacrifice access to your content in the pursuit of something new and shiny
 - develop to standards and use html elements for what they're semantically designed for
-- strive to produce code that is valid and only as complex as it needs to be
+- strive to produce code that is valid and _only as complex as it needs to be_
 - broadly test on all available browsers and devices
-- consider the baseline of access - maybe not Lynx, but at least "oops this script didn't load" or "oops that tracking gif didn't load" or "oops there was a javascript error" does your website still... function?
+- consider the baseline of access - maybe not Lynx, but at least account for common problems that thwart and frustrate users[^Common]
 - check your work with browser extensions like lighthouse &amp; others
 
 and ultimately:
 
-**Consider that what we write may outlast our membership on a team, our employment at a company, or even survive beyond _us._** _The Future_ is counting on you to do the right thing.
+**Consider that what we create may outlast our membership on a team, our employment at a company, the browsers that people are using today, or even survive longer than _us._**
+
+_The Future_ is counting on you to do the right thing.
 
 [^WIT]: I began the Architecture program at Wentworth Institute of Technology in 1991. This was the precise time where we started transitioning from paper drawing to Computer Aided Design (CAD) - about half my courses still drew manually (pencils, t-squares, triangles, scales) and half were CAD.
 [^Nineties]: 1991, or as my kids would call it "the late nineteen-hundreds."
@@ -142,17 +152,19 @@ and ultimately:
 [^Layer]: For a while Netscape tried to make their own DOM, but eventually relented, [Jeffrey Zeldman himself has the details of that here](https://alistapart.com/article/bullet/).
 [^DWS]: [Designing with Web Standards](https://en.wikipedia.org/wiki/Designing_with_Web_Standards) became the guide and the justification for shifting to Semantic markup. It also helped that CSS was evolving and allowing us to create complex layouts properly.
 [^Tables]: For some time in the late 90s, web standards and browsers just couldn't keep up with the demands of marketing and designers and corporations. Before advanced web layouts were possible with CSS, we improperly used data tables for layout. I actually got very good at this, then I stopped. If you need a great example (not my work) you can check out the famous [Space Jam website](https://www.spacejam.com/1996/). If you want to see my work, here's a [copy of my website from 1996](http://mikesusz.com/sitemuseum/1996/) (resize your browser - it's _responsive!_)
+[^Tools]: Tools I use every day: [MDN](https://developer.mozilla.org/en-US/), [Can I Use](https://caniuse.com/), [Lighthouse in Chrome Dev Tools](https://developer.chrome.com/docs/lighthouse/overview), [IBM Equal Access Toolkit/checker](https://www.ibm.com/able/toolkit), all the stuff I talked about [on my Uses page](/uses)
+[^Common]: Common problems that thwart or frustrate users are probably things you're familiar with: "oops this script didn't load" or "oops that tracking gif didn't load" or "oops there was a javascript error" does your website still... function? Have you experienced this as a user, how did it make you feel?
 
 ---
 
-### Image Credits:
+## Image Credits:
 
-- "Don't Forget" graphic is a parody that I made from a frame of the TV show [The Simpsons "And Maggie Makes Three" Season 6, Episode 13](https://simpsonswiki.com/wiki/And_Maggie_Makes_Three). Original airdate: January 22, 1995.
+- "Don't Forget" graphic is a parody that I made from a frame of the TV show [The Simpsons "And Maggie Makes Three" Season 6, Episode 13](https://simpsonswiki.com/wiki/And_Maggie_Makes_Three). Original airdate: January 22, 1995
 - VT220 image from Tom Page via [Wikimedia](https://commons.wikimedia.org/wiki/File:DEC_VT220_terminal.jpg)
 - Screenshot of Mosaic browser by Charles Severance, via [Wikimedia](https://commons.wikimedia.org/wiki/File:NCSA_Mosaic_Browser_Screenshot.png)
-- Developers 🤝 Browsers graphic was made on [imgflip.com](https://imgflip.com) 'Epic Handshake' meme generator. The original frame is a painting-like rendition of a scene from the film _Predator_, the actors being depicted handshaking are Carl Weathers and Arnold Schwarzenegger, respectively.
-- "Stop it. Get some help" image is a meme now, but it was originally from an anti-drug Public Service Announcement from 1987 starring Michael Jordan.
-- Red Pill / Blue Pill image by W.carter, via [Wikimedia](https://commons.wikimedia.org/wiki/File:Red_and_blue_pill.jpg)
+- Developers 🤝 Browsers graphic was made on [imgflip.com](https://imgflip.com) 'Epic Handshake' meme generator. (The original frame is a painting-like rendition of a scene from the film _Predator_, the actors being depicted handshaking are Carl Weathers and Arnold Schwarzenegger, respectively)
+- "Stop it. Get some help" image is a meme now, but it was originally from an anti-drug Public Service Announcement from 1987 starring Michael Jordan
+- Red Pill / Blue Pill image by W.carter, via [Wikimedia](https://commons.wikimedia.org/wiki/File:Red_and_blue_pill.jpg). This is a reference to a film called _The Matrix_, from the late nineteen-hundreds
 - "Old Man Yells at Cloud" image is from [The Simpsons, Season 13 Episode 13 "The Old Man and the Key"](https://simpsonswiki.com/wiki/The_Old_Man_and_the_Key)
 
 ---

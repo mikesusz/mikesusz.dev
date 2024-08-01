@@ -10,6 +10,12 @@
 	--link-color-initial: #5cecc6;
 	--link-color-active: #004cff;
 	--link-color-visited: #5cb2ff;
+
+	--accent-color-1: #9fef00;
+	--accent-color-2: #ff3e3e;
+	--accent-color-3: #004cff;
+	--accent-color-4: #ffaf00;
+	--accent-color-5: #9f00ff;
 }
 
 body {
@@ -22,16 +28,16 @@ body {
 	background: #141d2b;
 	background: linear-gradient(
 		180deg,
-		#9fef00 0%,
-		#9fef00 20%,
-		#ff3e3e 20%,
-		#ff3e3e 40%,
-		#004cff 40%,
-		#004cff 60%,
-		#ffaf00 60%,
-		#ffaf00 80%,
-		#9f00ff 80%,
-		#9f00ff 100%
+		var(--accent-color-1) 0%,
+		var(--accent-color-1) 20%,
+		var(--accent-color-2) 20%,
+		var(--accent-color-2) 40%,
+		var(--accent-color-3) 40%,
+		var(--accent-color-3) 60%,
+		var(--accent-color-4) 60%,
+		var(--accent-color-4) 80%,
+		var(--accent-color-5) 80%,
+		var(--accent-color-5) 100%
 	);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
