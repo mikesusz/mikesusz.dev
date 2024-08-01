@@ -1,8 +1,8 @@
 ---
 title: "Don't Forget - You're Making Web Pages"
 description: "Don't Forget - You're Making Web Pages"
-pubDate: '30 Jul 2024'
-draft: true
+pubDate: '1 Aug 2024'
+draft: false
 ---
 
 ![Don't Forget](/images/dont-forget.webp)
