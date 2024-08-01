@@ -13,17 +13,39 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-	</head>
+		<style>
+			article {
+				font-size: 125%;
+				text-wrap-style: pretty;
+				h2,
+				h3 {
+					margin-top: 1.5em;
+					border-left-width: 2em;
+					border-left-color: var(--accent-color-1);
+					border-left-style: solid;
+					padding-left: 0.5em;
+				}
 
-	<style>
-		article {
-			text-align: justify;
-		}
-		.blog-navigation {
-			margin-top: 2rem;
-			text-align: center;
-		}
-	</style>
+				h3 {
+					border-left-width: 1em;
+				}
+
+				h2:nth-of-type(2),
+				h3:nth-of-type(2) {
+					border-left-color: var(--accent-color-2);
+				}
+
+				h2:nth-of-type(3),
+				h3:nth-of-type(3) {
+					border-left-color: var(--accent-color-3);
+				}
+			}
+			.blog-navigation {
+				margin-top: 2rem;
+				text-align: center;
+			}
+		</style>
+	</head>
 
 	<body>
 		<div class="page">
@@ -32,10 +54,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<article>
 					{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
 					<h1 class="title">{title}</h1>
-					{
-						pubDate &&
-							<FormattedDate class="last-updated-on" date={pubDate} />
-					}
+					{pubDate && <FormattedDate class="last-updated-on" date={pubDate} />}
 					{
 						updatedDate && (
 							<div class="last-updated-on">

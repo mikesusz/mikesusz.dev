@@ -164,6 +164,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"dont-forget.md": {
+	id: "dont-forget.md";
+  slug: "dont-forget";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "first-post.md": {
 	id: "first-post.md";
   slug: "first-post";
@@ -195,6 +202,13 @@ declare module 'astro:content' {
 "tailwind.md": {
 	id: "tailwind.md";
   slug: "tailwind";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"thats-the-ticket.md": {
+	id: "thats-the-ticket.md";
+  slug: "thats-the-ticket";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
