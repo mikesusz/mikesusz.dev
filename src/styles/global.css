@@ -74,6 +74,7 @@ h4,
 h5,
 h6 {
 	font-family: 'IBM Plex Serif Bold', Georgia, serif;
+	margin-bottom: 0.25em;
 }
 
 a {

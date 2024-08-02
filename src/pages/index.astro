@@ -5,37 +5,81 @@ import LatestPosts from '../components/LatestPosts.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-// import Intro from '../components/Intro.astro';
+import Mission from '../components/Mission.astro';
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			#home_page {
+				@media all and (min-width: 762px) {
+					.columns_layout {
+						display: flex;
+						gap: 2em;
+						.intro {
+							font-size: 1.1em;
+						}
+						.mission {
+							h2 {
+								margin-top: 0;
+							}
+							margin-top: 1em;
+							padding: 0.63em 1em;
+							text-wrap: nowrap;
+							background: rgba(255, 255, 255, 0.04);
+						}
+					}
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<div class="page">
 			<Header title={SITE_TITLE} />
-			<main>
-				<h1>Hello!</h1>
+			<main id="home_page">
+				<div class="columns_layout">
+					<section class="intro">
+						<h1>hello!</h1>
+						My name is Mike and I love solving problems. I've been doing UI development, UX strategy,
+						and many various aspects of web design and development for 28 years. I'm currently employed
+						as a Senior Front-end Developer with IBM Consulting.
+					</section>
 
-				<p>My name is Mike and I like to solve problems with websites.</p>
+					<section class="mission">
+						<h2>mission</h2>
+						<Mission />
+					</section>
+				</div>
 
-				<p>To learn more about me, you can read the <a href="/about">About Me</a> page.</p>
-
-				<p>If you're interested in what I'm learning or what I'm thinking about, check out <a href="/blog">My Blog</a>.</p>
-
-				<p>If you want details about the work i've done in the past, you can check out my <a href="/files/Michael.Susz.Resume.Online.pdf">Resume</a>.</p>
-
-				<p>If you want to get in touch, you can connect with me on the socials linked above.
-
-				<p>Thanks for stopping by!</p>
-
-				<p class="sig">&mdash; mike</p>
-
-				<LatestPosts />
+				<section class="work">
+					<h2>my latest projects at work</h2>
+					<p>
+						Right now I'm "on the bench" in consulting parlance. This is time between-projects,
+						usually full of formal learning, searching for a new project seat, networking with your
+						contacts to find out about upcoming opportunities (...and worrying about your
+						utilization percentage dropping below the threshold where you become a financial
+						liability).
+					</p>
+					<p>
+						I recently wrapped up a four month project building a hub that helps individuals in need
+						to connect with care providers and organizations. The project was already in flight when
+						I was onboarded. The technologies we used were primarily Sveltekit, Typescript, and
+						Sass. (this family of projects in IBM Consulting leverage this stack heavily). Backend
+						data was provided by REST APIs but we did a lot of data aggregation, validation and
+						filtering in local APIs.
+					</p>
+					<p>
+						Prior to that, I was the sole developer where I built a portal for transitional youth to
+						receive notices about their official appearances, schedule and organize counseling and
+						support meetings, and keep track of important documents. This was a tremendously
+						rewarding project, built using Sveltekit, Typescript, and Sass.
+					</p>
+					<LatestPosts />
+				</section>
+				<Footer />
 			</main>
-			<Footer />
 		</div>
 	</body>
 </html>

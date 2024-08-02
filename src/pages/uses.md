@@ -1,7 +1,7 @@
 ---
-layout: "../layouts/StaticPage.astro"
-title: "Mike Susz Uses"
-description: "Information about the tools that I use"
+layout: '../layouts/StaticPage.astro'
+title: 'Mike Susz Uses'
+description: 'Information about the tools that I use'
 ---
 
 This is about the software tools that I use.
@@ -61,6 +61,8 @@ In short, I use and test in all modern browsers (and a few not-so-modern ones). 
 
 I will occasionally, as a minimum-common-denominator test, use [lynx](https://lynx.invisible-island.net/) to make sure my sites still work in a text-based browser. This isn't a requirement for any of my professional work, but I like to know that my personal sites are usable in as many scenarios as possible.
 
+In addition to the built-in developer tools and things like [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview), my employer produces the [IBM Equal Access Toolkit](https://www.ibm.com/able/toolkit/) which you should check out.
+
 --
 
-As I think of other things I will update.
+As I think of other things I will update. Last update: August 2nd, 2024
