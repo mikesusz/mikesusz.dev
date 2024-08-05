@@ -3,9 +3,9 @@ title: "Don't Forget - You're Making Web Pages"
 description: "The Web that was, how we lost our way, and how to fulfill our promise to The Future."
 pubDate: '1 Aug 2024'
 draft: false
+heroImage: '/images/dont-forget.webp'
+heroAlt: "Don't Forget - You're Making Web Pages"
 ---
-
-![Don't Forget](/images/dont-forget.webp)
 
 As I roll off of an intense assignment at work, I've got a bit of free brain space to reflect on the kind of work we've been doing, how we have done it, and how this affects -- _The Future._
 
