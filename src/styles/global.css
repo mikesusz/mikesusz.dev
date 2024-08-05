@@ -98,8 +98,8 @@ nav a {
 }
 
 a[data-footnote-ref] {
-	font-size: 1rem;
-	margin-left: 0.1em;
+	font-size: 0.9em;
+	padding: 0.2em;
 }
 
 textarea {
