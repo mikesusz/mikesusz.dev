@@ -58,7 +58,7 @@ body {
 }
 
 main {
-	max-width: 72ch;
+	max-width: clamp(320px, 90%, 96ch);
 }
 h1,
 h2,
@@ -160,9 +160,7 @@ blockquote {
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src:
-		local('IBM Plex Sans Regular'),
-		local('IBMPlexSans-Regular'),
+	src: local('IBM Plex Sans Regular'), local('IBMPlexSans-Regular'),
 		url('/fonts/IBMPlexSans-Regular.woff2') format('woff2'),
 		url('/fonts/IBMPlexSans-Regular.woff') format('woff');
 }
@@ -172,9 +170,7 @@ blockquote {
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src:
-		local('IBM Plex Sans Bold'),
-		local('IBMPlexSans-Bold'),
+	src: local('IBM Plex Sans Bold'), local('IBMPlexSans-Bold'),
 		url('/fonts/IBMPlexSans-Bold.woff2') format('woff2'),
 		url('/fonts/IBMPlexSans-Bold.woff') format('woff');
 }
@@ -184,9 +180,7 @@ blockquote {
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src:
-		local('IBM Plex Sans Italic'),
-		local('IBMPlexSans-Italic'),
+	src: local('IBM Plex Sans Italic'), local('IBMPlexSans-Italic'),
 		url('/fonts/IBMPlexSans-Italic.woff2') format('woff2'),
 		url('/fonts/IBMPlexSans-Italic.woff') format('woff');
 }
@@ -196,9 +190,7 @@ blockquote {
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src:
-		local('IBM Plex Serif'),
-		local('IBMPlexSerif'),
+	src: local('IBM Plex Serif'), local('IBMPlexSerif'),
 		url('/fonts/IBMPlexSerif-Regular.woff2') format('woff2'),
 		url('/fonts/IBMPlexSerif-Regular.woff') format('woff');
 }
@@ -208,9 +200,7 @@ blockquote {
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src:
-		local('IBM Plex Bold Serif'),
-		local('IBMPlexSerif-Bold'),
+	src: local('IBM Plex Bold Serif'), local('IBMPlexSerif-Bold'),
 		url('/fonts/IBMPlexSerif-Bold.woff2') format('woff2'),
 		url('/fonts/IBMPlexSerif-Bold.woff') format('woff');
 }

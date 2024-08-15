@@ -7,4 +7,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://mikesusz.dev',
 	integrations: [mdx(), sitemap()],
+	experimental: {
+		contentIntellisense: true
+	}
 });
