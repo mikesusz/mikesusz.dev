@@ -4,6 +4,8 @@ description: When I first set out to build this site, I wanted to learn modern w
 pubDate: "27 Sep 2021"
 ---
 
+(note: this post was written when i was hosting this site on netlify. i have since moved to a different hosting solution.)
+
 I started my career where I had to assemble the physical web server, install the operating system, install the web server software, then physically install the server computer into the Server Room. I moved on to large corporations where other teams handled the infrastructure and deployed the code that Engineering created.
 
 In my past several jobs, my teams deployed our own code in environments like [AWS](https://aws.amazon.com/), [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) or [IBM Cloud](https://www.ibm.com/cloud). While I have been tasked with maintaining and using a full CI/CD pipeline at work, I didn't want (or need) this kind of complexity for personal projects.

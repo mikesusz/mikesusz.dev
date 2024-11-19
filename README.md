@@ -14,7 +14,7 @@ I created the design with inspiration from [HackTheBox](https://github.com/silof
 
 This repository is maintained on github here: [mikesusz.dev on GitHub](https://github.com/mikesusz/mikesusz.dev/)
 
-The site is built and hosted with a workflow on [Netlify](https://netlify.com)
+The site (was previously) built and hosted with a workflow on [Netlify](https://netlify.com), but now is self-hosted and deployed with [Coolify](https://coolify.io/).
 
 If you find any problems with this site, you can open a [Github Issue on mikesusz.dev](https://github.com/mikesusz/mikesusz.dev/issues) or [contact me on Mastadon](https://front-end.social/@mikesusz)
 

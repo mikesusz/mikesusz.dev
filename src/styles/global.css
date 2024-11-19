@@ -16,6 +16,22 @@
 	--accent-color-3: #004cff;
 	--accent-color-4: #ffaf00;
 	--accent-color-5: #9f00ff;
+
+	--main-fg: #c5d1eb;
+	--main-bg: #141d2b;
+	--main-bg-gradient: linear-gradient(140deg, #141d2b 0%, #0d2242 60%, #0d2242 80%, #141d2b 100%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+		--main-fg: #141d2b;
+    --main-bg: #c5d1eb;
+		--main-bg-gradient: linear-gradient(140deg, #6d9be6 0%, #4b8def 60%, #4c8cec 80%, #6e9eeb 100%);
+
+		--link-color-initial: #0f2a23;
+		--link-color-active: #000b26;
+		--link-color-visited: #0c1923;
+  }
 }
 
 html {
@@ -29,7 +45,7 @@ body {
 	padding: 0;
 	/* max-width: 65ch; */
 	text-align: left;
-	background: #141d2b;
+	background: var(--color-bg);
 	background: linear-gradient(
 		180deg,
 		var(--accent-color-1) 0%,
@@ -49,9 +65,9 @@ body {
 }
 .page {
 	position: relative;
-	color: #c5d1eb;
-	background: #141d2b;
-	background: linear-gradient(140deg, #141d2b 0%, #0d2242 60%, #0d2242 80%, #141d2b 100%);
+	color: var(--main-fg);
+	background: var(--main-bg);
+	background: var(--main-bg-gradient);
 	min-height: 100vh;
 	margin-left: 8vw;
 	padding: 8vw;
@@ -68,7 +84,7 @@ h5,
 h6,
 strong,
 b {
-	color: #c5d1eb;
+	color: var(--main-fg);
 }
 
 h1,
@@ -129,7 +145,7 @@ b {
 code {
 	padding: 2px 5px;
 	font-family: 'Courier New', Courier, monospace;
-	background-color: #141d2b;
+	background-color: var(--main-bg);
 }
 pre {
 	padding: 1rem;
@@ -144,8 +160,8 @@ cite,
 }
 
 blockquote {
-	border: 1px solid #999;
-	color: #a4b1cd;
+	border: 1px solid var(--main-fg);
+	color: var(--main-fg);
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;

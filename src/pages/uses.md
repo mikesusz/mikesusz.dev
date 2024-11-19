@@ -46,9 +46,7 @@ My professional work often involves large applications that are deployed at ente
 
 Building and deploying Apps has varied also, my teams have used [Jenkins](https://www.jenkins.io/), [Travis ci](https://www.travis-ci.com/), and [Azure Pipelines](https://azure.microsoft.com/en-us/products/devops/pipelines). I'm usually not the deployment engineer, but I've looked under the hood and gotten to understand how these work and are configured.
 
-For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). Recently I started using Netlify for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, built and deployed via Netlify.
-
-The deploy pipeline for Netlify is probably the way I'm migrating towards in the future -- it's just so easy to have a github hosted repository and configure a Netlify site to build from it.
+For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). I have also used [Netlify](https://www.netlify.com/) for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, and at one time it was built and deployed via Netlify.
 
 ## Browsers
 
@@ -65,4 +63,4 @@ In addition to the built-in developer tools and things like [Lighthouse](https:/
 
 --
 
-As I think of other things I will update. Last update: August 2nd, 2024
+As I think of other things I will update. Last update: November 19th, 2024
