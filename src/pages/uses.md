@@ -46,7 +46,7 @@ My professional work often involves large applications that are deployed at ente
 
 Building and deploying Apps has varied also, my teams have used [Jenkins](https://www.jenkins.io/), [Travis ci](https://www.travis-ci.com/), and [Azure Pipelines](https://azure.microsoft.com/en-us/products/devops/pipelines). I'm usually not the deployment engineer, but I've looked under the hood and gotten to understand how these work and are configured.
 
-For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). I have also used [Netlify](https://www.netlify.com/) for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, and at one time it was built and deployed via Netlify.
+For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). I have also used [Netlify](https://www.netlify.com/) for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, and at one time it was built and deployed via Netlify. Currently, it is built and deployed using [Coolify](https://coolify.io/), onto a VPS from [Linode](https://linode.com).
 
 ## Browsers
 
