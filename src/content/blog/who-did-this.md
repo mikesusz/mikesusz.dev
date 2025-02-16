@@ -23,7 +23,7 @@ So blogs, right? Or updated home-pages. What was published was long-form writing
 
 <!-- now it's easy -->
 
-Technology was about to change the dynamics of who can publish. And that's great! blogging sites and software arise to remove the technical barriers to publishing.
+Technology would arise to change the dynamics of who can publish. And that's great! blogging sites and software arise to remove the technical barriers to publishing.
 
 The diversity of opinionated content available is vast. The nerds are no longer that digital gatekeepers of expressing yourself online (although some seem to be pretty mad about it).
 
@@ -107,7 +107,7 @@ How can people who produce content continue to get paid in a world where their k
 
 ## It can't be all bad
 
-True, this will sound like pale consolation. But what we've learned from decades of technological evolution is that things will change only as much as we tolerate it. If search engine _A_ gives us too much AI and hides primary sources, the people who want to dig deeper will go elsewhere. If social media company _X_ wants to steal our content and make it difficult to find out friends, users will flock to other platforms.
+True, this will sound like pale consolation. But what we've learned from decades of technological evolution is that things will change only as much as we tolerate it. If search engine _A_ gives us too much AI and hides primary sources, the people who want to dig deeper will go elsewhere. If social media company _X_ wants to steal our content and make it difficult to find our friends, users will flock to other platforms.
 
 People have dealt with these types of trends well before the internet. (does anyone remember "the invisible hand"[^InvisibleHand] from Economics class?). Consumer preferences will drive the direction of technology, because consumption drives revenue. What form that revenue takes and/or how it's transfered (e.g. from users to advertisers to search engines) has yet to be fully developed, but we will see it come to pass if the tech companies ever want to make money off of their huge investment.
 
