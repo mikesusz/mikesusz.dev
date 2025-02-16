@@ -26,7 +26,7 @@
   :root {
 		--main-fg: #141d2b;
     --main-bg: #c5d1eb;
-		--main-bg-gradient: linear-gradient(140deg, #6d9be6 0%, #4b8def 60%, #4c8cec 80%, #6e9eeb 100%);
+		--main-bg-gradient: linear-gradient(140deg, #75a0e4 0%, #5a92e8 60%, #5a93ea 80%, #7da6e9 100%);
 
 		--link-color-initial: #0f2a23;
 		--link-color-active: #000b26;
