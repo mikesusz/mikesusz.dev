@@ -23,11 +23,11 @@ So blogs, right? Or updated home-pages. What was published was long-form writing
 
 <!-- now it's easy -->
 
-Technology would arise to change the dynamics of who can publish. And that's great! blogging sites and software arise to remove the technical barriers to publishing.
+Technology would arise to change the dynamics of who can publish. And that's great! blogging sites and software helped to remove the technical barriers to publishing. Not to ~~make you feel old~~ bog this down with statistics, but: Blogger was launched in 1999, WordPress in 2003, Youtube in 2005, Tumblr in 2007, Medium in 2012.
 
 The diversity of opinionated content available is vast. The nerds are no longer that digital gatekeepers of expressing yourself online (although some seem to be pretty mad about it).
 
-So now everyone can post content! And they do. They just keep posting. It's a lot. Every commercial and public interest has a web presence. And the services that enable you to express yourself are exploding also, having an exponential effect. Not to ~~make you feel old~~ bog this down with statistics, but: Blogger was launched in 1999, WordPress in 2003, Youtube in 2005, Tumblr in 2007, Medium in 2012.
+So now everyone can post content! And they do. They just keep posting. It's a lot. Every commercial and public interest has a web presence. And the services that enable you to express yourself are exploding also, having an exponential effect.
 
 ## Oh no that's too much
 
