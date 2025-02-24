@@ -55,30 +55,26 @@ import Mission from '../components/Mission.astro';
 
 				<section class="work">
 					<h2>my latest projects at work</h2>
+
 					<p>
-						Right now I'm "on the bench" in consulting parlance. This is time between-projects,
-						usually full of formal learning, searching for a new project seat, networking with your
-						contacts to find out about upcoming opportunities (...and worrying about your
-						utilization percentage dropping below the threshold where you become a financial
-						liability).
+						I've been alternating between 'bench' time (time between billable projects, spend doing
+						estimation &amp; proposals, and learning new things!) and supporting projects that build
+						social-care network infrastructure. These projects are personally rewarding, knowing
+						that my work is helping people access resources for food/housing/employment help.
 					</p>
+
 					<p>
-						I recently wrapped up a four month project building a hub that helps individuals in need
-						to connect with care providers and organizations. The project was already in flight when
-						I was onboarded. The technologies we used were primarily Sveltekit, Typescript, and
-						Sass. (this family of projects in IBM Consulting leverage this stack heavily). Backend
-						data was provided by REST APIs but we did a lot of data aggregation, validation and
-						filtering in local APIs.
+						All of these projects use a similar stack: front-end is svelte/sveltekit, svelte
+						superforms, sass/scss, and Carbon Design System components (and plenty of custom-built
+						components/molecules). data is a combination of postres sql, fhir, IBM's <a
+							href="https://www.ibm.com/products/blog/revolutionizing-community-access-to-social-services-ibm-and-microsofts-collaborative-approach"
+							target="_blank">Connect360</a
+						> Platform.
 					</p>
-					<p>
-						Prior to that, I was the sole developer where I built a portal for transitional youth to
-						receive notices about their official appearances, schedule and organize counseling and
-						support meetings, and keep track of important documents. This was a tremendously
-						rewarding project, built using Sveltekit, Typescript, and Sass.
-					</p>
+
 					<LatestPosts />
+					<Footer />
 				</section>
-				<Footer />
 			</main>
 		</div>
 	</body>
