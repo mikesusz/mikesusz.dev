@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import LatestPosts from '../components/LatestPosts.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 import Mission from '../components/Mission.astro';
 ---
@@ -42,9 +42,9 @@ import Mission from '../components/Mission.astro';
 				<div class="columns_layout">
 					<section class="intro">
 						<h1>hello!</h1>
-						My name is Mike and I love solving problems. I've been doing UI development, UX strategy,
-						and many various aspects of web design and development for 28 years. I'm currently employed
-						as a Senior Front-end Developer with IBM Consulting.
+						My name is Mike and I love solving problems. I've been doing web UI development, UX strategy,
+						and various aspects of web design and development for 28 years. At times I've been a team-lead
+						and scrum-master. I'm currently employed as a Senior Front-end Developer with IBM Consulting.
 					</section>
 
 					<section class="mission">
@@ -70,6 +70,21 @@ import Mission from '../components/Mission.astro';
 							href="https://www.ibm.com/products/blog/revolutionizing-community-access-to-social-services-ibm-and-microsofts-collaborative-approach"
 							target="_blank">Connect360</a
 						> Platform.
+					</p>
+
+					<p>
+						My current tenure on these projects is coming to a close, however. I'm really hoping to
+						find another seat with a project where I can get involved at the beginning &mdash;
+						planning, strategy, estimation, requirements gathering and orchestration. These are the
+						areas where I can provide a lot more value than just "how fast can you execute?"
+					</p>
+
+					<p>
+						And, if you're reading this, and you know of an opening on a diverse team of kind people
+						who will be solving important problems, feel free to <a
+							href=`mailto:${CONTACT_EMAIL}`>reach out</a
+						>. While I consider myself an IBMer, I am also always looking to build things that help
+						people.
 					</p>
 
 					<LatestPosts />
