@@ -3,6 +3,8 @@ import Layout from '../layouts/StaticPage.astro';
 
 import Mission from '../components/Mission.astro';
 
+import { CONTACT_EMAIL } from '../consts';
+
 // yes i made this a variable.
 // let role = null;
 let role = 'Senior Front-end Developer for IBM Consulting';
@@ -74,7 +76,9 @@ let role = 'Senior Front-end Developer for IBM Consulting';
 
 			<p>
 				You can view <a href="/files/Michael.Susz.Resume.Online.pdf" target="_blank">my resume</a> or
-				if you want to chat, contact me via the socials linked above. thanks!
+				if you want to chat, contact me via the socials linked above or <a
+					href=`mailto:${CONTACT_EMAIL}`>reach out</a
+				>. thanks!
 			</p>
 		</div>
 	</section>

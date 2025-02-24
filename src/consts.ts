@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = 'mikesusz.dev';
 export const SITE_DESCRIPTION = 'Information about Mike Susz, Front End Developer.';
+export const CONTACT_EMAIL = '48273@mikesusz.dev';

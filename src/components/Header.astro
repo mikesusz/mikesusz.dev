@@ -2,16 +2,17 @@
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
-<style>
-.site-title {
-	font-family: "IBM Plex Serif Bold", Georgia, serif;
-	font-size: 8vw;
-	font-weight: 700;
-}
 
-.site-title::first-letter {
-	color: #9fef00;
-}
+<style>
+	.site-title {
+		font-family: 'IBM Plex Serif Bold', Georgia, serif;
+		font-size: 8vw;
+		font-weight: 700;
+	}
+
+	.site-title::first-letter {
+		color: #9fef00;
+	}
 </style>
 <header>
 	<div class="site-title">
@@ -22,8 +23,12 @@ import { SITE_TITLE } from '../consts';
 		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
 		<HeaderLink href="/uses">Uses</HeaderLink>
-		<HeaderLink href="https://front-end.social/@mikesusz" target="_blank" rel="me">Mastodon</HeaderLink>
+		<HeaderLink href="https://front-end.social/@mikesusz" target="_blank" rel="me"
+			>Mastodon</HeaderLink
+		>
+		<HeaderLink href="https://bsky.app/profile/mikesusz.dev" target="_blank">Bluesky</HeaderLink>
 		<HeaderLink href="https://github.com/mikesusz" target="_blank">GitHub</HeaderLink>
-		<HeaderLink href="https://www.linkedin.com/in/michaelsusz/" target="_blank">LinkedIn</HeaderLink>
+		<HeaderLink href="https://www.linkedin.com/in/michaelsusz/" target="_blank">LinkedIn</HeaderLink
+		>
 	</nav>
 </header>
