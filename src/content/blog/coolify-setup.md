@@ -65,7 +65,7 @@ Not everything was super straightforward, but I now have it up and running eleve
 
 My biggest issue? I was too cheap. Well, frugal. The default build pack in Coolify is [Nixpacks](https://nixpacks.com/docs/how-it-works). I was unaware of what this was or did, and I won't get into the details of it but let's just say it's resource-intensive. On my little Linode 2GB instance my deploys were failing sometimes, causing CPU spikes and eventually Linode's watcher-bots rebooted my server.
 
-After all of my troubleshooting and hair-pulling and freaking out ... I hadn't configured enough swap space. Swap is what the operating system uses to temporarily store files that it is actively using when it runs out of real memory. Since Nixpacks uses a lot of library files, it was exceeding the available portion of real memory and without anywhere else to store those in-use files, it was causing problems. So, that's really the biggest caveat: **give your server more swap**. I changed mine from 512MB to 2GB (to match the amount of physical memory available) and haven't had a problem since.
+After all of my troubleshooting and hair-pulling and freaking out ... I hadn't configured enough swap space. Swap is what the operating system uses to temporarily store files that it is actively using when it runs out of real physical memory. Since Nixpacks uses a lot of library files, it was exceeding the available portion of real memory and without anywhere else to store those in-use files, it was causing problems. So, that's really the biggest caveat: **give your server more swap**. I changed mine from 512MB to 2GB (to match the amount of physical memory available) and haven't had a problem since.
 
 ## You can do it, too!
 
