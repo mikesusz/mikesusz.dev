@@ -2,7 +2,7 @@
 title: "Coolify Setup"
 description: "My adventures with moving to(ward) automated self-hosting."
 pubDate: "26 Mar 2025"
-draft: true
+draft: false
 ---
 
 In the way that internet things sometimes come full-circle, I wanted to move my web hosting back to machines that I control. Here's the story of my journey doing that, and a few pointers to avoid the pitfalls that I fell into.
