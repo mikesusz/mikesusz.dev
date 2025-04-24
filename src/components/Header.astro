@@ -1,23 +1,32 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL } from '../consts';
 ---
 
 <style>
+	.site-header {
+	}
+
+	.site-header nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: end;
+		padding-bottom: 7vw;
+	}
+
 	.site-title {
 		font-family: 'IBM Plex Serif Bold', Georgia, serif;
 		font-size: 8vw;
 		font-weight: 700;
+		margin-bottom: var(--base-gap);
+		max-width: var(--content-max-width);
 	}
 
 	.site-title::first-letter {
 		color: #9fef00;
 	}
 </style>
-<header>
-	<div class="site-title">
-		{SITE_TITLE}
-	</div>
+<header class="site-header">
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
@@ -30,5 +39,11 @@ import { SITE_TITLE } from '../consts';
 		<HeaderLink href="https://github.com/mikesusz" target="_blank">GitHub</HeaderLink>
 		<HeaderLink href="https://www.linkedin.com/in/michaelsusz/" target="_blank">LinkedIn</HeaderLink
 		>
+		<HeaderLink href=`mailto:${CONTACT_EMAIL}`
+			><div class="icon" set:html={ICON_EMAIL} /></HeaderLink
+		>
 	</nav>
+	<div class="site-title">
+		{SITE_TITLE}
+	</div>
 </header>
