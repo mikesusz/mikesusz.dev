@@ -1,6 +1,6 @@
 ---
 title: "Who Did This?"
-description: "How we got to the AI present"
+description: "How we got to the AI present."
 pubDate: '16 Feb 2025'
 draft: false
 heroImage: '/images/who-did-this-1.webp'

@@ -1,0 +1,32 @@
+---
+// use this component to get the latest training from training collection
+import { getCollection } from 'astro:content';
+
+import FormattedDate from './FormattedDate.astro';
+
+const training = (
+	await getCollection('education', ({ data }) => {
+		return data.draft !== true;
+	})
+)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 3);
+---
+
+<ul class="styled-list opposite">
+	{
+		training.map((entry) => {
+			return (
+				<li>
+					<div class="education_post_data">
+						<a href={`/education/${entry.slug}/`} style={{ display: 'block' }}>
+							{entry.data.title}
+						</a>
+						<p>{entry.data.description}</p>
+						<FormattedDate date={entry.data.date} />
+					</div>
+				</li>
+			);
+		})
+	}
+</ul>

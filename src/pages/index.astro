@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 import Mission from '../components/Mission.astro';
+import Skills from '../components/Skills.astro';
+import Training from '../components/RecentTraining.astro';
 ---
 
 <!doctype html>
@@ -14,24 +16,76 @@ import Mission from '../components/Mission.astro';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			#home_page {
-				@media all and (min-width: 762px) {
-					.columns_layout {
-						display: flex;
-						gap: 2em;
+				.intro-layout,
+				.work-layout,
+				.content-layout {
+					display: block;
+				}
+
+				section {
+					padding: var(--base-pad);
+					margin-bottom: var(--base-gap);
+
+					&.flush-right {
+						padding: var(--base-pad) 0 var(--base-pad) var(--base-pad);
+					}
+
+					&.flush-left {
+						padding: var(--base-pad) var(--base-pad) var(--base-pad) 0;
+					}
+				}
+
+				.mission {
+					padding: var(--base-pad);
+					background: var(--background-accent);
+				}
+
+				.mission :not(h2) {
+					font-size: 1.1em;
+				}
+
+				.work {
+					background: var(--background-accent);
+				}
+
+				.training {
+					.formatted_time {
+						display: block;
+						text-align: right;
+					}
+				}
+
+				.skills {
+					background: var(--background-accent);
+				}
+
+				@media all and (min-width: 1024px) {
+					.intro-layout,
+					.work-layout,
+					.content-layout {
+						display: grid;
+						gap: var(--base-gap);
+					}
+
+					.intro-layout {
+						grid-template-columns: 3fr 2fr;
 						.intro {
 							font-size: 1.1em;
 						}
-						.mission {
-							h2 {
-								margin-top: 0;
-							}
-							margin-top: 1em;
-							padding: 0.63em 1em;
-							text-wrap: nowrap;
-							background: rgba(255, 255, 255, 0.04);
-						}
+					}
+
+					.work-layout {
+						grid-template-columns: 3fr 2fr;
+					}
+
+					.content-layout {
+						grid-template-columns: 3fr 1fr;
 					}
 				}
+			}
+
+			.future {
+				display: none !important;
 			}
 		</style>
 	</head>
@@ -39,58 +93,80 @@ import Mission from '../components/Mission.astro';
 		<div class="page">
 			<Header title={SITE_TITLE} />
 			<main id="home_page">
-				<div class="columns_layout">
+				<div class="intro-layout">
 					<section class="intro">
-						<h1>hello!</h1>
+						<h1>Hello!</h1>
 						My name is Mike and I love solving problems. I've been doing web UI development, UX strategy,
-						and various aspects of web design and development for 28 years. At times I've been a team-lead
-						and scrum-master. I'm currently employed as a Senior Front-end Developer with IBM Consulting.
+						and various aspects of web design and development for 28 years. I'm currently employed as
+						a Senior Front-end Developer with IBM Consulting. In the past I've led teams and been an
+						agile facilitator.
 					</section>
 
 					<section class="mission">
-						<h2>mission</h2>
-						<Mission />
+						<h2>Mission</h2>
+						<div><Mission /></div>
 					</section>
 				</div>
 
-				<section class="work">
-					<h2>my latest projects at work</h2>
+				<hr class="separator" />
 
-					<p>
-						I've been alternating between 'bench' time (time between billable projects, spend doing
-						estimation &amp; proposals, and learning new things!) and supporting projects that build
-						social-care network infrastructure. These projects are personally rewarding, knowing
-						that my work is helping people access resources for food/housing/employment help.
-					</p>
+				<div class="work-layout">
+					<section class="work">
+						<h2>My latest projects at work</h2>
 
-					<p>
-						All of these projects use a similar stack: front-end is svelte/sveltekit, svelte
-						superforms, sass/scss, and Carbon Design System components (and plenty of custom-built
-						components/molecules). data is a combination of postres sql, fhir, IBM's <a
-							href="https://www.ibm.com/products/blog/revolutionizing-community-access-to-social-services-ibm-and-microsofts-collaborative-approach"
-							target="_blank">Connect360</a
-						> Platform.
-					</p>
+						<p>
+							I recently participated in building a Proof-of-Concept application to bid on a
+							project. This was my first time using data from watsonx.ai and my first time making a
+							front-end for a chatbot/document library. The UI was built using Carbon Design System
+							and React.
+						</p>
 
-					<p>
-						My current tenure on these projects is coming to a close, however. I'm really hoping to
-						find another seat with a project where I can get involved at the beginning &mdash;
-						planning, strategy, estimation, requirements gathering and orchestration. These are the
-						areas where I can provide a lot more value than just "how fast can you execute?"
-					</p>
+						<p>
+							Prior to that, I had been working on various projects that build social-care network
+							sites and infrastructure. The common front-end is svelte/sveltekit, svelte superforms,
+							sass/scss, and Carbon Design System components (and plenty of custom-built
+							components/molecules). Data comes from a combination of PostgreSQL, fhir, and IBM's <a
+								href="https://www.ibm.com/products/blog/revolutionizing-community-access-to-social-services-ibm-and-microsofts-collaborative-approach"
+								target="_blank">Connect360</a
+							> Platform.
+						</p>
 
-					<p>
-						And, if you're reading this, and you know of an opening on a diverse team of kind people
-						who will be solving important problems, feel free to <a
-							href=`mailto:${CONTACT_EMAIL}`>reach out</a
-						>. While I consider myself an IBMer, I am also always looking to build things that help
-						people.
-					</p>
+						<p>
+							And, if you're reading this, and you know of an opening on a diverse team of kind
+							people who will be solving important problems, feel free to <a
+								href=`mailto:${CONTACT_EMAIL}`>reach out</a
+							>. While I consider myself an IBMer, I am also always looking to build things that
+							help people.
+						</p>
+					</section>
 
-					<LatestPosts />
-					<Footer />
-				</section>
+					<section class="training flush-right">
+						<h2>Recent training</h2>
+						<Training />
+						<footer class="right">
+							<a href="/education">All education posts</a>
+						</footer>
+					</section>
+				</div>
+
+				<hr class="separator" />
+
+				<div class="content-layout">
+					<section id="latest-posts" class="flush-left" aria-label="Latest Blog Posts">
+						<h2>Latest from my blog:</h2>
+						<LatestPosts />
+						<footer class="right">
+							<a href="/blog">All blog posts</a>
+						</footer>
+					</section>
+
+					<section class="skills future">
+						<h2>All-time skills</h2>
+						<Skills />
+					</section>
+				</div>
 			</main>
+			<Footer />
 		</div>
 	</body>
 </html>

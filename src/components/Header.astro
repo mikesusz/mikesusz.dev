@@ -1,24 +1,39 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts';
 ---
 
 <style>
+	.site-header {
+		position: relative;
+	}
+
+	.site-header nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: end;
+		padding-bottom: 7vw;
+	}
+
 	.site-title {
 		font-family: 'IBM Plex Serif Bold', Georgia, serif;
 		font-size: 8vw;
 		font-weight: 700;
+		margin-bottom: var(--base-gap);
+		max-width: var(--content-max-width);
 	}
 
 	.site-title::first-letter {
 		color: #9fef00;
 	}
 </style>
-<header>
-	<div class="site-title">
-		{SITE_TITLE}
-	</div>
-	<nav>
+
+<header class="site-header">
+	<!-- TODO: still working on it.
+	<button class="hamburger" onclick="toggleMenu()"
+		><div class="icon" set:html={ICON_HAMBURGER} /></button
+	> -->
+	<nav aria-label="primary">
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
@@ -30,5 +45,21 @@ import { SITE_TITLE } from '../consts';
 		<HeaderLink href="https://github.com/mikesusz" target="_blank">GitHub</HeaderLink>
 		<HeaderLink href="https://www.linkedin.com/in/michaelsusz/" target="_blank">LinkedIn</HeaderLink
 		>
+		<HeaderLink href=`mailto:${CONTACT_EMAIL}`
+			><div class="icon" set:html={ICON_EMAIL} /></HeaderLink
+		>
 	</nav>
+	<div class="site-title">
+		{SITE_TITLE}
+	</div>
 </header>
+
+<script is:inline>
+	// TODO: hamburger menu.  mmmm, hamburger.
+	function toggleMenu() {
+		const nav = document.querySelector('.site-header nav');
+		if (nav) {
+			nav.classList.toggle('open');
+		}
+	}
+</script>
