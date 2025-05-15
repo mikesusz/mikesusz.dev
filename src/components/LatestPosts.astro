@@ -12,7 +12,7 @@ const posts = (
 	.slice(0, 5);
 ---
 
-<ul>
+<ul class="latest-posts styled-list">
 	{
 		posts.map((post) => {
 			return (
@@ -30,33 +30,4 @@ const posts = (
 	}
 </ul>
 
-<style>
-	ul {
-		list-style-type: none;
-		padding-left: 0;
-	}
-
-	ul:last-child {
-		margin-bottom: 0;
-	}
-	li {
-		margin-bottom: 2rem;
-		padding-left: 2vw;
-		font-size: medium;
-	}
-	.post_data {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 1rem;
-	}
-	li:first-child {
-		border-left: 1vw solid #9fef00;
-		padding-left: 1vw;
-		font-size: inherit;
-	}
-
-	li:last-child {
-		margin-bottom: 0;
-	}
-</style>
+<style></style>

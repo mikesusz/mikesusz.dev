@@ -20,4 +20,25 @@ const blog = defineCollection({
 	})
 });
 
-export const collections = { blog };
+const allowedCategories = ['IBM', 'Salesforce', 'Web', 'College'] as const;
+
+const education = defineCollection({
+	// Type-check frontmatter using a schema
+	schema: z.object({
+		title: z.string(),
+		category: z.enum(allowedCategories),
+		institution: z.string(),
+		date: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		description: z.string().optional(),
+		credential: z.string().optional(),
+		draft: z.boolean().optional(),
+		heroImage: z.string().optional(),
+		heroAlt: z.string().optional(),
+		url: z.string().optional()
+	})
+});
+
+export const collections = { blog, education };

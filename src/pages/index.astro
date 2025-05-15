@@ -7,7 +7,7 @@ import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 import Mission from '../components/Mission.astro';
 import Skills from '../components/Skills.astro';
-import Training from '../components/Training.astro';
+import Training from '../components/RecentTraining.astro';
 ---
 
 <!doctype html>
@@ -25,6 +25,14 @@ import Training from '../components/Training.astro';
 				section {
 					padding: var(--base-pad);
 					margin-bottom: var(--base-gap);
+
+					&.flush-right {
+						padding: var(--base-pad) 0 var(--base-pad) var(--base-pad);
+					}
+
+					&.flush-left {
+						padding: var(--base-pad) var(--base-pad) var(--base-pad) 0;
+					}
 				}
 
 				.mission {
@@ -41,7 +49,10 @@ import Training from '../components/Training.astro';
 				}
 
 				.training {
-					//
+					.formatted_time {
+						display: block;
+						text-align: right;
+					}
 				}
 
 				.skills {
@@ -72,6 +83,10 @@ import Training from '../components/Training.astro';
 					}
 				}
 			}
+
+			.future {
+				display: none !important;
+			}
 		</style>
 	</head>
 	<body>
@@ -82,8 +97,9 @@ import Training from '../components/Training.astro';
 					<section class="intro">
 						<h1>Hello!</h1>
 						My name is Mike and I love solving problems. I've been doing web UI development, UX strategy,
-						and various aspects of web design and development for 28 years. At times I've been a team-lead
-						and scrum-master. I'm currently employed as a Senior Front-end Developer with IBM Consulting.
+						and various aspects of web design and development for 28 years. I'm currently employed as
+						a Senior Front-end Developer with IBM Consulting. In the past I've led teams and been an
+						agile facilitator.
 					</section>
 
 					<section class="mission">
@@ -124,21 +140,27 @@ import Training from '../components/Training.astro';
 						</p>
 					</section>
 
-					<section class="training">
+					<section class="training flush-right">
 						<h2>Recent training</h2>
 						<Training />
+						<footer class="right">
+							<a href="/education">All education posts</a>
+						</footer>
 					</section>
 				</div>
 
 				<hr class="separator" />
 
 				<div class="content-layout">
-					<section id="latest-posts" aria-label="Latest Blog Posts">
+					<section id="latest-posts" class="flush-left" aria-label="Latest Blog Posts">
 						<h2>Latest from my blog:</h2>
 						<LatestPosts />
+						<footer class="right">
+							<a href="/blog">All blog posts</a>
+						</footer>
 					</section>
 
-					<section class="skills">
+					<section class="skills future">
 						<h2>All-time skills</h2>
 						<Skills />
 					</section>

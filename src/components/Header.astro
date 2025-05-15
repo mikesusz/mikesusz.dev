@@ -1,10 +1,11 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL } from '../consts';
+import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts';
 ---
 
 <style>
 	.site-header {
+		position: relative;
 	}
 
 	.site-header nav {
@@ -26,8 +27,13 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL } from '../consts';
 		color: #9fef00;
 	}
 </style>
+
 <header class="site-header">
-	<nav>
+	<!-- TODO: still working on it.
+	<button class="hamburger" onclick="toggleMenu()"
+		><div class="icon" set:html={ICON_HAMBURGER} /></button
+	> -->
+	<nav aria-label="primary">
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
@@ -47,3 +53,13 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL } from '../consts';
 		{SITE_TITLE}
 	</div>
 </header>
+
+<script is:inline>
+	// TODO: hamburger menu.  mmmm, hamburger.
+	function toggleMenu() {
+		const nav = document.querySelector('.site-header nav');
+		if (nav) {
+			nav.classList.toggle('open');
+		}
+	}
+</script>

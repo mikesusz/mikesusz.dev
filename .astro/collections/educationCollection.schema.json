@@ -1,0 +1,74 @@
+{
+  "$ref": "#/definitions/educationCollection",
+  "definitions": {
+    "educationCollection": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "IBM",
+            "Salesforce",
+            "Web",
+            "College"
+          ]
+        },
+        "institution": {
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "integer",
+                  "format": "unix-time"
+                }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "draft": {
+          "type": "boolean"
+        },
+        "heroImage": {
+          "type": "string"
+        },
+        "heroAlt": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "institution",
+        "date"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
