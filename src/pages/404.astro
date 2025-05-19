@@ -1,0 +1,31 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style></style>
+	</head>
+	<body>
+		<div class="page">
+			<Header title={SITE_TITLE} />
+			<main id="error_page">
+				<h1>404 Error Page</h1>
+
+				<p>
+					dang. looks like you're trying to visit a page that isn't here. maybe it's linked from <a
+						href="/">the home page</a
+					>. if there's something you think should be here, you can also <a
+						href=`mailto:${CONTACT_EMAIL}`>reach out</a
+					> and make a suggestion.
+				</p>
+				<Footer />
+			</main>
+		</div>
+	</body>
+</html>
