@@ -1,6 +1,6 @@
 {
 	"engines": {
-		"node": ">=18.20.8"
+		"node": ">=22"
 	},
   "name": "msd",
   "type": "module",
