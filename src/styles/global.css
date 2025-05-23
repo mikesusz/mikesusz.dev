@@ -24,6 +24,8 @@
 	--main-bg-gradient: linear-gradient(140deg, #141d2b 0%, #0d2242 60%, #0d2242 80%, #141d2b 100%);
 	--base-gap: 2rem;
 	--base-pad: 1rem;
+	--small-pad: 0.5rem;
+	--big-pad: 2rem;
 
 	--content-max-width: clamp(320px, 90%, 96ch);
 }
@@ -266,7 +268,7 @@ ul.styled-list {
 		padding-left: clamp(0.5em, 2vw, 4vw);
 		font-size: medium;
 		font-size: inherit;
-		border-left-width: clamp(0.5em, 1vw, 2vw);
+		border-left-width: var(--base-pad);
 		border-left-style: solid;
 
 		&:nth-child(5n + 1) {
@@ -298,7 +300,7 @@ ul.styled-list {
 		padding-left: 0;
 		padding-right: clamp(0.5em, 2vw, 4vw);
 		border-left-width: 0;
-		border-right-width: clamp(0.5em, 1vw, 2vw);
+		border-right-width: var(--base-pad);
 		border-right-style: solid;
 	}
 
