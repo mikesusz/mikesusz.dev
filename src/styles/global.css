@@ -310,9 +310,14 @@ ul.styled-list {
 	}
 }
 
+/* it's the future */
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+			navigation: auto;
+	}
+}
 
 /* font faces */
-
 @font-face {
 	font-family: 'IBM Plex Sans';
 	font-style: normal;
