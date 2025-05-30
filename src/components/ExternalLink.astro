@@ -1,0 +1,16 @@
+---
+// filepath: src/components/ExternalLink.astro
+interface Props {
+	href: string;
+	rel?: string;
+	class?: string;
+}
+const { href, rel = 'noopener noreferrer', class: className } = Astro.props;
+
+import { ICON_LAUNCH } from '../consts';
+---
+
+<a href={href} target="_blank" rel={rel} class={`external-link${className ? ` ${className}` : ''}`}>
+	<span><slot /></span>
+	<div class="icon inline" set:html={ICON_LAUNCH} />
+</a>
