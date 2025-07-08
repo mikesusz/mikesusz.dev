@@ -12,3 +12,5 @@ export const ICON_COOKIE = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="p
 export const ICON_HAMBURGER = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>menu</title><path d="M22 13c0 1.11-.89 2-2 2H4a2 2 0 1 1 0-4h9l2.5 2 2.5-2h2a2 2 0 0 1 2 2M12 3C3 3 3 9 3 9h18s0-6-9-6M3 18c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3v-1H3v1Z"/></svg>';
 
 export const ICON_LAUNCH = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="currentColor"><path d="M26 28H6a2.003 2.003 0 0 1-2-2V6a2.003 2.003 0 0 1 2-2h10v2H6v20h20V16h2v10a2.003 2.003 0 0 1-2 2Z"></path><path d="M20 2v2h6.586L18 12.586 19.414 14 28 5.414V12h2V2H20z"></path><path d="M0 0h32v32H0z" data-name="<Transparent Rectangle>" style="fill:none"></path></svg>'
+
+export const ICON_CLOSE = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24" height="24"  viewBox="0 0 32 32" style="enable-background:new 0 0 32 32"><path d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14 14-6.2 14-14S23.8 2 16 2zm5.4 21L16 17.6 10.6 23 9 21.4l5.4-5.4L9 10.6 10.6 9l5.4 5.4L21.4 9l1.6 1.6-5.4 5.4 5.4 5.4-1.6 1.6z"/><path d="M0 0h32v32H0z" style="fill:none"/></svg>'
