@@ -137,7 +137,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 </style>
 
 <header class="site-header">
-	<button class="hamburger" onclick="toggleMenu()">
+	<button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
 		<div class="icon open" set:html={ICON_HAMBURGER} />
 		<div class="icon close" set:html={ICON_CLOSE} />
 	</button>
