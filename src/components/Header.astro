@@ -1,6 +1,6 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts';
+import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } from '../consts';
 ---
 
 <style>
@@ -26,13 +26,121 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts
 	.site-title::first-letter {
 		color: #9fef00;
 	}
+
+	/* it's okay - it's a vegetarian burger */
+	button.hamburger {
+		display: none;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: none;
+		z-index: 1001;
+	}
+
+	/* smaller screens get the hamburger menu! */
+	@media (max-width: 768px) {
+		.site-title {
+			margin-top: 1rem;
+		}
+
+		.site-header nav {
+			display: block;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 80vw;
+			max-width: 320px;
+			height: 100vh;
+			max-height: 0;
+			overflow: hidden;
+			padding: 0;
+			z-index: 1000;
+		}
+		.site-header nav.open {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100vw;
+			height: 100vh;
+			max-width: none;
+			max-height: none;
+			padding: 0;
+			margin: 0;
+			overflow-y: auto;
+			backdrop-filter: blur(2px);
+			-webkit-backdrop-filter: blur(2px); /* for Safari */
+		}
+		.site-header nav.open > a {
+			display: block;
+			margin: 0.25em 0;
+			text-align: center;
+			background: var(--main-fg);
+			color: var(--main-bg);
+			box-shadow: -2px 0 12px rgba(0, 0, 0, 0.08);
+			width: 80vw;
+			height: 2rem;
+			border-radius: 1rem;
+			max-width: 320px;
+		}
+
+		.site-header nav.open > a:first-child {
+			height: 3rem;
+			padding-top: 1rem;
+			border-top-left-radius: 5.5rem 2.5rem;
+			border-top-right-radius: 5.5rem 2.5rem;
+			border-bottom-left-radius: 0.75rem;
+			border-bottom-right-radius: 0.75rem;
+		}
+
+		.site-header nav.open > a:last-child {
+			border-top-left-radius: 0.75rem;
+			border-top-right-radius: 0.75rem;
+			border-bottom-left-radius: 2rem 2.5rem;
+			border-bottom-right-radius: 2rem 2.5rem;
+		}
+
+		.site-header nav > a .icon {
+			display: inline-flex;
+		}
+
+		button.hamburger {
+			display: inline-block;
+			position: fixed;
+			top: 1rem;
+			right: 1rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			justify-content: center;
+			align-items: center;
+		}
+
+		button.hamburger .close {
+			display: none;
+		}
+		button.hamburger .open {
+			display: inline-block;
+		}
+
+		button.hamburger.open .open {
+			display: none;
+		}
+
+		button.hamburger.open .close {
+			display: inline-block;
+		}
+	}
 </style>
 
 <header class="site-header">
-	<!-- TODO: still working on it.
-	<button class="hamburger" onclick="toggleMenu()"
-		><div class="icon" set:html={ICON_HAMBURGER} /></button
-	> -->
+	<button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+		<div class="icon open" set:html={ICON_HAMBURGER} />
+		<div class="icon close" set:html={ICON_CLOSE} />
+	</button>
 	<nav aria-label="primary">
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
@@ -45,9 +153,9 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts
 		<HeaderLink href="https://github.com/mikesusz" target="_blank">GitHub</HeaderLink>
 		<HeaderLink href="https://www.linkedin.com/in/michaelsusz/" target="_blank">LinkedIn</HeaderLink
 		>
-		<HeaderLink href=`mailto:${CONTACT_EMAIL}`
-			><div class="icon" set:html={ICON_EMAIL} /></HeaderLink
-		>
+		<HeaderLink href=`mailto:${CONTACT_EMAIL}`>
+			<div class="icon" set:html={ICON_EMAIL} />
+		</HeaderLink>
 	</nav>
 	<div class="site-title">
 		{SITE_TITLE}
@@ -55,11 +163,29 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER } from '../consts
 </header>
 
 <script is:inline>
-	// TODO: hamburger menu.  mmmm, hamburger.
+	// hamburger menu.  mmmm, hamburger.
 	function toggleMenu() {
 		const nav = document.querySelector('.site-header nav');
+		const burger = document.querySelector('.hamburger');
 		if (nav) {
 			nav.classList.toggle('open');
+			burger.classList.toggle('open');
 		}
 	}
+
+	// hide the burger menu when the user navigates
+	window.addEventListener('DOMContentLoaded', () => {
+		const nav = document.querySelector('.site-header nav');
+		const burger = document.querySelector('.hamburger');
+		if (nav) nav.classList.remove('open');
+		if (burger) burger.classList.remove('open');
+	});
+
+	// use pageshow to handle when the user uses back/forward buttons
+	window.addEventListener('pageshow', (event) => {
+		const nav = document.querySelector('.site-header nav');
+		const burger = document.querySelector('.hamburger');
+		if (nav) nav.classList.remove('open');
+		if (burger) burger.classList.remove('open');
+	});
 </script>
