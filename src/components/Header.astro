@@ -137,7 +137,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 </style>
 
 <header class="site-header">
-	<button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+	<button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
 		<div class="icon open" set:html={ICON_HAMBURGER} />
 		<div class="icon close" set:html={ICON_CLOSE} />
 	</button>
@@ -167,9 +167,11 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 	function toggleMenu() {
 		const nav = document.querySelector('.site-header nav');
 		const burger = document.querySelector('.hamburger');
-		if (nav) {
-			nav.classList.toggle('open');
+
+		if (nav && burger) {
+			const isOpen = nav.classList.toggle('open');
 			burger.classList.toggle('open');
+			burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 		}
 	}
 
