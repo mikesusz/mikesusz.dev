@@ -106,5 +106,8 @@ dist
 # VS Code
 .vscode
 
+# Astro
+.astro
+
 # macOS
 .DS_Store
