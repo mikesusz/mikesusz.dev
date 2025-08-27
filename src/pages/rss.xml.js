@@ -11,6 +11,7 @@ export async function GET(context) {
 	// filter the posts collection to remove anything in 'draft' status.
 	const filteredPosts = posts
 		.filter((post) => !post.data.draft)
+		.sort((a, b) => new Date(b.data.date) - new Date(a.data.date)) // descending
 		.slice(0, RSS_MAX);
 
 	return rss({
@@ -18,12 +19,12 @@ export async function GET(context) {
 		description: SITE_DESCRIPTION,
 		site: context.site,
 		items: await Promise.all(filteredPosts.map(async (post) => {
-			// const html = post.body ? post.body : (await post.render()).html;
-			// const { html } = await post.render();
+    const rawHtml = parser.render(post.body);
+    const noCommentsHtml = rawHtml.replace(/&lt;!--[\s\S]*?--&gt;/g, ''); // Remove HTML comments
 			return {
 				...post.data,
 				link: `/blog/${post.slug}/`,
-				content: sanitizeHtml(parser.render(post.body), {
+				content: sanitizeHtml(noCommentsHtml, {
 					allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
 				})
 			};
