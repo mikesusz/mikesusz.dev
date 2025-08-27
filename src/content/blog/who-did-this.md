@@ -11,8 +11,6 @@ In a lot of ways, the explosive growth of AI was forseeable. Where we go from he
 
 ## How did we get here?
 
-<!-- it used to be difficult -->
-
 I want to spare you another [long nostalgic screed](/blog/dont-forget), so let us just say that publishing content on the web used to be _laborious_. The technical knowledge to make 'web pages' was a barrier for a lot of diverse opinions being put forth for public consumption. Only the most adept nerds could express their opinions online in the early days! _(source: I am an adept nerd with bad opinions, expressed online in the early days)_
 
 And once content was on the 'web' how do you find it? Before search engines and aggregators, this, too was a chore. Maybe a friend would share something interesting with you. Maybe you saw it linked somewhere. A URL on a piece of paper on a bulletin board at a library. Finding things that interested you was tough, and bookmarks were very important!
@@ -20,8 +18,6 @@ And once content was on the 'web' how do you find it? Before search engines and 
 So blogs, right? Or updated home-pages. What was published was long-form writing, usually. Back then we actually had time to write and read pages of content (or at least posts on [usenet](https://en.wikipedia.org/wiki/Usenet)) because, frankly, we didn't have tons of other stuff to do 'online.'
 
 ## Hold on to your butts
-
-<!-- now it's easy -->
 
 Technology would arise to change the dynamics of who can publish. And that's great! blogging sites and software helped to remove the technical barriers to publishing. Not to ~~make you feel old~~ bog this down with statistics, but: Blogger was launched in 1999, WordPress in 2003, Youtube in 2005, Tumblr in 2007, Medium in 2012.
 
@@ -31,13 +27,9 @@ So now everyone can post content! And they do. They just keep posting. It's a lo
 
 ## Oh no that's too much
 
-<!-- oh no that's too much -->
-
 So now we need trusted sources to filter through all this. Perhaps you have a friend who knows about a certain topic. Or you luck yourself into finding a linkblogger who shares your tastes and you can follow their direction to content written on the topics that interest you.
 
 The problem is, those people don't scale. And their tastes and interests can diverge from yours, making the pairing become less tenable. You can't ask [Jason Kottke](https://kottke.org/) to suddenly get really into Himalayan sweaters or arm32 processors (honestly I tried finding topics that Kottke _hasn't_ written about and I ... really can't find many)
-
-<!-- no not like that (you don't get to choose your arbiter) -->
 
 ## Rise of the machines
 
@@ -70,8 +62,6 @@ Monetization and Search-Engine Optimization shape the content being produced to 
 ## This time he's back, for good?
 
 Two references to The Terminator movies in the same blog post? Let's do this.
-
- <!-- SO NOW WHAT -->
 
 When is the last time you read a long-form blog post? An entire news article? Can you even remember?
 

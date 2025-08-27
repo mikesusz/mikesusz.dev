@@ -9,31 +9,21 @@ In the way that internet things sometimes come full-circle, I wanted to move my 
 
 If you want to skip the preamble and get right to the Coolify comments, [jump to the end](#enter-coolify)
 
-<!-- a history of my web hosting -->
-
 ## Let's start at the beginning
 
 Well, no, let's not spend too much time dwelling on this. When I started publishing web pages, as you can read about in more detail in [other blog posts](/blog/dont-forget), it involved having a `public_html` directory on a Unix machine. This heavy iron was usually provided by a college or an employer (or both). This was not super convenient, but generally I edited the files in place, or edited them locally and FTP[^ftp]'d them up. (passwords flying around in plain text? the internet used to be WILD y'all)
-
-<!-- shared hosting - better, but not ideal -->
 
 ## No longer free
 
 When I left academia I needed to find my own paid web hosting, and this is the longest era in the history I'm recounting today. The names change as prices change and bundled features change, but they're generally all the same. A big shared server where you and several (many?) other customers upload your files and one box serves them all. As long as everyone doesn't get slashdotted[^slashdot] all at once, This metal can usually handle the load of having so many domains pointing at it.
 
-<!-- h4x0rZ -->
-
 But this situation is fraught. On several occasions, shared hosting servers that I had my websites on were hacked, and even my own sites were not immune. Typically this happens when a web host allows shell logins and an unscrupulous user can traverse directories, trying to find one that someone flagged with the wrong permissions (specifically - allowing _any_ user on the system to *write* files as opposed to just *read*ing them).
 
 All a h4x0r had to do was copy a .php file through the local filesystem into _your_ directory, then hit it from the web, and bingo! They were executing their own code via _your_ website, with _your_ user and _your_ permissions, allowing them to do mean things to _your_ WordPress database and basically cause you headaches for days/weeks/months. (Yes, I was both the victim of this, and spent a lot of time cleaning it up, and ... was a consultant cleaning this up for other people/companies)
 
-<!-- automated build and deploy platforms - nice -->
-
 ## Moving away from dynamics
 
 One way to thwart these kinds of vulnerabilities is for the website itself to be immutable. This is kind of like how we did things early on (edit static files) in that it doesn't rely on executing code to build webpages from templates + content from a database. You can still create content quickly, writing the content section of new blog posts or pages using local editors, but then running a build process to generate the final assets of the site -- Static Site Generation tools arose that satisfied our need for (near) immediacy, but didn't rely on just-in-time compiled web pages that had performance and security implications.
-
-<!-- Why not automate ALL THE THINGS -->
 
 ## The Cart and the Horse
 
@@ -41,13 +31,9 @@ So running build tools on your local machine to generate a static website and up
 
 Enter services like the one I used previously, [Netlify](https://www.netlify.com/). I can't say anything bad about them, it's a great service. You connect it to your GitHub account, it can pull from a branch in your repository, build your website, deploy it and host it! And for a bonus, it watches for Pull Requests to your main branch, and can make test sites for each PR. I was happy with this for a while.
 
-<!-- CEOs are bros ruin everything -->
-
 ### What Changed?
 
 "It's not you, it's me?" comes to mind. I've never been comfortable getting a commercial service for free. There's usually a catch. Companies sometimes have to change their policies to do more creepy things in order to derive profit from the 'free' service they're offering you. And I'm not saying that Netlify did anything creepy, but I just felt more comfortable taking over this responsibility myself, since I had the resources and the knowledge. And what I didn't know already -- I wanted to learn.
-
-<!-- Can you roll-your-own magic? -->
 
 ## Enter Coolify
 
