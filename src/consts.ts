@@ -5,6 +5,8 @@ export const SITE_TITLE = 'mikesusz.dev';
 export const SITE_DESCRIPTION = 'Information about Mike Susz, Front End Developer.';
 export const CONTACT_EMAIL = '947826@mikesusz.dev'; // can change this when needed
 
+export const RSS_MAX = 10;
+
 export const ICON_EMAIL = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor"><title>email</title><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm-2.2 2L16 14.78 6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z"/><path d="M0 0h32v32H0z" data-name="&lt;Transparent Rectangle&gt;" style="fill:none"/></svg>`;
 
 export const ICON_COOKIE = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24" height="24" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32"><title>cookie</title><circle cx="10" cy="21" r="2"/><circle cx="23" cy="20" r="2"/><circle cx="13" cy="10" r="2"/><circle cx="14" cy="15" r="1"/><circle cx="23" cy="5" r="2"/><circle cx="29" cy="3" r="1"/><circle cx="16" cy="23" r="1"/><path d="M16 30C8.3 30 2 23.7 2 16S8.3 2 16 2h.3l1.4.1-.3 1.2c-.1.4-.2.9-.2 1.3 0 2.8 2.2 5 5 5 1 0 2-.3 2.9-.9l1.3 1.5c-.4.4-.6.9-.6 1.4 0 1.3 1.3 2.4 2.7 1.9l1.2-.5.2 1.3c.1.6.1 1.2.1 1.7 0 7.7-6.3 14-14 14zm-.7-26C9 4.4 4 9.6 4 16c0 6.6 5.4 12 12 12s12-5.4 12-12v-.4c-2.3.1-4.2-1.7-4.2-4v-.2c-.5.1-1 .2-1.6.2-3.9 0-7-3.1-7-7 0-.2 0-.4.1-.6z"/><path d="M0 0h32v32H0z" style="fill:none"/></svg>';
