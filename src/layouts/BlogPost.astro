@@ -18,7 +18,8 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 				font-size: 125%;
 				text-wrap-style: pretty;
 				h2,
-				h3 {
+				h3,
+				h4 {
 					margin-top: 1.5em;
 					border-left-width: 2em;
 					border-left-color: var(--accent-color-1);
@@ -27,17 +28,29 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 				}
 
 				h3 {
-					border-left-width: 1em;
+					border-left-width: 1.2em;
+				}
+
+				h4 {
+					border-left-width: 0.8em;
 				}
 
 				h2:nth-of-type(2),
-				h3:nth-of-type(2) {
+				h3:nth-of-type(2),
+				h4:nth-of-type(2) {
 					border-left-color: var(--accent-color-2);
 				}
 
 				h2:nth-of-type(3),
-				h3:nth-of-type(3) {
+				h3:nth-of-type(3),
+				h4:nth-of-type(3) {
 					border-left-color: var(--accent-color-3);
+				}
+
+				h2:nth-of-type(4),
+				h3:nth-of-type(4),
+				h4:nth-of-type(4) {
+					border-left-color: var(--accent-color-4);
 				}
 
 				.heroImage {
