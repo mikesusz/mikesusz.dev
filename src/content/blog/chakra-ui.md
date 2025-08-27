@@ -9,7 +9,7 @@ In late May, I was assigned to an IBM Consulting client in New York City. This m
 
 The client's first big need was to build a prototype of app that could be used to demo to stakeholders and secure additional support and funding. Once I was fully onboarded, I had just over 3 weeks to build it.
 
-I knew that using a framework would speed delivery of a consistent UI across multiple pages of the app, and I considered other frameworks before settling on <a href="https://chakra-ui.com/">Chakra-UI</a>.
+I knew that using a framework would speed delivery of a consistent UI across multiple pages of the app, and I considered other frameworks before settling on [Chakra-UI](https://chakra-ui.com/).
 
 Why not something more "mainstream?" I'm glad you asked. My selection was based on the following criteria:
 
