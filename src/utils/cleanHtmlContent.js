@@ -4,7 +4,7 @@ export function cleanHtmlContent(html) {
   // Remove HTML comments
 	let cleaned = html.replace(/<!--[\s\S]*?-->/g, '');
 
-	cleaned = html.replace(/&gt;!--[\s\S]*?--&lt;/g, '');
+	cleaned = cleaned.replace(/&gt;!--[\s\S]*?--&lt;/g, '');
 
   // Add a line break and bold label before each footnote definition at the start of a line
   cleaned = cleaned.replace(/^\[\^([^\]]+)\]:/gm, '<br /><strong>[$1]</strong>:');
