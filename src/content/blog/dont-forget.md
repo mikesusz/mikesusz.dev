@@ -124,6 +124,8 @@ Maybe newer developers view this as a **Career**. When I started out, it was a *
 
 _The Future_ is counting on you to do the right thing.
 
+---
+
 [^WIT]: I began the Architecture program at Wentworth Institute of Technology in 1991. This was the precise time where we started transitioning from paper drawing to Computer Aided Design (CAD) - about half my courses still drew manually (pencils, t-squares, triangles, scales) and half were CAD.
 [^Nineties]: 1991, or as my kids would call it "the late nineteen-hundreds."
 [^DOS]: While early versions of Microsoft Windows were available, MS DOS 3.1 and subsequent releases were much cheaper, and a lot of expensive vertical-market software was not compatible with Windows anyway (you could click on an icon in Windows to launch them, and they would abruptly exit windows and load the DOS-based application full screen, without the ability to switch back and forth).

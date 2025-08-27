@@ -236,6 +236,9 @@ span.subhead {
 	font-style: italic;
 }
 
+/* hiding duplicate horizontal rules. don't ask. ¯\_(ツ)_/¯ */
+hr + hr { display: none; }
+
 /* progressive separator styles */
 .separator {
 	display: block;
