@@ -1,70 +1,67 @@
 ---
 title: "2025 In Review"
-description: "Looking back on what i've accomplished professionally in 2025."
+description: "Looking back on what I've accomplished professionally in 2025."
 pubDate: "29 Dec 2025"
 draft: false
 ---
 
-Everyone is probably tired of 'wrapped' style posts (myself included) but something I've always struggled with is self-reflection and celebrating my accomplishments. Let's see what I can remember doing for the past year.
+Everyone is probably tired of "wrapped" style posts — myself included. I've always struggled with self-reflection and celebrating my accomplishments. Let's see what I can remember from the past year.
 
 ## Work
 
-Work has been really challenging this year. Consulting has seen major disruption, especially for an organization that does so much contract work for the US Government. Signing and spending for new projects was greatly impacted by government restructuring, and then the wave of AI hit. It's not that AI is being used to generate work that would normally be done by all-human teams (but that's part of it), for Consulting the bigger impact this year I think is the uncertaintly of whether or not to commit to contracts or wait until the AI tools are available and/or updated to be able to produce better output.
+Work has been challenging this year. IBM Consulting experienced major disruption, particularly for an organization that does a lot of contract work for the U.S. government. Government restructuring reduced new project signing and spending, and then the wave of AI arrived. Beyond AI-generated work replacing tasks previously done by entirely human teams, the bigger impact for consulting was clients' uncertainty about whether to commit to contracts or wait for AI tools to mature.
 
-This is especially impactful for people who do front-end development, as a lot of the more rote development we do for common interfaces can be done by someone with less front-end experience. Ultimately I think the market will settle out where more experienced people maintain their value -- if the tools are available to everyone, it should buoy all of us.
+This especially affects front-end developers, because many routine interface tasks can now be handled by people with less experience. Ultimately I think the market will settle where more experienced people maintain their value; if the tools become widely available, they could raise the baseline for everyone.
 
 ### Work Projects
 
 Some of the outcomes I contributed to:
 
-- connecting victims of the California wildfires to available resources
-- updating the way that organizations create and process needs requests for victims of domestic violence (who may not have an address of record, and who want to remain anonymous as they get help).
-- creating a proof of concept that was used to bid on a contract. It involved using Carbon Design System and watsonx.ai assistant to create a document retrieval/troubleshooting chatbot. This was my first time making a chat interface, and the first time I've consumed and displayed output from watsonx.
+- Connecting victims of the California wildfires to available resources.
+- Updating how organizations create and process needs requests for victims of domestic violence who may not have an address on record and who want to remain anonymous while getting help.
+- Building a proof of concept used to bid on a contract, using the Carbon Design System and watsonx.ai Assistant to create a document-retrieval/troubleshooting chatbot. It was my first chat interface and my first time consuming and displaying output from watsonx.
 
 ### Work Training
 
-While not on assignment, I'm expected to fill my time by (relentlessly looking for a new assignment, and) learning new things to shape my skillset to better match the work that we have incoming. For IBM's Consulting clients, this meant I spent considerable time learning about our partnerships and integrations. This was primarily learning about hosting and architecture in Azure, and web component development in Salesforce.
+While not on assignment, I'm expected to fill my time by looking for a new assignment and learning new skills to better match incoming work. For IBM Consulting clients, I spent considerable time learning about partnerships and integrations, primarily hosting and architecture in Azure and web component development on Salesforce.
 
-I also had some freedom to explore new things that I want to learn (as long as I can see a path to them being valuable in the future) so I added to my curriculum a lot of courses on AI and LLMs. To pre-requisite many of these courses, I learned Python (which frankly felt really similar to various languages I've worked with in the past three decades).
+To meet the prerequisites for many of these courses, I learned Python, which felt familiar compared with languages I've used over the past three decades. I also focused on design and UX tooling: I took many courses on Figma and now feel comfortable with project organization and auto-layout.
 
-Another area of my skillset that I felt needed rounding-out was on design/UX tooling apps. I took a lot of courses on Figma, and now I feel like I understand project organization and auto-layout.
-
-Ultimately, I logged more than 200 hours of formal training, and received six 'digital credentials' for completing official courses.
+Ultimately, I logged more than 200 hours of formal training and received six digital credentials for completing official certifications.
 
 ## Personal
 
-This year had a lot of unexpected personal health challenges that impacted everything I do related to work and home. But the time I got to spend working on personal projects was still pretty impactful.
+This year included unexpected personal health challenges that affected my work and home life, but the time I spent on personal projects was still impactful.
 
 ### Personal Projects
 
 Things I did this year:
 
+- Migrated my website hosting to Coolify; I currently host 16 websites on that platform.
 
-- converted my website hosting to Coolify and I currently have 16 websites serving off of that platform
+- Migrated my [personal blog](https://mikesusz.com) from shared hosting to Coolify, which required setting up additional Docker containers for MySQL. Someday I might move it off WordPress.
 
-- migrated my [personal blog](https://mikesusz.com) from a shared-hosting platform to Coolify, which required setting up additional docker containers for mysql (someday I might migrate it off of wordpress!)
+- Created a [website to track my reading](https://reading.mikesusz.com).
 
-- created a [website to track my reading log](https://reading.mikesusz.com)
+- Built a website for my son's gamer persona that retrieves and displays his latest YouTube videos — this taught me how to use the Google/YouTube APIs.
 
-- created a website for my son's gamer persona, which currently just retrieves and displays his latest youtube videos, but this taught me about google/youtube's APIs for doing things like that.
+- Launched a tool to [generate QR codes](https://qr.sqd.co).
 
-- launched a neat little tool to [generate QR codes](https://qr.sqd.co)
+- Created a site for my kids and my projects at wplace.live.
 
-- created a site for my kids and my projects in wplace.live
+- Built an early-beta [visualization](https://blink.sqd.co) for the band members of blink-182.
 
-- made a neat [visualization](https://blink.sqd.co) for the band members of blink-182 (super early beta on this one)
+- Made a [tool](https://time.sqd.co) that calculates the number of days between today and an arbitrary past date, then projects the same interval beyond that to the (distant) past.
 
-- made a [tool](https://time.sqd.co) that shows you the number of days from today to an arbitrary date in the past, and then the same amount of days further beyond that (it's like an automated way to feel old, fast)
+- Moved my work/business email from Google Workspace to Fastmail and added several domains I'd owned for years.
 
-- moved my work/business email off of google workplace and onto fastmail, adding a bunch of domains that I've owned for years but hadn't used yet
+- Set up a Docker server in my basement to host:
+  - Pi-hole for local DNS and ad-blocking
+  - Home Assistant for IoT-driven lights and automations
+  - AirPlay to speakers connected to the server
 
-- set up a server on my basement with docker to host
-	- pi-hole for local DNS and ad-blocking
-	- home assistant to manage IoT-driven lights and make them available to our iOS devices, and create scheduling automations
-	- airplay to speakers connected to the server in the basement (and garage)
+- Updated my [old site](https://squaredesign.com) with a message about selling it and worked on divesting that domain.
 
-- updated my [old site](https://squaredesign.com) with a message about selling it, and did more work to divest myself of that domain
+- Decided to set up a new storefront for my long-ago sticker business and soft-launched it in this post: [shop.sqd.co](https://shop.sqd.co)
 
-- decided to try and set up a new [storefront](https://shop.sqd.co) for my years-ago sticker business, and soft-launch it in this post :)
-
-###
+I accomplished more in 2025 than I expected, and multiples more than I've done in previous years. My hope for 2026 is to keep up this momentum, even though I also hope to land a long-running and interesting assignment at work. Stay Tuned!
