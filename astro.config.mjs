@@ -3,11 +3,18 @@ import mdx from '@astrojs/mdx';
 
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
+import rehypeExternalLinks from 'rehype-external-links';
+
 export default defineConfig({
-	site: 'https://mikesusz.dev',
-	integrations: [mdx(), sitemap()],
-	experimental: {
-		contentIntellisense: true
-	}
+  site: 'https://mikesusz.dev',
+  integrations: [mdx(), sitemap()],
+  markdown: {
+    rehypePlugins: [
+      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+    ]
+  },
+  experimental: {
+    contentIntellisense: true
+  }
 });
+
