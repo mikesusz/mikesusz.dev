@@ -1,0 +1,206 @@
+---
+export const prerender = false;
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+import {
+  getTotalPageViews,
+  getPageViewsByPath,
+  getDailyPageViews,
+  getRecentPageViews
+} from '../lib/db';
+
+// Check for authentication
+const authToken = Astro.url.searchParams.get('token');
+const expectedToken = import.meta.env.STATS_TOKEN || process.env.STATS_TOKEN;
+
+if (!expectedToken) {
+  return new Response('Stats page not configured. Please set STATS_TOKEN environment variable.', {
+    status: 500
+  });
+}
+
+if (authToken !== expectedToken) {
+  return new Response('Unauthorized. Access this page with ?token=YOUR_TOKEN', {
+    status: 401
+  });
+}
+
+// Fetch stats data
+const totalViews = getTotalPageViews();
+const pageViews = getPageViewsByPath();
+const dailyViews = getDailyPageViews(30);
+const recentViews = getRecentPageViews(20);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Stats - ${SITE_TITLE}`} description="Site statistics and pageview analytics" />
+    <style>
+      .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .stat-card {
+        background: var(--background-accent);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+      }
+
+      .stat-card h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .big-number {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--accent);
+        margin: 0;
+      }
+
+      .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .stats-table th,
+      .stats-table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .stats-table th {
+        font-weight: bold;
+        background: var(--background-primary);
+      }
+
+      .stats-table tr:hover {
+        background: var(--background-primary);
+      }
+
+      .path-column {
+        font-family: monospace;
+        color: var(--accent);
+      }
+
+      .views-column {
+        text-align: right;
+        font-weight: bold;
+      }
+
+      .date-column {
+        white-space: nowrap;
+      }
+
+      .recent-item {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.9rem;
+      }
+
+      .recent-item:last-child {
+        border-bottom: none;
+      }
+
+      .recent-path {
+        font-family: monospace;
+        color: var(--accent);
+      }
+
+      .recent-time {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <Header title={SITE_TITLE} />
+      <main class="stats-container">
+        <h1>Site Statistics</h1>
+
+        <div class="stat-card">
+          <h2>Total Pageviews</h2>
+          <p class="big-number">{totalViews.toLocaleString()}</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="stat-card">
+            <h2>Top Pages (All Time)</h2>
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Page</th>
+                  <th class="views-column">Views</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pageViews.map((page) => (
+                  <tr>
+                    <td class="path-column">{page.path}</td>
+                    <td class="views-column">{page.views.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="stat-card">
+            <h2>Daily Views (Last 30 Days)</h2>
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th class="views-column">Views</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dailyViews.map((day) => (
+                  <tr>
+                    <td class="date-column">{day.date}</td>
+                    <td class="views-column">{day.views.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <h2>Recent Pageviews</h2>
+          {recentViews.map((view: any) => (
+            <div class="recent-item">
+              <div class="recent-path">{view.path}</div>
+              <div class="recent-time">
+                {new Date(view.timestamp).toLocaleString()}
+                {view.referrer && ` • from ${new URL(view.referrer).hostname}`}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
