@@ -49,3 +49,6 @@ const { title, description, image = '/social.png' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Pageview tracking -->
+<script is:inline src="/pageview-tracker.js" defer></script>

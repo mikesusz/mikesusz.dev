@@ -111,3 +111,6 @@ dist
 
 # macOS
 .DS_Store
+
+# Pageview tracking data (local development)
+data/
