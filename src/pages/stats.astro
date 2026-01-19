@@ -9,7 +9,8 @@ import {
   getTotalPageViews,
   getPageViewsByPath,
   getDailyPageViews,
-  getRecentPageViews
+  getRecentPageViews,
+  isLikelyBot
 } from '../lib/db';
 
 // Check for authentication
@@ -189,15 +190,20 @@ const recentViews = getRecentPageViews(20);
 
         <div class="stat-card">
           <h2>Recent Pageviews</h2>
-          {recentViews.map((view: any) => (
-            <div class="recent-item">
-              <div class="recent-path">{view.path}</div>
-              <div class="recent-time">
-                {new Date(view.timestamp).toLocaleString()}
-                {view.referrer && ` • from ${new URL(view.referrer).hostname}`}
+          {recentViews.map((view: any) => {
+            const isBot = isLikelyBot(view.user_agent);
+            return (
+              <div class="recent-item">
+                <div class="recent-path">
+                  {isBot ? '🤖' : '👤'} {view.path}
+                </div>
+                <div class="recent-time">
+                  {new Date(view.timestamp).toLocaleString()}
+                  {view.referrer && ` • from ${new URL(view.referrer).hostname}`}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
       <Footer />
