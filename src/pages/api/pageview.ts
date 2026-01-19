@@ -15,6 +15,14 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // Don't track views to the stats page itself
+    if (path === '/stats') {
+      return new Response(JSON.stringify({ success: true, tracked: false }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     // Get user agent from headers
     const userAgent = request.headers.get('user-agent');
 
