@@ -93,10 +93,23 @@ export function getDailyPageViews(days: number = 30): DailyStats[] {
   `).all(cutoffTime) as DailyStats[];
 }
 
+// Detect if a user agent is likely a bot
+export function isLikelyBot(userAgent: string | null): boolean {
+  if (!userAgent) return true;
+
+  const botPatterns = [
+    /bot/i, /crawler/i, /spider/i, /scraper/i,
+    /headless/i, /curl/i, /wget/i, /python/i,
+    /java/i, /apache/i, /http/i, /scan/i
+  ];
+
+  return botPatterns.some(pattern => pattern.test(userAgent));
+}
+
 // Get recent pageviews
 export function getRecentPageViews(limit: number = 100) {
   return db.prepare(`
-    SELECT path, referrer, timestamp, created_at
+    SELECT path, referrer, user_agent, timestamp, created_at
     FROM pageviews
     ORDER BY timestamp DESC
     LIMIT ?
