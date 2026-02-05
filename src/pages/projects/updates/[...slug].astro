@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import UpdatePost from '../../../layouts/UpdatePost.astro';
+
+export async function getStaticPaths() {
+	const updates = await getCollection('updates');
+	const projects = await getCollection('projects');
+
+	return updates.map((update) => {
+		const project = projects.find((p) => p.slug === update.data.projectId);
+		return {
+			params: { slug: update.slug },
+			props: {
+				update,
+				projectTitle: project?.data.title ?? 'Unknown Project',
+				projectSlug: update.data.projectId
+			}
+		};
+	});
+}
+
+type Props = {
+	update: CollectionEntry<'updates'>;
+	projectTitle: string;
+	projectSlug: string;
+};
+
+const { update, projectTitle, projectSlug } = Astro.props;
+const { Content } = await update.render();
+---
+
+<UpdatePost update={update} projectTitle={projectTitle} projectSlug={projectSlug}>
+	<Content />
+</UpdatePost>

@@ -41,4 +41,37 @@ const education = defineCollection({
 	})
 });
 
-export const collections = { blog, education };
+const allowedStatuses = ['active', 'archived', 'planned'] as const;
+
+const projects = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		createdDate: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		status: z.enum(allowedStatuses).default('active'),
+		tags: z.array(z.string()).optional(),
+		repoUrl: z.string().optional(),
+		liveUrl: z.string().optional(),
+		heroImage: z.string().optional(),
+		heroAlt: z.string().optional(),
+		draft: z.boolean().optional()
+	})
+});
+
+const updates = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		projectId: z.string(),
+		date: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		description: z.string(),
+		draft: z.boolean().optional()
+	})
+});
+
+export const collections = { blog, education, projects, updates };

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+const projects = await getCollection('projects', ({ data }) => {
+	return data.draft !== true;
+});
+
+const updates = (
+	await getCollection('updates', ({ data }) => {
+		return data.draft !== true;
+	})
+)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 3);
+---
+
+<ul class="styled-list opposite">
+	{
+		updates.map((update) => {
+			const project = projects.find((p) => p.slug === update.data.projectId);
+			return (
+				<li>
+					<div>
+						<a href={`/projects/updates/${update.slug}/`} style={{ display: 'block' }}>
+							{update.data.title}
+						</a>
+						{project && (
+							<span style={{ fontSize: '0.85em' }}>
+								for <a href={`/projects/${project.slug}/`}>{project.data.title}</a>
+							</span>
+						)}
+						<p>{update.data.description}</p>
+						<FormattedDate date={update.data.date} />
+					</div>
+				</li>
+			);
+		})
+	}
+</ul>

@@ -8,6 +8,7 @@ import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Mission from '../components/Mission.astro';
 import Skills from '../components/Skills.astro';
 import Training from '../components/RecentTraining.astro';
+import RecentUpdates from '../components/RecentUpdates.astro';
 ---
 
 <!doctype html>
@@ -150,6 +151,18 @@ import Training from '../components/RecentTraining.astro';
 						<Training />
 						<footer class="right">
 							<a href="/education">All education posts</a>
+						</footer>
+					</section>
+				</div>
+
+				<hr class="separator" />
+
+				<div class="content-layout">
+					<section class="updates flush-left" aria-label="Latest Project Updates">
+						<h2>Latest project updates</h2>
+						<RecentUpdates />
+						<footer class="right">
+							<a href="/projects">All projects</a>
 						</footer>
 					</section>
 				</div>

@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+interface Props {
+	update: CollectionEntry<'updates'>;
+	projectTitle: string;
+	projectSlug: string;
+}
+
+const { update, projectTitle, projectSlug } = Astro.props;
+const { title, date, description } = update.data;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			article {
+				font-size: 125%;
+				text-wrap-style: pretty;
+				h2,
+				h3 {
+					margin-top: 1.5em;
+					border-left-width: 2em;
+					border-left-color: var(--accent-color-1);
+					border-left-style: solid;
+					padding-left: 0.5em;
+				}
+
+				h3 {
+					border-left-width: 1em;
+				}
+
+				h2:nth-of-type(2),
+				h3:nth-of-type(2) {
+					border-left-color: var(--accent-color-2);
+				}
+
+				h2:nth-of-type(3),
+				h3:nth-of-type(3) {
+					border-left-color: var(--accent-color-3);
+				}
+			}
+
+			.update-meta {
+				margin-bottom: 1em;
+			}
+
+			.blog-navigation {
+				margin-top: 2rem;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page">
+			<Header />
+			<main>
+				<article>
+					<h1 class="title">{title}</h1>
+					<div class="update-meta">
+						<FormattedDate date={date} />
+						&mdash; <a href={`/projects/${projectSlug}/`}>{projectTitle}</a>
+					</div>
+
+					<hr />
+					<slot />
+				</article>
+
+				<div class="blog-navigation">
+					<a href={`/projects/${projectSlug}/`}>Back to {projectTitle}</a> |
+					<a href="/projects">Back to projects</a> |
+					<a href="/">Back to home</a>
+				</div>
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>
