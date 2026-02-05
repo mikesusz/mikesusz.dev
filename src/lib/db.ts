@@ -27,6 +27,17 @@ db.exec(`
 
   CREATE INDEX IF NOT EXISTS idx_path ON pageviews(path);
   CREATE INDEX IF NOT EXISTS idx_timestamp ON pageviews(timestamp);
+
+  -- Aggregated daily stats for historical data (after cleanup)
+  CREATE TABLE IF NOT EXISTS daily_stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL,
+    path TEXT NOT NULL,
+    views INTEGER NOT NULL,
+    UNIQUE(date, path)
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_daily_stats_date ON daily_stats(date);
 `);
 
 export interface PageView {
@@ -114,6 +125,73 @@ export function getRecentPageViews(limit: number = 100) {
     ORDER BY timestamp DESC
     LIMIT ?
   `).all(limit);
+}
+
+// Get historical daily stats (from aggregated table)
+export function getHistoricalDailyStats(days: number = 365): DailyStats[] {
+  return db.prepare(`
+    SELECT date, SUM(views) as views
+    FROM daily_stats
+    GROUP BY date
+    ORDER BY date DESC
+    LIMIT ?
+  `).all(days) as DailyStats[];
+}
+
+// Get total views from aggregated historical data
+export function getHistoricalTotalViews(): number {
+  const result = db.prepare('SELECT COALESCE(SUM(views), 0) as count FROM daily_stats').get() as { count: number };
+  return result.count;
+}
+
+// Cleanup old pageviews: aggregate to daily_stats, then delete
+// Returns { aggregated: number, deleted: number }
+export function cleanupOldPageviews(daysToKeep: number = 90) {
+  const cutoffTime = Date.now() - (daysToKeep * 24 * 60 * 60 * 1000);
+
+  // First, aggregate old pageviews into daily_stats
+  const aggregateStmt = db.prepare(`
+    INSERT OR REPLACE INTO daily_stats (date, path, views)
+    SELECT
+      DATE(timestamp / 1000, 'unixepoch') as date,
+      path,
+      COUNT(*) as views
+    FROM pageviews
+    WHERE timestamp < ?
+    GROUP BY date, path
+  `);
+
+  // Then delete the old pageviews
+  const deleteStmt = db.prepare(`
+    DELETE FROM pageviews WHERE timestamp < ?
+  `);
+
+  // Run as a transaction for safety
+  const cleanup = db.transaction(() => {
+    const aggregateResult = aggregateStmt.run(cutoffTime);
+    const deleteResult = deleteStmt.run(cutoffTime);
+    return {
+      aggregated: aggregateResult.changes,
+      deleted: deleteResult.changes
+    };
+  });
+
+  return cleanup();
+}
+
+// Get database stats for monitoring
+export function getDatabaseStats() {
+  const pageviewCount = db.prepare('SELECT COUNT(*) as count FROM pageviews').get() as { count: number };
+  const dailyStatsCount = db.prepare('SELECT COUNT(*) as count FROM daily_stats').get() as { count: number };
+  const oldestPageview = db.prepare('SELECT MIN(timestamp) as oldest FROM pageviews').get() as { oldest: number | null };
+  const oldestDailyStat = db.prepare('SELECT MIN(date) as oldest FROM daily_stats').get() as { oldest: string | null };
+
+  return {
+    pageviewRows: pageviewCount.count,
+    dailyStatsRows: dailyStatsCount.count,
+    oldestPageview: oldestPageview.oldest ? new Date(oldestPageview.oldest) : null,
+    oldestDailyStat: oldestDailyStat.oldest
+  };
 }
 
 export default db;

@@ -10,6 +10,8 @@ import {
   getPageViewsByPath,
   getDailyPageViews,
   getRecentPageViews,
+  getHistoricalTotalViews,
+  getDatabaseStats,
   isLikelyBot
 } from '../lib/db';
 
@@ -31,9 +33,12 @@ if (authToken !== expectedToken) {
 
 // Fetch stats data
 const totalViews = getTotalPageViews();
+const historicalViews = getHistoricalTotalViews();
+const allTimeViews = totalViews + historicalViews;
 const pageViews = getPageViewsByPath();
 const dailyViews = getDailyPageViews(30);
 const recentViews = getRecentPageViews(20);
+const dbStats = getDatabaseStats();
 ---
 
 <!doctype html>
@@ -142,8 +147,13 @@ const recentViews = getRecentPageViews(20);
         <h1>Site Statistics</h1>
 
         <div class="stat-card">
-          <h2>Total Pageviews</h2>
-          <p class="big-number">{totalViews.toLocaleString()}</p>
+          <h2>Total Pageviews (All Time)</h2>
+          <p class="big-number">{allTimeViews.toLocaleString()}</p>
+          {historicalViews > 0 && (
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+              {totalViews.toLocaleString()} recent + {historicalViews.toLocaleString()} archived
+            </p>
+          )}
         </div>
 
         <div class="grid-2">
@@ -204,6 +214,34 @@ const recentViews = getRecentPageViews(20);
               </div>
             );
           })}
+        </div>
+
+        <div class="stat-card">
+          <h2>Database Stats</h2>
+          <table class="stats-table">
+            <tbody>
+              <tr>
+                <td>Detailed pageview records</td>
+                <td class="views-column">{dbStats.pageviewRows.toLocaleString()}</td>
+              </tr>
+              <tr>
+                <td>Archived daily stats records</td>
+                <td class="views-column">{dbStats.dailyStatsRows.toLocaleString()}</td>
+              </tr>
+              {dbStats.oldestPageview && (
+                <tr>
+                  <td>Oldest detailed record</td>
+                  <td class="views-column">{dbStats.oldestPageview.toLocaleDateString()}</td>
+                </tr>
+              )}
+              {dbStats.oldestDailyStat && (
+                <tr>
+                  <td>Oldest archived record</td>
+                  <td class="views-column">{dbStats.oldestDailyStat}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </main>
       <Footer />
