@@ -10,6 +10,8 @@ import {
   getPageViewsByPath,
   getDailyPageViews,
   getRecentPageViews,
+  getHistoricalTotalViews,
+  getDatabaseStats,
   isLikelyBot
 } from '../lib/db';
 
@@ -23,17 +25,87 @@ if (!expectedToken) {
   });
 }
 
+// If no token in URL, return a page that checks localStorage or prompts
+if (!authToken) {
+  return new Response(`
+    <!doctype html>
+    <html>
+      <head>
+        <title>Stats - Authentication</title>
+        <style>
+          body { font-family: system-ui; background: #141d2b; color: #c5d1eb; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+          .auth-box { background: rgba(255,255,255,0.04); padding: 2rem; border-radius: 8px; text-align: center; }
+          input { padding: 0.5rem 1rem; font-size: 1rem; border: 1px solid #5cecc6; background: #1a2332; color: #c5d1eb; border-radius: 4px; margin-right: 0.5rem; }
+          button { padding: 0.5rem 1rem; font-size: 1rem; background: #5cecc6; color: #141d2b; border: none; border-radius: 4px; cursor: pointer; }
+          button:hover { background: #9fef00; }
+          .checking { opacity: 0.7; }
+        </style>
+      </head>
+      <body>
+        <div class="auth-box">
+          <p class="checking">Checking authentication...</p>
+          <form id="auth-form" style="display: none;">
+            <input type="password" id="token-input" placeholder="Enter token" />
+            <button type="submit">View Stats</button>
+          </form>
+        </div>
+        <script>
+          const stored = localStorage.getItem('stats_token');
+          if (stored) {
+            window.location.href = '/stats?token=' + encodeURIComponent(stored);
+          } else {
+            document.querySelector('.checking').style.display = 'none';
+            document.getElementById('auth-form').style.display = 'block';
+            document.getElementById('auth-form').addEventListener('submit', (e) => {
+              e.preventDefault();
+              const token = document.getElementById('token-input').value;
+              if (token) {
+                localStorage.setItem('stats_token', token);
+                window.location.href = '/stats?token=' + encodeURIComponent(token);
+              }
+            });
+          }
+        </script>
+      </body>
+    </html>
+  `, { headers: { 'Content-Type': 'text/html' } });
+}
+
 if (authToken !== expectedToken) {
-  return new Response('Unauthorized. Access this page with ?token=YOUR_TOKEN', {
-    status: 401
-  });
+  // Clear bad token from localStorage and show error
+  return new Response(`
+    <!doctype html>
+    <html>
+      <head>
+        <title>Stats - Unauthorized</title>
+        <style>
+          body { font-family: system-ui; background: #141d2b; color: #c5d1eb; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+          .auth-box { background: rgba(255,255,255,0.04); padding: 2rem; border-radius: 8px; text-align: center; }
+          .error { color: #ff3e3e; margin-bottom: 1rem; }
+          a { color: #5cecc6; }
+        </style>
+      </head>
+      <body>
+        <div class="auth-box">
+          <p class="error">Invalid token</p>
+          <p><a href="/stats">Try again</a></p>
+        </div>
+        <script>
+          localStorage.removeItem('stats_token');
+        </script>
+      </body>
+    </html>
+  `, { status: 401, headers: { 'Content-Type': 'text/html' } });
 }
 
 // Fetch stats data
 const totalViews = getTotalPageViews();
+const historicalViews = getHistoricalTotalViews();
+const allTimeViews = totalViews + historicalViews;
 const pageViews = getPageViewsByPath();
 const dailyViews = getDailyPageViews(30);
 const recentViews = getRecentPageViews(20);
+const dbStats = getDatabaseStats();
 ---
 
 <!doctype html>
@@ -142,8 +214,13 @@ const recentViews = getRecentPageViews(20);
         <h1>Site Statistics</h1>
 
         <div class="stat-card">
-          <h2>Total Pageviews</h2>
-          <p class="big-number">{totalViews.toLocaleString()}</p>
+          <h2>Total Pageviews (All Time)</h2>
+          <p class="big-number">{allTimeViews.toLocaleString()}</p>
+          {historicalViews > 0 && (
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+              {totalViews.toLocaleString()} recent + {historicalViews.toLocaleString()} archived
+            </p>
+          )}
         </div>
 
         <div class="grid-2">
@@ -205,8 +282,46 @@ const recentViews = getRecentPageViews(20);
             );
           })}
         </div>
+
+        <div class="stat-card">
+          <h2>Database Stats</h2>
+          <table class="stats-table">
+            <tbody>
+              <tr>
+                <td>Detailed pageview records</td>
+                <td class="views-column">{dbStats.pageviewRows.toLocaleString()}</td>
+              </tr>
+              <tr>
+                <td>Archived daily stats records</td>
+                <td class="views-column">{dbStats.dailyStatsRows.toLocaleString()}</td>
+              </tr>
+              {dbStats.oldestPageview && (
+                <tr>
+                  <td>Oldest detailed record</td>
+                  <td class="views-column">{dbStats.oldestPageview.toLocaleDateString()}</td>
+                </tr>
+              )}
+              {dbStats.oldestDailyStat && (
+                <tr>
+                  <td>Oldest archived record</td>
+                  <td class="views-column">{dbStats.oldestDailyStat}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </main>
       <Footer />
     </div>
+    <script is:inline>
+      // Save token to localStorage for future visits
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      if (token) {
+        localStorage.setItem('stats_token', token);
+        // Clean URL (remove token from address bar)
+        window.history.replaceState({}, '', '/stats');
+      }
+    </script>
   </body>
 </html>
