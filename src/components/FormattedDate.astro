@@ -1,24 +1,27 @@
 ---
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 interface Props {
-	date: Date | string; // Accepts a Date object or a string
-	class?: string; // Optional class for styling
+  date: Date | string; // Accepts a Date object or a string
+  class?: string; // Optional class for styling
 }
 
 const { date, class: className } = Astro.props;
 
 // Parse the date
-const parsedDate = typeof date === 'string' ? new Date(date) : date;
+const parsedDate = typeof date === "string" ? new Date(date) : date;
 
 // Determine the format based on the input
 const formattedDate = isNaN(parsedDate.getTime())
-	? date // If parsing fails, use the raw string
-	: parsedDate.getDate() === 1
-		? format(parsedDate, 'MMMM yyyy') // Month/Year format
-		: format(parsedDate, 'MMMM d, yyyy'); // Full date format
+  ? date // If parsing fails, use the raw string
+  : parsedDate.getDate() === 1
+    ? format(parsedDate, "MMMM yyyy") // Month/Year format
+    : format(parsedDate, "MMMM d, yyyy"); // Full date format
 ---
 
-<time datetime={parsedDate.toString()} class="formatted_time">
-	{formattedDate}
+<time
+  datetime={parsedDate.toString()}
+  class:list={["formatted_time", className]}
+>
+  {formattedDate}
 </time>

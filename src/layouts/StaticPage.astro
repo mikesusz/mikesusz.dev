@@ -1,35 +1,33 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 const { title, description } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
 
-	<style>
-		article {
-			/* text-align: justify; */
-		}
+    <style>
+      article {
+        /* text-align: justify; */
+      }
+    </style>
+  </head>
 
-	</style>
-
-	<body>
-		<div class="page">
-			<Header />
-			<main>
-				<article>
-					<h1 class="title">{title}</h1>
-					<hr />
-					<slot />
-				</article>
-
-			</main>
-			<Footer />
-		</div>
-	</body>
+  <body>
+    <div class="page">
+      <Header />
+      <main>
+        <article>
+          <h1 class="title">{title}</h1>
+          <hr />
+          <slot />
+        </article>
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>

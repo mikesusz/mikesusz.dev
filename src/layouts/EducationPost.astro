@@ -1,87 +1,113 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import ExternalLink from '../components/ExternalLink.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import ExternalLink from "../components/ExternalLink.astro";
 
-type Props = CollectionEntry<'education'>['data'];
+type Props = CollectionEntry<"education">["data"];
 
-const { title, description, category, institution, date, credential, heroImage, heroAlt, url } =
-	Astro.props;
+const {
+  title,
+  description,
+  category,
+  institution,
+  date,
+  credential,
+  heroImage,
+  heroAlt,
+  url,
+} = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description ?? ''} />
-		<style>
-			article {
-				font-size: 125%;
-				text-wrap-style: pretty;
-				h2,
-				h3 {
-					margin-top: 1.5em;
-					border-left-width: 2em;
-					border-left-color: var(--accent-color-1);
-					border-left-style: solid;
-					padding-left: 0.5em;
-				}
+  <head>
+    <BaseHead title={title} description={description ?? ""} />
+    <style>
+      article {
+        font-size: 125%;
+        text-wrap-style: pretty;
+        h2,
+        h3 {
+          margin-top: 1.5em;
+          border-left-width: 2em;
+          border-left-color: var(--accent-color-1);
+          border-left-style: solid;
+          padding-left: 0.5em;
+        }
 
-				h3 {
-					border-left-width: 1em;
-				}
+        h3 {
+          border-left-width: 1em;
+        }
 
-				h2:nth-of-type(2),
-				h3:nth-of-type(2) {
-					border-left-color: var(--accent-color-2);
-				}
+        h2:nth-of-type(2),
+        h3:nth-of-type(2) {
+          border-left-color: var(--accent-color-2);
+        }
 
-				h2:nth-of-type(3),
-				h3:nth-of-type(3) {
-					border-left-color: var(--accent-color-3);
-				}
+        h2:nth-of-type(3),
+        h3:nth-of-type(3) {
+          border-left-color: var(--accent-color-3);
+        }
 
-				.heroImage {
-					margin-top: 1em;
-				}
-			}
-			.blog-navigation {
-				margin-top: 2rem;
-				text-align: center;
-			}
-		</style>
-	</head>
+        .heroImage {
+          margin-top: 1em;
+        }
+      }
+      .blog-navigation {
+        margin-top: 2rem;
+        text-align: center;
+      }
 
-	<body>
-		<div class="page">
-			<Header />
-			<main>
-				<article>
-					{
-						heroImage && (
-							<img class="heroImage" width={720} height={360} src={heroImage} alt={heroAlt} />
-						)
-					}
-					<h1 class="title">{title}</h1>
-					{
-						url && institution && (
-							<span class="subhead">
-								<ExternalLink href={url}>provided by {institution}</ExternalLink>
-							</span>
-						)
-					}
-					{date && <FormattedDate class="last-updated-on" date={date} />}
+      .category,
+      .credential {
+        display: none;
+      }
+    </style>
+  </head>
 
-					<hr />
-					<slot />
-				</article>
+  <body>
+    <div class="page">
+      <Header />
+      <main>
+        <article>
+          {
+            heroImage && (
+              <img
+                class="heroImage"
+                width={720}
+                height={360}
+                src={heroImage}
+                alt={heroAlt}
+              />
+            )
+          }
+          <h1 class="title">{title}</h1>
+          {
+            url && institution && (
+              <span class="subhead">
+                <ExternalLink href={url}>
+                  provided by {institution}
+                </ExternalLink>
+              </span>
+            )
+          }
+          {date && <FormattedDate class="last-updated-on" date={date} />}
 
-				<div class="blog-navigation">
-					<a href="/education">Back to education</a> | <a href="/">Back to home</a>
-				</div>
-			</main>
-			<Footer />
-		</div>
-	</body>
+          <hr />
+          {category && <span class="category">{category}</span>}
+          {credential && <span class="credential">{credential}</span>}
+          <slot />
+        </article>
+
+        <div class="blog-navigation">
+          <a href="/education">Back to education</a> | <a href="/"
+            >Back to home</a
+          >
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>

@@ -1,67 +1,67 @@
 ---
-import { ICON_COOKIE } from '../consts';
+import { ICON_COOKIE } from "../consts";
 const today = new Date();
 ---
 
 <footer class="page-footer">
-	<p>&copy; {today.getFullYear()} Mike Susz. All rights reserved.</p>
-	<nav aria-label="footer">
-		<a href="/">Home</a>
-		<a href="/sitemap-0.xml">Sitemap</a>
-		<a href="/rss.xml">RSS</a>
-		<a href="https://github.com/mikesusz/mikesusz.dev">Source</a>
-		<a href="https://coolify.io">Coolify</a>
-		<a href="https://linode.com">Linode</a>
-	</nav>
-	<div class="cookie-notice">
-		<div class="icon inline" set:html={ICON_COOKIE} />
-		<span>Cookie Statement: I think cookies are delicious!</span>
-		<button onclick="showPlusOne()">Me Too!</button>
-		<span id="plus-one" class="hidden">+1</span>
-	</div>
+  <p>&copy; {today.getFullYear()} Mike Susz. All rights reserved.</p>
+  <nav aria-label="footer">
+    <a href="/">Home</a>
+    <a href="/sitemap-0.xml">Sitemap</a>
+    <a href="/rss.xml">RSS</a>
+    <a href="https://github.com/mikesusz/mikesusz.dev">Source</a>
+    <a href="https://coolify.io">Coolify</a>
+    <a href="https://linode.com">Linode</a>
+  </nav>
+  <div class="cookie-notice">
+    <div class="icon inline" set:html={ICON_COOKIE} />
+    <span>Cookie Statement: I think cookies are delicious!</span>
+    <button id="cookie-btn">Me Too!</button>
+    <span id="plus-one" class="hidden">+1</span>
+  </div>
 </footer>
 <style>
-	.page-footer {
-		max-width: var(--content-max-width);
-		padding: 2em 0 1em;
-		text-align: center;
-	}
-	.page-footer a {
-		font-size: smaller;
-		margin-right: 0.25em;
-	}
+  .page-footer {
+    max-width: var(--content-max-width);
+    padding: 2em 0 1em;
+    text-align: center;
+  }
+  .page-footer a {
+    font-size: smaller;
+    margin-right: 0.25em;
+  }
 
-	.page-footer .cookie-notice {
-		padding-left: 2em;
-		margin-top: 2em;
-	}
+  .page-footer .cookie-notice {
+    padding-left: 2em;
+    margin-top: 2em;
+  }
 
-	#plus-one {
-		position: relative;
-		display: inline-block;
-		opacity: 0;
-		transform: translateY(0);
-		transition:
-			opacity 0.2s ease,
-			transform 0.2s ease;
-	}
+  #plus-one {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
 
-	#plus-one.visible {
-		opacity: 1;
-		transform: translateY(-10px);
-	}
+  #plus-one.visible {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
 </style>
 <script is:inline>
-	function showPlusOne() {
-		const plusOne = document.getElementById('plus-one');
-		if (plusOne) {
-			plusOne.classList.remove('hidden');
-			plusOne.classList.add('visible');
+  document.getElementById("cookie-btn").addEventListener("click", () => {
+    const plusOne = document.getElementById("plus-one");
+    if (plusOne) {
+      plusOne.classList.remove("hidden");
+      plusOne.classList.add("visible");
 
-			setTimeout(() => {
-				plusOne.classList.remove('visible');
-				plusOne.classList.add('hidden');
-			}, 1000);
-		}
-	}
+      setTimeout(() => {
+        plusOne.classList.remove("visible");
+        plusOne.classList.add("hidden");
+      }, 1000);
+    }
+  });
 </script>

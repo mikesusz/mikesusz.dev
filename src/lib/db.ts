@@ -1,9 +1,10 @@
-import Database from 'better-sqlite3';
-import { existsSync, mkdirSync } from 'fs';
-import { dirname } from 'path';
+import Database from "better-sqlite3";
+import { existsSync, mkdirSync } from "fs";
 
 // Use /app/data in production (Coolify), fall back to local ./data in development
-const DATA_DIR = process.env.DATA_DIR || (process.env.NODE_ENV === 'production' ? '/app/data' : './data');
+const DATA_DIR =
+  process.env.DATA_DIR ||
+  (process.env.NODE_ENV === "production" ? "/app/data" : "./data");
 const DB_PATH = `${DATA_DIR}/pageviews.db`;
 
 // Ensure data directory exists
@@ -68,32 +69,40 @@ export function recordPageView(pageview: PageView) {
     pageview.path,
     pageview.referrer || null,
     pageview.user_agent || null,
-    pageview.timestamp
+    pageview.timestamp,
   );
 }
 
 // Get total pageviews
 export function getTotalPageViews(): number {
-  const result = db.prepare('SELECT COUNT(*) as count FROM pageviews').get() as { count: number };
+  const result = db
+    .prepare("SELECT COUNT(*) as count FROM pageviews")
+    .get() as { count: number };
   return result.count;
 }
 
 // Get pageviews by path
 export function getPageViewsByPath(): PageViewStats[] {
-  return db.prepare(`
+  return db
+    .prepare(
+      `
     SELECT path, COUNT(*) as views
     FROM pageviews
     GROUP BY path
     ORDER BY views DESC
     LIMIT 50
-  `).all() as PageViewStats[];
+  `,
+    )
+    .all() as PageViewStats[];
 }
 
 // Get daily pageviews for the last N days
 export function getDailyPageViews(days: number = 30): DailyStats[] {
-  const cutoffTime = Date.now() - (days * 24 * 60 * 60 * 1000);
+  const cutoffTime = Date.now() - days * 24 * 60 * 60 * 1000;
 
-  return db.prepare(`
+  return db
+    .prepare(
+      `
     SELECT
       DATE(timestamp / 1000, 'unixepoch') as date,
       COUNT(*) as views
@@ -101,7 +110,9 @@ export function getDailyPageViews(days: number = 30): DailyStats[] {
     WHERE timestamp >= ?
     GROUP BY date
     ORDER BY date DESC
-  `).all(cutoffTime) as DailyStats[];
+  `,
+    )
+    .all(cutoffTime) as DailyStats[];
 }
 
 // Detect if a user agent is likely a bot
@@ -109,45 +120,64 @@ export function isLikelyBot(userAgent: string | null): boolean {
   if (!userAgent) return true;
 
   const botPatterns = [
-    /bot/i, /crawler/i, /spider/i, /scraper/i,
-    /headless/i, /curl/i, /wget/i, /python/i,
-    /java/i, /apache/i, /http/i, /scan/i
+    /bot/i,
+    /crawler/i,
+    /spider/i,
+    /scraper/i,
+    /headless/i,
+    /curl/i,
+    /wget/i,
+    /python/i,
+    /java/i,
+    /apache/i,
+    /http/i,
+    /scan/i,
   ];
 
-  return botPatterns.some(pattern => pattern.test(userAgent));
+  return botPatterns.some((pattern) => pattern.test(userAgent));
 }
 
 // Get recent pageviews
 export function getRecentPageViews(limit: number = 100) {
-  return db.prepare(`
+  return db
+    .prepare(
+      `
     SELECT path, referrer, user_agent, timestamp, created_at
     FROM pageviews
     ORDER BY timestamp DESC
     LIMIT ?
-  `).all(limit);
+  `,
+    )
+    .all(limit);
 }
 
 // Get historical daily stats (from aggregated table)
 export function getHistoricalDailyStats(days: number = 365): DailyStats[] {
-  return db.prepare(`
+  return db
+    .prepare(
+      `
     SELECT date, SUM(views) as views
     FROM daily_stats
     GROUP BY date
     ORDER BY date DESC
     LIMIT ?
-  `).all(days) as DailyStats[];
+  `,
+    )
+    .all(days) as DailyStats[];
 }
 
 // Get total views from aggregated historical data
 export function getHistoricalTotalViews(): number {
-  const result = db.prepare('SELECT COALESCE(SUM(views), 0) as count FROM daily_stats').get() as { count: number };
+  const result = db
+    .prepare("SELECT COALESCE(SUM(views), 0) as count FROM daily_stats")
+    .get() as { count: number };
   return result.count;
 }
 
 // Cleanup old pageviews: aggregate to daily_stats, then delete
 // Returns { aggregated: number, deleted: number }
 export function cleanupOldPageviews(daysToKeep: number = 90) {
-  const cutoffTime = Date.now() - (daysToKeep * 24 * 60 * 60 * 1000);
+  const cutoffTime = Date.now() - daysToKeep * 24 * 60 * 60 * 1000;
 
   // First, aggregate old pageviews into daily_stats
   const aggregateStmt = db.prepare(`
@@ -172,7 +202,7 @@ export function cleanupOldPageviews(daysToKeep: number = 90) {
     const deleteResult = deleteStmt.run(cutoffTime);
     return {
       aggregated: aggregateResult.changes,
-      deleted: deleteResult.changes
+      deleted: deleteResult.changes,
     };
   });
 
@@ -181,16 +211,26 @@ export function cleanupOldPageviews(daysToKeep: number = 90) {
 
 // Get database stats for monitoring
 export function getDatabaseStats() {
-  const pageviewCount = db.prepare('SELECT COUNT(*) as count FROM pageviews').get() as { count: number };
-  const dailyStatsCount = db.prepare('SELECT COUNT(*) as count FROM daily_stats').get() as { count: number };
-  const oldestPageview = db.prepare('SELECT MIN(timestamp) as oldest FROM pageviews').get() as { oldest: number | null };
-  const oldestDailyStat = db.prepare('SELECT MIN(date) as oldest FROM daily_stats').get() as { oldest: string | null };
+  const pageviewCount = db
+    .prepare("SELECT COUNT(*) as count FROM pageviews")
+    .get() as { count: number };
+  const dailyStatsCount = db
+    .prepare("SELECT COUNT(*) as count FROM daily_stats")
+    .get() as { count: number };
+  const oldestPageview = db
+    .prepare("SELECT MIN(timestamp) as oldest FROM pageviews")
+    .get() as { oldest: number | null };
+  const oldestDailyStat = db
+    .prepare("SELECT MIN(date) as oldest FROM daily_stats")
+    .get() as { oldest: string | null };
 
   return {
     pageviewRows: pageviewCount.count,
     dailyStatsRows: dailyStatsCount.count,
-    oldestPageview: oldestPageview.oldest ? new Date(oldestPageview.oldest) : null,
-    oldestDailyStat: oldestDailyStat.oldest
+    oldestPageview: oldestPageview.oldest
+      ? new Date(oldestPageview.oldest)
+      : null,
+    oldestDailyStat: oldestDailyStat.oldest,
   };
 }
 
