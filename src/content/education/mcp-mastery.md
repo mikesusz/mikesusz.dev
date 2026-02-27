@@ -1,10 +1,10 @@
 ---
-title: "MCP Mastery: Unlock Next-Gen LLM Integrations with MCP"
-category: "Web"
-institution: "Udemy"
-date: "January 2026"
-description: "A course focused on the creation and integration of MCP (Model Context Protocol) services with LLMs."
-url: "https://www.udemy.com/course/mcp-model-context-protocol-masterclass/"
+title: 'MCP Mastery: Unlock Next-Gen LLM Integrations with MCP'
+category: 'Web'
+institution: 'Udemy'
+date: 'January 2026'
+description: 'A course focused on the creation and integration of MCP (Model Context Protocol) services with LLMs.'
+url: 'https://www.udemy.com/course/mcp-model-context-protocol-masterclass/'
 draft: false
 ---
 

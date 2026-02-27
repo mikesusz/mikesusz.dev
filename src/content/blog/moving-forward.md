@@ -1,7 +1,7 @@
 ---
-title: "Moving Forward"
-description: "Wherein I examine the present and future of our profession"
-pubDate: "09 Jan 2026"
+title: 'Moving Forward'
+description: 'Wherein I examine the present and future of our profession'
+pubDate: '09 Jan 2026'
 draft: false
 ---
 

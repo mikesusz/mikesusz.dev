@@ -157,8 +157,8 @@ you can find that in github at: https://github.com/mikesusz/gdx/
 			// 3. else, it just adds 'flipped'
 			// see style block for what these classes do
 			function jump() {
-				var actor = document.getElementById('actor');
-				var cube = document.getElementById('cube');
+				const actor = document.getElementById('actor');
+				const cube = document.getElementById('cube');
 				if (!actor.classList.contains('jumping')) {
 					actor.classList.add('jumping');
 					if (cube.classList.contains('flipped')) {
@@ -193,7 +193,7 @@ you can find that in github at: https://github.com/mikesusz/gdx/
 				const theActor = document.getElementById('actor');
 				theActor.addEventListener('animationend', () => {
 					theActor.classList.remove('jumping');
-					var cube = document.getElementById('cube');
+					const cube = document.getElementById('cube');
 					cube.classList.remove('flippingback');
 				});
 			});

@@ -1,10 +1,10 @@
 ---
-title: "Who Did This?"
-description: "How we got to the AI present."
+title: 'Who Did This?'
+description: 'How we got to the AI present.'
 pubDate: '16 Feb 2025'
 draft: false
 heroImage: '/images/who-did-this-1.webp'
-heroAlt: "Who Did This?"
+heroAlt: 'Who Did This?'
 ---
 
 In a lot of ways, the explosive growth of AI was forseeable. Where we go from here ... is up to us.

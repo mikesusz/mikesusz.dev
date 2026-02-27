@@ -104,7 +104,9 @@ dist
 .tern-port
 
 # VS Code
-.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # Astro
 .astro

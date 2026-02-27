@@ -3,10 +3,8 @@ import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, RSS_MAX } from '../consts';
 import { cleanHtmlContent } from '../utils/cleanHtmlContent';
 
-import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
-
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
@@ -20,20 +18,22 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		items: await Promise.all(filteredPosts.map(async (post) => {
-			const rawHtml = parser.render(post.body);
-			const cleanedHtml = cleanHtmlContent(rawHtml);
+		items: await Promise.all(
+			filteredPosts.map(async (post) => {
+				const rawHtml = parser.render(post.body);
+				const cleanedHtml = cleanHtmlContent(rawHtml);
 
-			let heroImgHtml = '';
-			if (post.data.heroImage) {
-				heroImgHtml = `<img src="${post.data.heroImage}" alt="${post.data.heroAlt || ''}" style="max-width:100%;height:auto;margin-bottom:1em;" />`;
-			}
+				let heroImgHtml = '';
+				if (post.data.heroImage) {
+					heroImgHtml = `<img src="${post.data.heroImage}" alt="${post.data.heroAlt || ''}" style="max-width:100%;height:auto;margin-bottom:1em;" />`;
+				}
 
-			return {
-				...post.data,
-				link: `/blog/${post.slug}/`,
-				content: heroImgHtml + cleanedHtml
-			};
-		}))
+				return {
+					...post.data,
+					link: `/blog/${post.slug}/`,
+					content: heroImgHtml + cleanedHtml
+				};
+			})
+		)
 	});
 }

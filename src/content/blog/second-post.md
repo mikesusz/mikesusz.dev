@@ -1,8 +1,8 @@
 ---
-title: "Second post"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 22 2022"
-heroImage: "/placeholder-hero.jpg"
+title: 'Second post'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jul 22 2022'
+heroImage: '/placeholder-hero.jpg'
 draft: true
 ---
 

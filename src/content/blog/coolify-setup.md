@@ -1,7 +1,7 @@
 ---
-title: "Coolify Setup"
-description: "My adventures with moving to(ward) automated self-hosting."
-pubDate: "26 Mar 2025"
+title: 'Coolify Setup'
+description: 'My adventures with moving to(ward) automated self-hosting.'
+pubDate: '26 Mar 2025'
 draft: false
 ---
 
@@ -17,7 +17,7 @@ Well, no, let's not spend too much time dwelling on this. When I started publish
 
 When I left academia I needed to find my own paid web hosting, and this is the longest era in the history I'm recounting today. The names change as prices change and bundled features change, but they're generally all the same. A big shared server where you and several (many?) other customers upload your files and one box serves them all. As long as everyone doesn't get slashdotted[^slashdot] all at once, This metal can usually handle the load of having so many domains pointing at it.
 
-But this situation is fraught. On several occasions, shared hosting servers that I had my websites on were hacked, and even my own sites were not immune. Typically this happens when a web host allows shell logins and an unscrupulous user can traverse directories, trying to find one that someone flagged with the wrong permissions (specifically - allowing _any_ user on the system to *write* files as opposed to just *read*ing them).
+But this situation is fraught. On several occasions, shared hosting servers that I had my websites on were hacked, and even my own sites were not immune. Typically this happens when a web host allows shell logins and an unscrupulous user can traverse directories, trying to find one that someone flagged with the wrong permissions (specifically - allowing _any_ user on the system to _write_ files as opposed to just *read*ing them).
 
 All a h4x0r had to do was copy a .php file through the local filesystem into _your_ directory, then hit it from the web, and bingo! They were executing their own code via _your_ website, with _your_ user and _your_ permissions, allowing them to do mean things to _your_ WordPress database and basically cause you headaches for days/weeks/months. (Yes, I was both the victim of this, and spent a lot of time cleaning it up, and ... was a consultant cleaning this up for other people/companies)
 

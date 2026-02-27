@@ -50,6 +50,11 @@ const { title, description, category, institution, date, credential, heroImage, 
 				margin-top: 2rem;
 				text-align: center;
 			}
+
+			.category,
+			.credential {
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -74,6 +79,8 @@ const { title, description, category, institution, date, credential, heroImage, 
 					{date && <FormattedDate class="last-updated-on" date={date} />}
 
 					<hr />
+					{category && <span class="category">{category}</span>}
+					{credential && <span class="credential">{credential}</span>}
 					<slot />
 				</article>
 

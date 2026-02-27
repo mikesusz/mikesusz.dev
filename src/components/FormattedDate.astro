@@ -19,6 +19,6 @@ const formattedDate = isNaN(parsedDate.getTime())
 		: format(parsedDate, 'MMMM d, yyyy'); // Full date format
 ---
 
-<time datetime={parsedDate.toString()} class="formatted_time">
+<time datetime={parsedDate.toString()} class:list={['formatted_time', className]}>
 	{formattedDate}
 </time>

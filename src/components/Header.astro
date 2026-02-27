@@ -137,7 +137,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 </style>
 
 <header class="site-header">
-	<button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+	<button class="hamburger" id="hamburgerMenu" aria-label="Toggle menu" aria-expanded="false">
 		<div class="icon open" set:html={ICON_HAMBURGER} />
 		<div class="icon close" set:html={ICON_CLOSE} />
 	</button>
@@ -164,7 +164,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 
 <script is:inline>
 	// hamburger menu.  mmmm, hamburger.
-	function toggleMenu() {
+	document.getElementById('hamburgerMenu').addEventListener('click', () => {
 		const nav = document.querySelector('.site-header nav');
 		const burger = document.querySelector('.hamburger');
 
@@ -173,7 +173,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 			burger.classList.toggle('open');
 			burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 		}
-	}
+	});
 
 	// hide the burger menu when the user navigates
 	window.addEventListener('DOMContentLoaded', () => {
@@ -184,7 +184,7 @@ import { CONTACT_EMAIL, SITE_TITLE, ICON_EMAIL, ICON_HAMBURGER, ICON_CLOSE } fro
 	});
 
 	// use pageshow to handle when the user uses back/forward buttons
-	window.addEventListener('pageshow', (event) => {
+	window.addEventListener('pageshow', () => {
 		const nav = document.querySelector('.site-header nav');
 		const burger = document.querySelector('.hamburger');
 		if (nav) nav.classList.remove('open');

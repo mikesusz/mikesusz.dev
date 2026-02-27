@@ -1,10 +1,10 @@
 ---
-title: "LLMs Mastery: Complete Guide to Transformers & Generative AI"
-category: "Web"
-institution: "Udemy"
-date: "June 2025"
-description: "A deep-dive into Generative AI Principles, NLP Fundamentals, Model Training and Fine Tuning"
-url: "https://www.udemy.com/course/llms-mastery-complete-guide-to-transformers-generative-ai/"
+title: 'LLMs Mastery: Complete Guide to Transformers & Generative AI'
+category: 'Web'
+institution: 'Udemy'
+date: 'June 2025'
+description: 'A deep-dive into Generative AI Principles, NLP Fundamentals, Model Training and Fine Tuning'
+url: 'https://www.udemy.com/course/llms-mastery-complete-guide-to-transformers-generative-ai/'
 draft: false
 ---
 
