@@ -1,8 +1,8 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONTACT_EMAIL, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 /*
 
@@ -14,227 +14,222 @@ you can find that in github at: https://github.com/mikesusz/gdx/
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      /* we establish some variables.
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			/* we establish some variables.
     - variable for animation duration means the jumping and flipping
     will end at the same time!
     - cube size will scale the cube and everything inside it
     - re-used color values */
-      :root {
-        --animation-duration: 0.6s;
-        --cube-size: 5rem;
-        --defaultbg: rgb(250, 236, 79);
-        --defaultgradient: radial-gradient(
-          rgb(250, 236, 79),
-          rgb(242, 176, 61)
-        );
-        --defaultfg: rgb(1, 255, 255);
-      }
+			:root {
+				--animation-duration: 0.6s;
+				--cube-size: 5rem;
+				--defaultbg: rgb(250, 236, 79);
+				--defaultgradient: radial-gradient(rgb(250, 236, 79), rgb(242, 176, 61));
+				--defaultfg: rgb(1, 255, 255);
+			}
 
-      /* #stage contains all the animation.
+			/* #stage contains all the animation.
     the overflow-x property keeps the scrollbar from
     appearing when the cube is off screen to the right */
-      #stage {
-        /* background: linear-gradient(170deg, #444, #222); */
-        border-bottom: 1px solid #fff;
-        height: calc(var(--cube-size) * 3.5);
-        overflow-x: hidden;
-        position: relative;
-      }
+			#stage {
+				/* background: linear-gradient(170deg, #444, #222); */
+				border-bottom: 1px solid #fff;
+				height: calc(var(--cube-size) * 3.5);
+				overflow-x: hidden;
+				position: relative;
+			}
 
-      /* #slide is the outside div that provides the left->right
+			/* #slide is the outside div that provides the left->right
     movement for everything */
-      #slide {
-        animation: slideRight 3s infinite;
-        animation-timing-function: linear;
-        bottom: 0;
-        position: absolute;
-      }
+			#slide {
+				animation: slideRight 3s infinite;
+				animation-timing-function: linear;
+				bottom: 0;
+				position: absolute;
+			}
 
-      @keyframes slideRight {
-        0% {
-          left: calc(var(--cube-size) * -1);
-        }
+			@keyframes slideRight {
+				0% {
+					left: calc(var(--cube-size) * -1);
+				}
 
-        100% {
-          left: calc(100vw);
-        }
-      }
+				100% {
+					left: calc(100vw);
+				}
+			}
 
-      /* the #actor div is absent here because it does not contain
+			/* the #actor div is absent here because it does not contain
     any visual styles. but it receives this .jumping class
     via javascript. .jumping only affects the up/down movement */
-      .jumping {
-        animation-duration: var(--animation-duration);
-        animation-iteration-count: 1;
-        animation-name: jumpAnimation;
-        animation-timing-function: ease-in-out;
-      }
+			.jumping {
+				animation-duration: var(--animation-duration);
+				animation-iteration-count: 1;
+				animation-name: jumpAnimation;
+				animation-timing-function: ease-in-out;
+			}
 
-      @keyframes jumpAnimation {
-        0% {
-          transform: translateY(0);
-        }
+			@keyframes jumpAnimation {
+				0% {
+					transform: translateY(0);
+				}
 
-        50% {
-          transform: translateY(calc(var(--cube-size) * -2));
-        }
+				50% {
+					transform: translateY(calc(var(--cube-size) * -2));
+				}
 
-        100% {
-          transform: translateY(0);
-        }
-      }
+				100% {
+					transform: translateY(0);
+				}
+			}
 
-      /* the #cube is the cube. it needs position: relative so that
+			/* the #cube is the cube. it needs position: relative so that
     the divs inside with position: absolute will reference this. */
-      #cube {
-        border: 2px solid black;
-        background: var(--defaultgradient);
-        height: var(--cube-size);
-        position: relative;
-        width: var(--cube-size);
-      }
+			#cube {
+				border: 2px solid black;
+				background: var(--defaultgradient);
+				height: var(--cube-size);
+				position: relative;
+				width: var(--cube-size);
+			}
 
-      /* des1, des2, and des3 are the divs inside the cube
+			/* des1, des2, and des3 are the divs inside the cube
     that make up the 'eyes' and 'mouth' and wherever
     possible i combined properties */
-      #des1,
-      #des2,
-      #des3 {
-        background: var(--defaultfg);
-        border: 2px solid black;
-        height: calc(var(--cube-size) / 6);
-      }
+			#des1,
+			#des2,
+			#des3 {
+				background: var(--defaultfg);
+				border: 2px solid black;
+				height: calc(var(--cube-size) / 6);
+			}
 
-      #des1,
-      #des2 {
-        position: absolute;
-        top: calc(var(--cube-size) / 6);
-        width: calc(var(--cube-size) / 6);
-      }
+			#des1,
+			#des2 {
+				position: absolute;
+				top: calc(var(--cube-size) / 6);
+				width: calc(var(--cube-size) / 6);
+			}
 
-      #des1 {
-        left: calc(var(--cube-size) / 6);
-      }
+			#des1 {
+				left: calc(var(--cube-size) / 6);
+			}
 
-      #des2 {
-        right: calc(var(--cube-size) / 6);
-      }
+			#des2 {
+				right: calc(var(--cube-size) / 6);
+			}
 
-      #des3 {
-        bottom: calc(var(--cube-size) / 4);
-        left: calc(var(--cube-size) / 6.5);
-        position: absolute;
-        right: calc(var(--cube-size) / 6.5);
-      }
+			#des3 {
+				bottom: calc(var(--cube-size) / 4);
+				left: calc(var(--cube-size) / 6.5);
+				position: absolute;
+				right: calc(var(--cube-size) / 6.5);
+			}
 
-      /* flipped will rotate the cube 1/2 turn */
-      .flipped {
-        transform: rotate(180deg);
-        transition: all var(--animation-duration) ease-in-out;
-      }
+			/* flipped will rotate the cube 1/2 turn */
+			.flipped {
+				transform: rotate(180deg);
+				transition: all var(--animation-duration) ease-in-out;
+			}
 
-      /* i needed to add the flippingback class to complete
+			/* i needed to add the flippingback class to complete
     the turn in the clockwise direction. if i simply removed
     the flipped class and #cube went back to rotate(0deg) it
     would go counter-clockwise which would be weird. */
-      .flippingback {
-        transform: rotate(360deg);
-        transition: all var(--animation-duration) ease-in-out;
-      }
+			.flippingback {
+				transform: rotate(360deg);
+				transition: all var(--animation-duration) ease-in-out;
+			}
 
-      /* thanks for reading through my code. this was a fun little toy
+			/* thanks for reading through my code. this was a fun little toy
     to make. and since you're here i will let you in on a secret:
     i used copilot to write all that event listener stuff! :)
      - mike */
-    </style>
+		</style>
 
-    <script is:inline>
-      // the jump function is wrapped in a conditional,
-      // so if we are already jumping, it does nothing.
-      // otherwise, jump function then does 3 things:
-      // 1. adds the class 'jumping' to #actor div
-      // 2. if #cube has class 'flipped' it changes that to flippingback
-      // 3. else, it just adds 'flipped'
-      // see style block for what these classes do
-      function jump() {
-        const actor = document.getElementById("actor");
-        const cube = document.getElementById("cube");
-        if (!actor.classList.contains("jumping")) {
-          actor.classList.add("jumping");
-          if (cube.classList.contains("flipped")) {
-            cube.classList.replace("flipped", "flippingback");
-          } else {
-            cube.classList.add("flipped");
-          }
-        }
-      }
-      // this event listener fires on page load and attaches
-      // five other event listeners: if you click or tap it executes
-      // 'jump' function. if you click or tap and hold, it will continually
-      // execute 'jump' function until you let go.
-      // and finally, when the css animation on the #actor div is done,
-      // it removes the 'jumping' and 'flippingback' classes
-      document.addEventListener("DOMContentLoaded", function () {
-        document.addEventListener("mousedown", function () {
-          jump();
-          intervalId = setInterval(jump, 100);
-        });
-        document.addEventListener("mouseup", function () {
-          clearInterval(intervalId);
-        });
-        document.addEventListener("touchstart", function () {
-          jump();
-          intervalId = setInterval(jump, 100);
-        });
-        document.addEventListener("touchend", function () {
-          clearInterval(intervalId);
-        });
+		<script is:inline>
+			// the jump function is wrapped in a conditional,
+			// so if we are already jumping, it does nothing.
+			// otherwise, jump function then does 3 things:
+			// 1. adds the class 'jumping' to #actor div
+			// 2. if #cube has class 'flipped' it changes that to flippingback
+			// 3. else, it just adds 'flipped'
+			// see style block for what these classes do
+			function jump() {
+				const actor = document.getElementById('actor');
+				const cube = document.getElementById('cube');
+				if (!actor.classList.contains('jumping')) {
+					actor.classList.add('jumping');
+					if (cube.classList.contains('flipped')) {
+						cube.classList.replace('flipped', 'flippingback');
+					} else {
+						cube.classList.add('flipped');
+					}
+				}
+			}
+			// this event listener fires on page load and attaches
+			// five other event listeners: if you click or tap it executes
+			// 'jump' function. if you click or tap and hold, it will continually
+			// execute 'jump' function until you let go.
+			// and finally, when the css animation on the #actor div is done,
+			// it removes the 'jumping' and 'flippingback' classes
+			document.addEventListener('DOMContentLoaded', function () {
+				document.addEventListener('mousedown', function () {
+					jump();
+					intervalId = setInterval(jump, 100);
+				});
+				document.addEventListener('mouseup', function () {
+					clearInterval(intervalId);
+				});
+				document.addEventListener('touchstart', function () {
+					jump();
+					intervalId = setInterval(jump, 100);
+				});
+				document.addEventListener('touchend', function () {
+					clearInterval(intervalId);
+				});
 
-        const theActor = document.getElementById("actor");
-        theActor.addEventListener("animationend", () => {
-          theActor.classList.remove("jumping");
-          const cube = document.getElementById("cube");
-          cube.classList.remove("flippingback");
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <div class="page">
-      <Header title={SITE_TITLE} />
-      <main id="error_page">
-        <h1>404 Error Page</h1>
+				const theActor = document.getElementById('actor');
+				theActor.addEventListener('animationend', () => {
+					theActor.classList.remove('jumping');
+					const cube = document.getElementById('cube');
+					cube.classList.remove('flippingback');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="page">
+			<Header title={SITE_TITLE} />
+			<main id="error_page">
+				<h1>404 Error Page</h1>
 
-        <p>
-          dang. looks like you're trying to visit a page that isn't here. maybe
-          you can find what you're looking for linked from <a href="/"
-            >the home page</a
-          >.
-        </p>
+				<p>
+					dang. looks like you're trying to visit a page that isn't here. maybe you can find what
+					you're looking for linked from <a href="/">the home page</a>.
+				</p>
 
-        <p>
-          if there's something you think should be here, you can also <a
-            href=`mailto:${CONTACT_EMAIL}`>reach out</a
-          > and make a suggestion.
-        </p>
+				<p>
+					if there's something you think should be here, you can also <a
+						href=`mailto:${CONTACT_EMAIL}`>reach out</a
+					> and make a suggestion.
+				</p>
 
-        <div id="stage">
-          <div id="slide">
-            <div id="actor">
-              <div id="cube">
-                <div id="des1"></div>
-                <div id="des2"></div>
-                <div id="des3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+				<div id="stage">
+					<div id="slide">
+						<div id="actor">
+							<div id="cube">
+								<div id="des1"></div>
+								<div id="des2"></div>
+								<div id="des3"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <Footer />
-      </main>
-    </div>
-  </body>
+				<Footer />
+			</main>
+		</div>
+	</body>
 </html>

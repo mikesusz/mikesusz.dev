@@ -1,7 +1,7 @@
 ---
-title: "Inspired"
-description: "Now that my site platform of choice has stabilized, I turned my attention to design. This draws much inspiration from my local development environment and visual aesthetic."
-pubDate: "10 May 2023"
+title: 'Inspired'
+description: 'Now that my site platform of choice has stabilized, I turned my attention to design. This draws much inspiration from my local development environment and visual aesthetic.'
+pubDate: '10 May 2023'
 draft: false
 ---
 

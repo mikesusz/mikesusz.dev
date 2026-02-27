@@ -1,7 +1,7 @@
 ---
 title: Tailwind CSS
-description: "For my initial setup of this site, I wanted to try out using Tailwind CSS for the first time. I found it quick to learn and have fun working with!"
-pubDate: "14 Sep 2021"
+description: 'For my initial setup of this site, I wanted to try out using Tailwind CSS for the first time. I found it quick to learn and have fun working with!'
+pubDate: '14 Sep 2021'
 draft: false
 ---
 

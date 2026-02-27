@@ -1,7 +1,7 @@
 ---
-title: "Astro, again!"
+title: 'Astro, again!'
 description: "With the 1.0 beta of Astro being available, I decided it was time to finally upgrade this site. Please forgive the dust, there's been a lot of work under the hood."
-pubDate: "20 Jul 2022"
+pubDate: '20 Jul 2022'
 draft: false
 ---
 

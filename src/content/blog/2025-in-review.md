@@ -1,7 +1,7 @@
 ---
-title: "2025 In Review"
+title: '2025 In Review'
 description: "Looking back on what I've accomplished professionally in 2025."
-pubDate: "29 Dec 2025"
+pubDate: '29 Dec 2025'
 draft: false
 ---
 

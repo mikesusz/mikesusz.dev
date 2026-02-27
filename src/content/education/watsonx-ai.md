@@ -1,10 +1,10 @@
 ---
-title: "watsonx.ai Technical Essentials"
-category: "IBM"
-institution: "Credly"
-date: "June 2025"
-description: "A comprehensive view of watsonx.ai developer studio and the options to select, train, and access AI models."
-url: "https://www.credly.com/badges/2eadf2d0-0a32-4be6-ba66-320e9053ade2"
+title: 'watsonx.ai Technical Essentials'
+category: 'IBM'
+institution: 'Credly'
+date: 'June 2025'
+description: 'A comprehensive view of watsonx.ai developer studio and the options to select, train, and access AI models.'
+url: 'https://www.credly.com/badges/2eadf2d0-0a32-4be6-ba66-320e9053ade2'
 draft: false
 ---
 

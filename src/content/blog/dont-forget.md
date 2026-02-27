@@ -1,6 +1,6 @@
 ---
 title: "Don't Forget - You're Making Web Pages"
-description: "The Web that was, how we lost our way, and how to fulfill our promise to The Future."
+description: 'The Web that was, how we lost our way, and how to fulfill our promise to The Future.'
 pubDate: '1 Aug 2024'
 draft: false
 heroImage: '/images/dont-forget.webp'
@@ -127,34 +127,63 @@ _The Future_ is counting on you to do the right thing.
 ---
 
 [^WIT]: I began the Architecture program at Wentworth Institute of Technology in 1991. This was the precise time where we started transitioning from paper drawing to Computer Aided Design (CAD) - about half my courses still drew manually (pencils, t-squares, triangles, scales) and half were CAD.
+
 [^Nineties]: 1991, or as my kids would call it "the late nineteen-hundreds."
+
 [^DOS]: While early versions of Microsoft Windows were available, MS DOS 3.1 and subsequent releases were much cheaper, and a lot of expensive vertical-market software was not compatible with Windows anyway (you could click on an icon in Windows to launch them, and they would abruptly exit windows and load the DOS-based application full screen, without the ability to switch back and forth).
+
 [^AutoCAD]: At this time, [AutoCAD for DOS](https://en.wikipedia.org/wiki/AutoCAD_version_history) was far more performant, and I built up quite a muscle-memory for its specific hotkeys. This is the first, probably, in a long list of things that I mastered, and then through updates and the passage of time, became abruptly irrelevant. AutoDesk still makes [AutoCAD](https://www.autodesk.com/products/autocad/overview), having gone through many revisions, to become somewhat of a juggernaut of software to serve not only 2-dimensional and 3-dimensional drawing and modeling, but a new genre of software called Building Information Modeling (BIM). This makes it too expensive for me to tinker with anymore, sadly.
+
 [^VT220]: Wentworth had several labs of [VT220](https://en.wikipedia.org/wiki/VT220) terminals. I usually gravitated toward the ones with Amber colored displays.
+
 [^Pine]: [Pine](<https://en.wikipedia.org/wiki/Pine_(email_client)>) was an early terminal-based email program, I don't recall but I may have actually started using [Elm](<https://en.wikipedia.org/wiki/Elm_(email_client)>) in my first year of college. The administrators would usually create an alias ([symbolic link](https://en.wikipedia.org/wiki/Symbolic_link)) for common functionality, so users could either choose 'mail' from a login menu, or type 'mail' in a command shell to be taken to (whatever the configured mail client was at the time)
+
 [^VAX]: Wentworth had two Digital Equipment Corporation VAX systems, though I do not recall the specific models. The system for staff &amp; faculty was called 'Bert' while the system for students was named 'Ernie.' I never found out who was responsible for that naming.
+
 [^VI]: While I am not one of the 'I still code in [vi](https://www.vim.org/)' people, a lot of whom I know and respect, I did use it a lot for coding back then, and I still use it now for editing shell scripts and config files, especially, obviously, when working on a remote server.
+
 [^Lynx]: [Lynx](https://lynx.invisible-island.net) and [Links](<https://en.wikipedia.org/wiki/Links_(web_browser)>) are somewhat conflated in my mind, and I'm sure I used them interchangably at various times
+
 [^Webmaster]: Webmaster was the term used in acadamia to refer to the person in charge of the organization's web presence. I'm not entirely sure of the etymology, it calls to mind Dungeons and Dragons ("Dungeon Master") but ultimately dwindled in usage, to be replaced by more familiar designer / developer /engineer titles. Though at the time, it was much more encompassing -- I maintained the hardware and software of the web server, in addition to developing content. The 'full stack' started with the computer under my desk (no, really, when I was hired - the web server was the computer under my desk. I moved it to the server room.)
+
 [^Mac]: The Mac labs at Wentworth in the early 90s were Macintosh Quadra [700](https://en.wikipedia.org/wiki/Macintosh_Quadra_700) and [800](https://en.wikipedia.org/wiki/Macintosh_Quadra_800).
+
 [^Mosaic]: [NCSA Mosaic](https://en.wikipedia.org/wiki/NCSA_Mosaic) was the first widely-used graphical browser for the web, followed very quickly by the rest of this list. Wired does well to capture its impact [in this article](https://www.wired.com/2010/04/0422mosaic-web-browser/)
+
 [^NN]: [Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_Navigator) very quickly followed Mosaic and was pretty good, until they really pushed for you to download it in a package called 'Netscape Communicator' that combined email and calendars and ... people didn't like it.
+
 [^Opera]: [Opera](<https://en.wikipedia.org/wiki/Opera_(web_browser)>) had always been a dark-horse contender in my mind, but consistent.
+
 [^IE]: [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer), when new, was actually quite good. Even the [Mac version](https://en.wikipedia.org/wiki/Internet_Explorer_for_Mac), which would eventually become bundled with Mac OS (via large investment in Apple by Microsoft) was quite good at the time.
+
 [^Cyberdog]: [Cyberdog](https://en.wikipedia.org/wiki/Cyberdog) was a very short-lived browser by Apple. I was very excited about Cyberdog and [OpenDoc](https://en.wikipedia.org/wiki/OpenDoc) in general, both of which went away very quickly. It probably only gets mentioned here due to my misplaced enthusiasm.
+
 [^Others]: I'm leaving so many out of this list, or else this post would be even more egregiously long. So many. Really you should read through a lot of wikipedias history of web browsers to get a feel for just how much the landscape was broadening and changing beneath our feet. [History of the web browser](https://en.wikipedia.org/wiki/History_of_the_web_browser) and [List of web browsers](https://en.wikipedia.org/wiki/List_of_web_browsers) are good places to start.
+
 [^3D]: No, really, we thought that [VRML](https://en.wikipedia.org/wiki/VRML) and [3D browsing](https://en.wikipedia.org/wiki/Web3D) might take off. Hey, it still might!
+
 [^Spiders]: The original indexes of the web started out as private, or local, link-by-link indexes of web pages as they were [crawled](https://en.wikipedia.org/wiki/Web_crawler) and added to a database. Some of these databases had public interfaces where you could search for topics - at first you had to be very specific about keywords and the syntax that you used, as they did not have fuzzy matching or word stemming or natural language processing. This also meant that when developing, you had to be very explicit to define what your web page was about, if you hoped that people would find it. I remember the day that i first saw my website in [WebCrawler](https://en.wikipedia.org/wiki/WebCrawler)
+
 [^SE]: Search Engines that were developed as commercial tools were built when companies began to realize that discoverability on the web was something that could be productized and monetized. Back then, it felt a lot less creepy than it does now - the technology didn't yet exist to target individual users specifically, it was all based on aggregated data. As new search engines were developed and their functionality increased, we (users) hopped from engine to engine.
+
 [^Indexes]: Curated indexes probably became too labor intensive to maintain, but [DMOZ](https://en.wikipedia.org/wiki/DMOZ) was excellent and even [Yahoo Directory](https://en.wikipedia.org/wiki/Yahoo!_Directory) was a tremendous thing.
+
 [^WAP]: In the days before smartphones, the mobile phone data landscape was sparse. [WAP](https://en.wikipedia.org/wiki/Wireless_Application_Protocol) was a promising development, but device capabilities and network capacity expanded quickly enough that WAP became unnecessary. thankfully. It was rough, y'all.
+
 [^HTML]: "HTML: The Definitive Guide" was first published in April of 1996. Feeling nostalgic? [Check it out on archive.org](https://archive.org/details/htmldefinitivegu00musc_0). I'm not sure when I picked up my copy, but I know it spent many years on my desk and in my backpack.
+
 [^WebMonkey]: [WebMonkey](https://en.wikipedia.org/wiki/Webmonkey) was an excellent resource for cutting-edge markup on the web. It had the style and swagger of [Wired Magazine](https://www.wired.com) and their other properties like [HotWired](https://en.wikipedia.org/wiki/HotWired). A better write-up of its history and ultimate demise [here at Wired](https://www.wired.com/2004/02/webmonkey-rip-1996-2004/)
+
 [^W3C]: The [W3C](https://www.w3.org/) was always there, and felt like a stable presence to counter the interests of corporate groups who were pushing for the web to be siloed and controlled.
+
 [^Layer]: For a while Netscape tried to make their own DOM, but eventually relented, [Jeffrey Zeldman himself has the details of that here](https://alistapart.com/article/bullet/).
+
 [^DWS]: [Designing with Web Standards](https://en.wikipedia.org/wiki/Designing_with_Web_Standards) became the guide and the justification for shifting to Semantic markup. It also helped that CSS was evolving and allowing us to create complex layouts properly.
+
 [^Tables]: For some time in the late 90s, web standards and browsers just couldn't keep up with the demands of marketing and designers and corporations. Before advanced web layouts were possible with CSS, we improperly used data tables for layout. I actually got very good at this, then I stopped. If you need a great example (not my work) you can check out the famous [Space Jam website](https://www.spacejam.com/1996/). If you want to see my work, here's a [copy of my website from 1996](http://mikesusz.com/sitemuseum/1996/) (resize your browser - it's _responsive!_)
+
 [^Tools]: Tools I use every day: [MDN](https://developer.mozilla.org/en-US/), [Can I Use](https://caniuse.com/), [Lighthouse in Chrome Dev Tools](https://developer.chrome.com/docs/lighthouse/overview), [IBM Equal Access Toolkit/checker](https://www.ibm.com/able/toolkit), all the stuff I talked about [on my Uses page](/uses)
+
 [^Common]: Common problems that thwart or frustrate users are probably things you're familiar with: "oops this script didn't load" or "oops that tracking gif didn't load" or "oops there was a javascript error" does your website still... function? Have you experienced this as a user, how did it make you feel?
 
 ---

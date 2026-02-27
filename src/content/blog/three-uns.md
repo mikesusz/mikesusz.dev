@@ -1,7 +1,7 @@
 ---
-title: "The Three Uns"
+title: 'The Three Uns'
 description: "Why we don't do the things we should do."
-pubDate: "30 May 2023"
+pubDate: '30 May 2023'
 draft: false
 ---
 
@@ -17,25 +17,25 @@ There are three reasons people don’t do things. The Three Uns:
 
 _Unaware_, _Unable_, and _Unwilling_
 
-## Unaware ##
+## Unaware
 
-If you’re *Unaware* of what you’re supposed to do, you’ll never do it, unless incidentally. This is like a ticketing system that piles up tasks for you but you never get any notifications. Or, you’re part of a team with shared responsibilities, but haven't effectively delegated tasks, so there are things that everyone else is expecting you to take care of, but you’re oblivious. Unaware is usually a systematic problem that needs to be solved at a higher level or in a more holistic way.
+If you’re _Unaware_ of what you’re supposed to do, you’ll never do it, unless incidentally. This is like a ticketing system that piles up tasks for you but you never get any notifications. Or, you’re part of a team with shared responsibilities, but haven't effectively delegated tasks, so there are things that everyone else is expecting you to take care of, but you’re oblivious. Unaware is usually a systematic problem that needs to be solved at a higher level or in a more holistic way.
 
 You may be _involved_ in the solution to Unaware but you're not likely to be able to handle this on your own.
 
-## Unable ##
+## Unable
 
-So okay, good, you’re aware of what’s being asked of you, but, you’re *Unable* to do it. This might be that you lack access to accounts or systems to complete a task, you are time-constrained and have higher priority work to finish, or maybe you’re being asked to do something that’s too far outside your ken.
+So okay, good, you’re aware of what’s being asked of you, but, you’re _Unable_ to do it. This might be that you lack access to accounts or systems to complete a task, you are time-constrained and have higher priority work to finish, or maybe you’re being asked to do something that’s too far outside your ken.
 
 Unable is something which may need to be solved by a combination of external and internal restructuring — you need fewer tasks, you need your management to weigh in on priorities, you need more training or to swap tasks with someone so that you’ve got work that you're more familiar with.
 
-## Unwilling ##
+## Unwilling
 
 The last of the three is different. This is the one I deal with the most when trying to help my kids (and frankly, probably myself) and that is _Unwilling_. You know what you’re being asked to do, you know how to do it and have access to all the resources that you need to be successful, you just can't seem to (begin/complete) it.
 
 Unwilling is far more difficult to deal with, and the causes and solutions are usually more personal. What I find most helpful is to have a literal discussion with myself: why have I not (started/finished) this thing? This inner dialogue will usually identify the source of the friction that is preventing progress.
 
-## So, how to get better? ##
+## So, how to get better?
 
 Motivation would be another entire article (one that I'm currently writing!) but what I hoped to establish here is a pattern of thinking that you can use for yourself or those around you when you realize something isn't done:
 
