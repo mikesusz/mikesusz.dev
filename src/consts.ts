@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = 'mikesusz.dev';
 export const SITE_DESCRIPTION = 'Information about Mike Susz, Front End Developer.';
-export const CONTACT_EMAIL = '947826@mikesusz.dev'; // can change this when needed
+export const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || '639462@mikesusz.dev';
 
 export const RSS_MAX = 10;
 
