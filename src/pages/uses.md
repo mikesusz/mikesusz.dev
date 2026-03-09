@@ -22,7 +22,6 @@ Theme: [HackTheBox](https://github.com/silofy/hackthebox) I love this, obviously
 - [indent rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) - makes a rainbow out of your indents. this is really useful for deeply nested files (like terrible html email templates)
 - [indent rainbow palettes](https://marketplace.visualstudio.com/items?itemName=evondev.indent-rainbow-palettes) - a set of jazzy palettes for indent rainbow
 - [peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) - changes the color of some of the chrome of VSCode. i find this super useful to have different colors for different projects, so when i have multiple windows open i can quickly figure out where each project is located.
-- [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) - AI powered pair-programmer, I have been finding this useful for syntax auto-completion where I might normally get caught up in small formatting errors. I haven't yet used it for creating new projects, I'm not comfortable with outsourcing 'big' things.
 
 here's a quick screenshot of my VSCode window:
 
@@ -40,13 +39,29 @@ On my Windows computers I use [Windows Terminal](https://apps.microsoft.com/stor
 
 Nearly all of my projects use git for version control (most hosted either at [github](https://github.com/) or [Azure Devops](https://azure.microsoft.com/en-us/products/devops/repos)), and I do all of my interaction with git via a terminal. The git plugin for oh-my-zsh provides a lot of handy aliases for git, but I have some of my own that I've been using for years and built up a lot of muscle-memory around. You can find those in my somewhat-neglected [dotfiles repository](https://github.com/mikesusz/dotrepo).
 
+## Knowledge Management
+
+I'm a heavy user of [Obsidian](https://obsidian.md/) to keep track of projects and references for everything in my life. I even wrote an MCP server to make this info available to AI assistants.
+
+## Assistants
+
+I use Claude desktop and Claude Code for a lot of things now. While I'm not at the "let it churn in the background all day while I go do other stuff" stage, I am using desktop to organize and plan projects, while letting Claude Code do rote tasks or give me a first draft at things I've not built with yet.
+
+I have Claude desktop integrated with a few MCP Servers I've written, including my publicly available [Obsidian MCP server](https://github.com/mikesusz/obsidian-mcp), and a custom server I wrote for my [Social feed website](https://feed.mikesusz.com).
+
+Besides Claude, I also use Ollama to run local LLMs. Currently, I have qwen2.5:14b running in Ollama, connected to Continue.dev for coding questions.
+
 ## Deployment and Hosting
 
 My professional work often involves large applications that are deployed at enterprise-scale. At one time or another I've worked on an app deployed at almost all of the major cloud providers: [AWS](https://aws.amazon.com/), [IBM Cloud](https://www.ibm.com/cloud), [Azure DevOps](https://azure.microsoft.com/en-us/products/devops).
 
 Building and deploying Apps has varied also, my teams have used [Jenkins](https://www.jenkins.io/), [Travis ci](https://www.travis-ci.com/), and [Azure Pipelines](https://azure.microsoft.com/en-us/products/devops/pipelines). I'm usually not the deployment engineer, but I've looked under the hood and gotten to understand how these work and are configured.
 
-For my personal projects, I still have a VPS (Virtual Private Server) that hosts a few things (as well as providing me a remote shell to use when I need it). I have also used [Netlify](https://www.netlify.com/) for hosting javascript-based projects and/or sites built with javascript-based static site generators. This site itself is an Astro site, hosted in github, and at one time it was built and deployed via Netlify. Currently, it is built and deployed using [Coolify](https://coolify.io/), onto a VPS from [Linode](https://linode.com).
+For my personal projects, I previously used [Netlify](https://www.netlify.com/) for hosting javascript-based projects and/or sites built with javascript-based static site generators.
+
+But now this site and many others are sourced in github, built and deployed using [Coolify](https://coolify.io/), onto a VPS from [Linode](https://linode.com). I think I have 20-ish sites serving from Coolify now.
+
+Recently I've been doing more advanced stuff in Coolify, like persistent storage volumes and scheduled tasks. It makes it easy to do stuff that would formerly require, e.g. writing custom docker yaml files or editing crontabs.
 
 ## Browsers
 
@@ -63,4 +78,4 @@ In addition to the built-in developer tools and things like [Lighthouse](https:/
 
 --
 
-As I think of other things I will update. Last update: November 19th, 2024
+As I think of other things I will update. Last update: March, 2026.
