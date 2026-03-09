@@ -1,0 +1,52 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const projects = (
+	await getCollection('projects', ({ data }) => {
+		return data.draft !== true;
+	})
+).sort((a, b) => b.data.createdDate.valueOf() - a.data.createdDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects - ${SITE_TITLE}`} description="Side projects and experiments" />
+	</head>
+	<body>
+		<div class="page">
+			<Header />
+			<main>
+				<section>
+					<h1>Projects</h1>
+					<ul class="styled-list">
+						{
+							projects.map((project) => (
+								<li>
+									<div>
+										<a href={`/projects/${project.slug}/`} style={{ display: 'block' }}>
+											{project.data.title}
+										</a>
+										{project.data.tags && (
+											<span style={{ fontSize: '0.8em', opacity: '0.7' }}>
+												{project.data.tags.join(', ')}
+											</span>
+										)}
+										<p>{project.data.description}</p>
+										<FormattedDate date={project.data.createdDate} />
+									</div>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>
