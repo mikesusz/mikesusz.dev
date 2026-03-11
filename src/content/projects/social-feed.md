@@ -34,6 +34,16 @@ The last challenge with bringing these disparate feeds together was to create a 
 
 So, the end result is a full archive of everything I've posted on Social Media (at least, Twitter, Mastodon, and Bluesky) since April 25th, 2008.
 
+## So that's it, right? ... Right?
+
+THEN I had another idea. Since I had just gotten finished [taking a course about writing MCP Servers](/education/mcp-mastery/), and written a few of them for work... I thought, how much fun could it be to integrate my social feed into my AI assistant? 🤔
+
+So I created an MCP Server and put it in the same monorepo as the feed website. I abstracted out the shared data layer and publish a separate package for the website, and another for the MCP server. The MCP has bearer token authentication, which is supported by a lot of AI agents (though, OAuth is more common, it's also more difficult to implement for a little one-off one-user implementation).
+
+But now, I can ask Claude (or whatever model i'm running locally) questions about my feed history. When did I first tweet about IBM? When was my last day in the office in 2020? How many times did I complain about snow? When did I go to Austin?
+
+It's been a lot of fun.
+
 ## What's next?
 
 To truly bring in everything I've posted, I could add more social networks (can't remember the last time I posted on LinkedIn but I'm sure I did at some point) or even ingest the feeds from my personal blog website, which would go back to somewhere around 2001.
