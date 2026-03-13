@@ -1,15 +1,14 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'zod';
 
 const blog = defineCollection({
-	// Type-check frontmatter using a schema
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
 		// Transform string to Date object
-		pubDate: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+		pubDate: z.union([z.string(), z.date()]).transform((val) => new Date(val)),
 		updatedDate: z
 			.string()
 			.optional()
@@ -23,15 +22,12 @@ const blog = defineCollection({
 const allowedCategories = ['IBM', 'Salesforce', 'Web', 'College'] as const;
 
 const education = defineCollection({
-	// Type-check frontmatter using a schema
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/education' }),
 	schema: z.object({
 		title: z.string(),
 		category: z.enum(allowedCategories),
 		institution: z.string(),
-		date: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+		date: z.union([z.string(), z.date()]).transform((val) => new Date(val)),
 		description: z.string().optional(),
 		credential: z.string().optional(),
 		draft: z.boolean().optional(),
@@ -44,13 +40,11 @@ const education = defineCollection({
 const allowedStatuses = ['active', 'archived', 'planned'] as const;
 
 const projects = defineCollection({
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		createdDate: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+		createdDate: z.union([z.string(), z.date()]).transform((val) => new Date(val)),
 		status: z.enum(allowedStatuses).default('active'),
 		tags: z.array(z.string()).optional(),
 		repoUrl: z.string().optional(),

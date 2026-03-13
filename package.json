@@ -30,11 +30,11 @@
 		]
 	},
 	"devDependencies": {
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/react": "^4.4.2",
-		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.7.0",
-		"astro": "^5.18.0",
+		"@astrojs/mdx": "^5.0.0",
+		"@astrojs/react": "^5.0.0",
+		"@astrojs/rss": "^4.0.17",
+		"@astrojs/sitemap": "^3.7.1",
+		"astro": "^6.0.4",
 		"date-fns": "^4.1.0",
 		"eslint": "^10.0.2",
 		"eslint-config-prettier": "^10.1.8",
@@ -48,7 +48,7 @@
 		"typescript-eslint": "^8.56.1"
 	},
 	"dependencies": {
-		"@astrojs/node": "^9.5.4",
+		"@astrojs/node": "^10.0.1",
 		"better-sqlite3": "^12.6.0",
 		"rehype-external-links": "^3.0.0"
 	}
