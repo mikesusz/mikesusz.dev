@@ -30,7 +30,7 @@ export async function GET(context) {
 
 				return {
 					...post.data,
-					link: `/blog/${post.slug}/`,
+					link: `/blog/${post.id}/`,
 					content: heroImgHtml + cleanedHtml
 				};
 			})

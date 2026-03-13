@@ -18,7 +18,7 @@ const posts = (
 			return (
 				<li>
 					<div class="post_data">
-						<a href={`/blog/${post.slug}/`} style={{ display: 'block' }}>
+						<a href={`/blog/${post.id}/`} style={{ display: 'block' }}>
 							{post.data.title}
 						</a>
 						<FormattedDate date={post.data.pubDate} />
