@@ -8,6 +8,9 @@ import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
 	site: 'https://mikesusz.dev',
+	redirects: {
+		'/projects/obsidian-mcp/': '/projects/markdown-vault-mcp/'
+	},
 	adapter: node({
 		mode: 'standalone'
 	}),
