@@ -20,7 +20,7 @@ interface Props {
 		heroAlt?: string;
 	};
 	updates: Array<{
-		slug: string;
+		id: string;
 		data: {
 			title: string;
 			pubDate: Date;
@@ -170,7 +170,7 @@ const { title, description, createdDate, status, tags, repoUrl, liveUrl, heroIma
 									{updates.map((update) => (
 										<li>
 											<FormattedDate date={update.data.pubDate} />
-											<a href={`/blog/${update.slug}`}>{update.data.title}</a>
+											<a href={`/blog/${update.id}`}>{update.data.title}</a>
 										</li>
 									))}
 								</ul>
