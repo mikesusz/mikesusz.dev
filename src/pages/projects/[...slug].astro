@@ -11,9 +11,16 @@ export async function getStaticPaths() {
 }
 
 const project = Astro.props;
+
+// let's get project updates from the blog
+const blogPosts = await getCollection('blog');
+const projectUpdates = blogPosts
+	.filter((post) => post.data.projectSlug === project.id)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
 const { Content } = await render(project);
 ---
 
-<ProjectPage {...project.data}>
+<ProjectPage project={project.data} updates={projectUpdates}>
 	<Content />
 </ProjectPage>

@@ -59,7 +59,3 @@ packages/
 scripts/        # Import scripts (Twitter, Mastodon, Bluesky)
 data/           # SQLite database + media files
 ```
-
-## Related
-
-- [Building My Social Media Lifestream](/blog/social-feed) - Full project write-up
