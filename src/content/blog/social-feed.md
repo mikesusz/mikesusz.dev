@@ -2,6 +2,7 @@
 title: 'Building my Social Feed'
 description: 'the story of building my ongoing lifestream of all my Social Media posts.'
 pubDate: '12 Mar 2026'
+projectSlug: 'social-feed'
 ---
 
 Like a lot of folks, I left Twitter. For me, January 2023 was my last post.

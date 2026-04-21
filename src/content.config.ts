@@ -7,7 +7,6 @@ const blog = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		// Transform string to Date object
 		pubDate: z.union([z.string(), z.date()]).transform((val) => new Date(val)),
 		updatedDate: z
 			.string()
@@ -15,7 +14,8 @@ const blog = defineCollection({
 			.transform((str) => (str ? new Date(str) : undefined)),
 		heroImage: z.string().optional(),
 		heroAlt: z.string().optional(),
-		draft: z.boolean().optional()
+		draft: z.boolean().optional(),
+		projectSlug: z.string().optional()
 	})
 });
 
