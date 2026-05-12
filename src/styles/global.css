@@ -63,7 +63,7 @@ body {
 	padding: 0;
 	/* max-width: 65ch; */
 	text-align: left;
-	background: var(--color-bg);
+	/* background: var(--color-bg);
 	background: linear-gradient(
 		180deg,
 		var(--accent-color-1) 0%,
@@ -76,10 +76,18 @@ body {
 		var(--accent-color-4) 80%,
 		var(--accent-color-5) 80%,
 		var(--accent-color-5) 100%
-	);
+	); */
+	background: var(--main-bg);
+	background: var(--main-bg-gradient);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
+}
+
+body.new-order {
+	display: grid;
+	grid-template-columns: 1fr 8vw;
+	min-height: 100vh;
 }
 
 main {
@@ -87,13 +95,11 @@ main {
 }
 
 .page {
-	position: relative;
+	/* position: relative; */
 	color: var(--main-fg);
-	background: var(--main-bg);
-	background: var(--main-bg-gradient);
 	min-height: 100vh;
-	margin-left: 8vw;
-	padding: 1vw 8vw 8vw;
+	/* margin-left: 8vw; */
+	padding: 1vw 2vw 8vw 8vw;
 }
 
 section > h1:first-child,

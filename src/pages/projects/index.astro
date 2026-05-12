@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import BlueMondayStrip from '../../components/BlueMondayStrip.astro';
 
 const projects = (
 	await getCollection('projects', ({ data }) => {
@@ -18,7 +19,7 @@ const projects = (
 	<head>
 		<BaseHead title={`Projects - ${SITE_TITLE}`} description="Side projects and experiments" />
 	</head>
-	<body>
+	<body class="new-order">
 		<div class="page">
 			<Header />
 			<main>
@@ -48,5 +49,6 @@ const projects = (
 			</main>
 			<Footer />
 		</div>
+		<BlueMondayStrip />
 	</body>
 </html>

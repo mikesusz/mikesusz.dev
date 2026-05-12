@@ -1,0 +1,101 @@
+---
+// to treat me like you do
+---
+
+<style>
+	.blue-monday {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: 2vw;
+		gap: 0px;
+		min-height: 100vh;
+		overflow: hidden;
+	}
+</style>
+
+<div class="blue-monday">
+	<!-- how does it feel? -->
+</div>
+
+<script>
+	const strip = document.querySelector('.blue-monday');
+	const colors = [
+		'var(--accent-color-1)',
+		'var(--accent-color-2)',
+		'var(--accent-color-3)',
+		'var(--accent-color-4)',
+		'var(--accent-color-5)'
+	];
+
+	// rows/cols are grid spans. grid-auto-rows: 2vw, each column is 4vw wide.
+	// rows:2 + cols:1 = 4vw square. Slivers (rows:1) act as separators between groups.
+	// Mismatched pairs: tall first, then two halves stack beside it in the other column.
+	const shapes = [
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 4, cols: 1 }, // tall left, two short right
+		{ rows: 2, cols: 1 },
+		{ rows: 2, cols: 1 },
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 5, cols: 2 }, // tall
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 1 }, // two short left, tall right
+		{ rows: 4, cols: 1 },
+		{ rows: 2, cols: 1 },
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 4, cols: 1 }, // tall left, two short right
+		{ rows: 2, cols: 1 },
+		{ rows: 2, cols: 1 },
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 5, cols: 2 }, // tall
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 1 }, // two short left, tall right
+		{ rows: 4, cols: 1 },
+		{ rows: 2, cols: 1 },
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 3, cols: 2 } // medium
+	];
+
+	shapes.forEach(({ rows, cols }, i) => {
+		const block = document.createElement('div');
+		block.className = 'bm-block';
+		block.style.gridColumn = `span ${cols}`;
+		block.style.gridRow = `span ${rows}`;
+		block.style.setProperty('background-color', colors[i % colors.length]);
+		if (strip) strip.appendChild(block);
+	});
+
+	// Fill any remaining space at the bottom after the defined shapes.
+	// 'load' ensures the grid is fully laid out before we measure.
+	window.addEventListener('load', () => {
+		if (!strip) return;
+		const lastBlock = strip.lastElementChild as HTMLElement;
+		if (!lastBlock) return;
+		const gap = strip.clientHeight - (lastBlock.offsetTop + lastBlock.offsetHeight);
+		if (gap > 0) {
+			const filler = document.createElement('div');
+			filler.style.gridColumn = 'span 2';
+			filler.style.height = `${gap + 20}px`; // slightly oversized, overflow hidden clips it
+			filler.style.setProperty('background-color', colors[shapes.length % colors.length]);
+			strip.appendChild(filler);
+		}
+	});
+</script>
