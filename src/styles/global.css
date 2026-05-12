@@ -35,7 +35,13 @@
 	:root {
 		--main-fg: #141d2b;
 		--main-bg: #c5d1eb;
-		--main-bg-gradient: linear-gradient(140deg, #75a0e4 0%, #5a92e8 60%, #5a93ea 80%, #7da6e9 100%);
+		--main-bg-gradient: linear-gradient(
+			140deg,
+			#75a0e4fb 0%,
+			#5a93e8 60%,
+			#5a94eaf7 80%,
+			#7da6e9f9 100%
+		);
 
 		--background-accent: rgba(0, 0, 0, 0.04);
 
@@ -104,17 +110,9 @@ h5,
 h6,
 strong,
 b {
-	color: var(--main-fg);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
 	font-family: 'IBM Plex Serif Bold', Georgia, serif;
 	margin-bottom: 0.25em;
+	color: var(--main-fg);
 }
 
 a {
@@ -323,7 +321,15 @@ ul.styled-list {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		&.unstack {
+			display: block;
+		}
 		margin-bottom: 1rem;
+
+		a {
+			font-size: 1.4rem;
+			font-weight: bold;
+		}
 	}
 }
 

@@ -39,7 +39,7 @@ const posts = (
 							posts.map((post) => {
 								return (
 									<li>
-										<div>
+										<div class="post_data unstack">
 											<FormattedDate date={post.data.date} />
 											<a href={`/education/${post.id}/`} style={{ display: 'block' }}>
 												{post.data.title}
