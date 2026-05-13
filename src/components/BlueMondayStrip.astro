@@ -3,107 +3,110 @@
 ---
 
 <style>
-	.blue-monday {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-auto-rows: 2vw;
-		gap: 0px;
-		min-height: 100vh;
-		overflow: hidden;
+	canvas.blue-monday {
+		display: block;
+		width: 100%;
 	}
 </style>
 
-<div class="blue-monday">
-	<!-- how does it feel? -->
-</div>
+<canvas class="blue-monday"></canvas>
 
 <script>
-	const strip = document.querySelector('.blue-monday');
-	const colors = [
-		'var(--accent-color-1)',
-		'var(--accent-color-2)',
-		'var(--accent-color-3)',
-		'var(--accent-color-4)',
-		'var(--accent-color-5)'
-	];
+	const canvas = document.querySelector('canvas.blue-monday') as HTMLCanvasElement;
+	const ctx = canvas.getContext('2d')!;
 
-	// rows/cols are grid spans. grid-auto-rows: 2vw, each column is 4vw wide.
-	// rows:2 + cols:1 = 4vw square. Slivers (rows:1) act as separators between groups.
-	// Mismatched pairs: tall first, then two halves stack beside it in the other column.
+	const colors = ['#9fef00', '#ff3e3e', '#004cff', '#ffaf00', '#9f00ff'];
+
+	// cols:2 = full width. cols:1 requires col (0=left, 1=right).
+	// Mismatched pairs must stay consecutive: tall col N, then two halves in the other col.
 	const shapes = [
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 4, cols: 1 }, // tall left, two short right
-		{ rows: 2, cols: 1 },
-		{ rows: 2, cols: 1 },
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 5, cols: 2 }, // tall
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 1 }, // two short left, tall right
-		{ rows: 4, cols: 1 },
-		{ rows: 2, cols: 1 },
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 4, cols: 1 }, // tall left, two short right
-		{ rows: 2, cols: 1 },
-		{ rows: 2, cols: 1 },
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 5, cols: 2 }, // tall
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 1 }, // two short left, tall right
-		{ rows: 4, cols: 1 },
-		{ rows: 2, cols: 1 },
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 3, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 2, cols: 2 }, // medium
-		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 4, cols: 1 }, // tall left, two short right
-		{ rows: 2, cols: 1 },
-		{ rows: 2, cols: 1 },
-		{ rows: 1, cols: 2 } // sliver
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 5, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 4, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 5, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 4, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 }
 	];
 
-	shapes.forEach(({ rows, cols }) => {
-		const block = document.createElement('div');
-		block.className = 'bm-block';
-		block.style.gridColumn = `span ${cols}`;
-		block.style.gridRow = `span ${rows}`;
-		block.style.setProperty('background-color', colors[Math.floor(Math.random() * colors.length)]);
-		if (strip) strip.appendChild(block);
-	});
+	function draw() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	// Fill any remaining space at the bottom after the defined shapes.
-	// 'load' ensures the grid is fully laid out before we measure.
-	window.addEventListener('load', () => {
-		if (!strip) return;
-		const lastBlock = strip.lastElementChild as HTMLElement;
-		if (!lastBlock) return;
-		const gap = strip.clientHeight - (lastBlock.offsetTop + lastBlock.offsetHeight);
-		if (gap > 0) {
-			const filler = document.createElement('div');
-			filler.style.gridColumn = 'span 2';
-			filler.style.height = `${gap + 20}px`; // slightly oversized, overflow hidden clips it
-			filler.style.setProperty('background-color', colors[shapes.length % colors.length]);
-			strip.appendChild(filler);
+		const colWidth = Math.round(canvas.width / 2);
+		const rowHeight = Math.round(canvas.width / 4); // 2vw: canvas is 8vw wide, so row = canvas.width/4
+		const cursors = [0, 0]; // y-position for [left, right] columns
+		let shapeIndex = 0;
+
+		while (Math.min(cursors[0], cursors[1]) < canvas.height) {
+			const shape = shapes[shapeIndex % shapes.length];
+			const color = colors[Math.floor(Math.random() * colors.length)];
+			const h = shape.rows * rowHeight;
+
+			if (shape.cols === 2) {
+				const y = Math.max(cursors[0], cursors[1]);
+				ctx.fillStyle = color;
+				ctx.fillRect(0, y, canvas.width, h);
+				cursors[0] = y + h;
+				cursors[1] = y + h;
+			} else {
+				const c = shape.col as number;
+				ctx.fillStyle = color;
+				ctx.fillRect(c * colWidth, cursors[c], colWidth, h);
+				cursors[c] += h;
+			}
+
+			shapeIndex++;
 		}
-	});
+	}
+
+	function resize() {
+		canvas.width = canvas.offsetWidth;
+		canvas.height = document.documentElement.scrollHeight;
+		draw();
+	}
+
+	window.addEventListener('load', resize);
+	window.addEventListener('resize', resize);
 </script>

@@ -21,7 +21,7 @@
 
 	--main-fg: #c5d1eb;
 	--main-bg: #141d2b;
-	--main-bg-gradient: linear-gradient(140deg, #141d2b 0%, #0d2242 60%, #0d2242 80%, #141d2b 100%);
+	--main-bg-gradient: linear-gradient(140deg, #0e141e 0%, #09182e 60%, #091930 80%, #0e151f 100%);
 	--base-gap: 2rem;
 	--base-pad: 1rem;
 	--small-pad: 0.5rem;
