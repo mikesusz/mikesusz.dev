@@ -21,7 +21,7 @@
 
 	--main-fg: #c5d1eb;
 	--main-bg: #141d2b;
-	--main-bg-gradient: linear-gradient(140deg, #141d2b 0%, #0d2242 60%, #0d2242 80%, #141d2b 100%);
+	--main-bg-gradient: linear-gradient(140deg, #0e141e 0%, #09182e 60%, #091930 80%, #0e151f 100%);
 	--base-gap: 2rem;
 	--base-pad: 1rem;
 	--small-pad: 0.5rem;
@@ -63,7 +63,7 @@ body {
 	padding: 0;
 	/* max-width: 65ch; */
 	text-align: left;
-	background: var(--color-bg);
+	/* background: var(--color-bg);
 	background: linear-gradient(
 		180deg,
 		var(--accent-color-1) 0%,
@@ -76,10 +76,18 @@ body {
 		var(--accent-color-4) 80%,
 		var(--accent-color-5) 80%,
 		var(--accent-color-5) 100%
-	);
+	); */
+	background: var(--main-bg);
+	background: var(--main-bg-gradient);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
+}
+
+body.new-order {
+	display: grid;
+	grid-template-columns: 1fr 8vw;
+	min-height: 100vh;
 }
 
 main {
@@ -87,13 +95,11 @@ main {
 }
 
 .page {
-	position: relative;
+	/* position: relative; */
 	color: var(--main-fg);
-	background: var(--main-bg);
-	background: var(--main-bg-gradient);
 	min-height: 100vh;
-	margin-left: 8vw;
-	padding: 1vw 8vw 8vw;
+	min-width: 0px;
+	padding: 1vw 6vw 8vw;
 }
 
 section > h1:first-child,
@@ -162,7 +168,10 @@ code {
 }
 pre {
 	padding: 1rem;
+	max-width: 100%;
+	overflow-x: auto;
 }
+
 pre > code {
 	all: unset;
 }

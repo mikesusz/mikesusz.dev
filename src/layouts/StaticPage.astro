@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BlueMondayStrip from '../components/BlueMondayStrip.astro';
 
 const { title, description } = Astro.props;
 ---
@@ -17,7 +18,7 @@ const { title, description } = Astro.props;
 		</style>
 	</head>
 
-	<body>
+	<body class="new-order">
 		<div class="page">
 			<Header />
 			<main>
@@ -29,5 +30,6 @@ const { title, description } = Astro.props;
 			</main>
 			<Footer />
 		</div>
+		<BlueMondayStrip />
 	</body>
 </html>

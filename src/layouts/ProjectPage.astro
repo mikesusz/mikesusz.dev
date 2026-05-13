@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ExternalLink from '../components/ExternalLink.astro';
+import BlueMondayStrip from '../components/BlueMondayStrip.astro';
 
 // type Props = CollectionEntry<'projects'>['data'];
 
@@ -39,7 +40,7 @@ const { title, description, createdDate, status, tags, repoUrl, liveUrl, heroIma
 		<BaseHead title={title} description={description} />
 		<style>
 			article {
-				font-size: 125%;
+				/* font-size: 125%; */
 				text-wrap-style: pretty;
 				h2,
 				h3 {
@@ -123,7 +124,7 @@ const { title, description, createdDate, status, tags, repoUrl, liveUrl, heroIma
 		</style>
 	</head>
 
-	<body>
+	<body class="new-order">
 		<div class="page">
 			<Header />
 			<main>
@@ -178,12 +179,12 @@ const { title, description, createdDate, status, tags, repoUrl, liveUrl, heroIma
 						)
 					}
 				</article>
-
 				<div class="blog-navigation">
 					<a href="/projects">Back to projects</a> | <a href="/">Back to home</a>
 				</div>
 			</main>
 			<Footer />
 		</div>
+		<BlueMondayStrip />
 	</body>
 </html>

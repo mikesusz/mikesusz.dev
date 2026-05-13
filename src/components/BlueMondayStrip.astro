@@ -1,0 +1,112 @@
+---
+// to treat me like you do
+---
+
+<style>
+	canvas.blue-monday {
+		display: block;
+		width: 100%;
+	}
+</style>
+
+<canvas class="blue-monday"></canvas>
+
+<script>
+	const canvas = document.querySelector('canvas.blue-monday') as HTMLCanvasElement;
+	const ctx = canvas.getContext('2d')!;
+
+	const colors = ['#9fef00', '#ff3e3e', '#004cff', '#ffaf00', '#9f00ff'];
+
+	// cols:2 = full width. cols:1 requires col (0=left, 1=right).
+	// Mismatched pairs must stay consecutive: tall col N, then two halves in the other col.
+	const shapes = [
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 5, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 4, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 5, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 4, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 0 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 3, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 2, cols: 2 },
+		{ rows: 1, cols: 2 },
+		{ rows: 4, cols: 1, col: 0 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 2, cols: 1, col: 1 },
+		{ rows: 1, cols: 2 }
+	];
+
+	function draw() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		const colWidth = Math.round(canvas.width / 2);
+		const rowHeight = Math.round(canvas.width / 4); // 2vw: canvas is 8vw wide, so row = canvas.width/4
+		const cursors = [0, 0]; // y-position for [left, right] columns
+		let shapeIndex = 0;
+
+		while (Math.min(cursors[0], cursors[1]) < canvas.height) {
+			const shape = shapes[shapeIndex % shapes.length];
+			const color = colors[Math.floor(Math.random() * colors.length)];
+			const h = shape.rows * rowHeight;
+
+			if (shape.cols === 2) {
+				const y = Math.max(cursors[0], cursors[1]);
+				ctx.fillStyle = color;
+				ctx.fillRect(0, y, canvas.width, h);
+				cursors[0] = y + h;
+				cursors[1] = y + h;
+			} else {
+				const c = shape.col as number;
+				ctx.fillStyle = color;
+				ctx.fillRect(c * colWidth, cursors[c], colWidth, h);
+				cursors[c] += h;
+			}
+
+			shapeIndex++;
+		}
+	}
+
+	function resize() {
+		canvas.width = canvas.offsetWidth;
+		canvas.height = document.documentElement.scrollHeight;
+		draw();
+	}
+
+	window.addEventListener('load', resize);
+	window.addEventListener('resize', resize);
+</script>

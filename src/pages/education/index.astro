@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import BlueMondayStrip from '../../components/BlueMondayStrip.astro';
 
 const posts = (
 	await getCollection('education', ({ data }) => {
@@ -29,7 +30,7 @@ const posts = (
 			}
 		</style>
 	</head>
-	<body>
+	<body class="new-order">
 		<div class="page">
 			<Header />
 			<main>
@@ -55,5 +56,6 @@ const posts = (
 			</main>
 			<Footer />
 		</div>
+		<BlueMondayStrip />
 	</body>
 </html>
