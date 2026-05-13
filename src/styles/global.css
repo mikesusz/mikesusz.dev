@@ -98,8 +98,8 @@ main {
 	/* position: relative; */
 	color: var(--main-fg);
 	min-height: 100vh;
-	/* margin-left: 8vw; */
-	padding: 1vw 2vw 8vw 8vw;
+	min-width: 0px;
+	padding: 1vw 6vw 8vw;
 }
 
 section > h1:first-child,
@@ -168,7 +168,10 @@ code {
 }
 pre {
 	padding: 1rem;
+	max-width: 100%;
+	overflow-x: auto;
 }
+
 pre > code {
 	all: unset;
 }

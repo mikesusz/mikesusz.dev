@@ -71,15 +71,23 @@
 		{ rows: 1, cols: 2 }, // sliver
 		{ rows: 3, cols: 2 }, // medium
 		{ rows: 1, cols: 2 }, // sliver
-		{ rows: 3, cols: 2 } // medium
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 3, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 2, cols: 2 }, // medium
+		{ rows: 1, cols: 2 }, // sliver
+		{ rows: 4, cols: 1 }, // tall left, two short right
+		{ rows: 2, cols: 1 },
+		{ rows: 2, cols: 1 },
+		{ rows: 1, cols: 2 } // sliver
 	];
 
-	shapes.forEach(({ rows, cols }, i) => {
+	shapes.forEach(({ rows, cols }) => {
 		const block = document.createElement('div');
 		block.className = 'bm-block';
 		block.style.gridColumn = `span ${cols}`;
 		block.style.gridRow = `span ${rows}`;
-		block.style.setProperty('background-color', colors[i % colors.length]);
+		block.style.setProperty('background-color', colors[Math.floor(Math.random() * colors.length)]);
 		if (strip) strip.appendChild(block);
 	});
 
