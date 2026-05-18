@@ -1,6 +1,6 @@
 ---
 title: 'Job Search Robot'
-description: 'Desc'
+description: 'How I built the infrastructure supporting my job search.'
 pubDate: '18 May 2026'
 draft: false
 ---
