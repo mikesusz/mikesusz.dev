@@ -48,7 +48,7 @@ All this data is then written back to the SQLite database.
 
 I'm keeping a record of all my applications in markdown files in Obsidian. The last step for the python scripts is to update a 'Candidates' file for me to manually review.
 
-![A screenshot of an example job captured in the CRM](/public/images/example-job.png)
+![A screenshot of an example job captured in the CRM](/images/example-job.png)
 
 ## The Human
 
