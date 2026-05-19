@@ -3,9 +3,16 @@
 ---
 
 <style>
+	body.new-order {
+		display: grid;
+		grid-template-columns: 1fr 8vw;
+		min-height: 100svh;
+	}
 	canvas.blue-monday {
 		display: block;
 		width: 100%;
+		align-self: stretch;
+		min-height: 100svh;
 	}
 </style>
 
@@ -101,12 +108,19 @@
 		}
 	}
 
+	let resizeTimer: ReturnType<typeof setTimeout>;
+
 	function resize() {
-		canvas.width = canvas.offsetWidth;
-		canvas.height = document.documentElement.scrollHeight;
+		const rect = canvas.getBoundingClientRect();
+		canvas.width = rect.width;
+		canvas.height = 0;
+		canvas.height = canvas.getBoundingClientRect().height;
 		draw();
 	}
 
 	window.addEventListener('load', resize);
-	window.addEventListener('resize', resize);
+	window.addEventListener('resize', () => {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(resize, 150);
+	});
 </script>

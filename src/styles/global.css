@@ -84,12 +84,6 @@ body {
 	line-height: 1.5;
 }
 
-body.new-order {
-	display: grid;
-	grid-template-columns: 1fr 8vw;
-	min-height: 100vh;
-}
-
 main {
 	max-width: var(--content-max-width);
 }
