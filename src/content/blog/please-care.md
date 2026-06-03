@@ -1,18 +1,14 @@
 ---
 title: 'Please, care.'
-description: '.'
-pubDate: '24 Apr 2026'
+description: "Let's move past the tools being used and get to the heart of the problem."
+pubDate: '29 May 2026'
 draft: false
 ---
 
-Everywhere I look online, I see people talking about a crisis. Or more accurately, several or many. Infinite crises?
+I'm exhausted. You, too?
 
-So much new work is being created - content, images, video, code. Proposing changes to open source projects, replying to posts, writing blog posts?
+It's difficult to scroll any type of social media, read a news article, watch a tv show, or just exist in our modern world - without mention of AI.
 
-But the quality is bad. The language is stilted. The code is questionable.
+I have friends who are AI detractors, and I trust them.
 
-People are using AI.
-
-### So what's new?
-
-You might say this timeline began with the release of ChatGPT. I will say - it started long before that. AI is only accelerating this decline.
+I have friends who are AI enthusiasts, and I trust them also.
