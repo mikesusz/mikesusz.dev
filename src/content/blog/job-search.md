@@ -5,6 +5,8 @@ pubDate: '18 May 2026'
 draft: false
 ---
 
+(Note: since writing this, I've rebuilt my job search bot to be more robust and less error-prone. you can read about the new one here: [Job Search Bot v2](/blog/job-search-v2) )
+
 ## The Need
 
 A lot of the training I've been doing for work has been about automating processes and using AI for specific purposes where it produces the most value. I learned to create tools that automate tedious and repetitive tasks, and use AI to augment human decisions.
