@@ -4,6 +4,7 @@ import node from '@astrojs/node';
 
 import sitemap from '@astrojs/sitemap';
 
+import { unified } from '@astrojs/markdown-remark';
 import rehypeExternalLinks from 'rehype-external-links';
 import { readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
@@ -45,7 +46,9 @@ export default defineConfig({
 		})
 	],
 	markdown: {
-		rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]]
+		processor: unified({
+			rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]]
+		})
 	},
 	experimental: {
 		contentIntellisense: true
