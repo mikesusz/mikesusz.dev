@@ -1,0 +1,71 @@
+---
+interface Screenshot {
+	dark: string;
+	light: string;
+	alt: string;
+}
+
+interface Props {
+	screenshots: Screenshot[];
+	width?: number;
+	height?: number;
+}
+
+const { screenshots, width = 1320, height = 2868 } = Astro.props;
+---
+
+<div class="screenshot-sequence">
+	{
+		screenshots.map(({ dark, light, alt }) => (
+			<picture>
+				<source srcset={light} media="(prefers-color-scheme: light)" />
+				<img src={dark} alt={alt} class="screenshot" width={width} height={height} loading="lazy" />
+			</picture>
+		))
+	}
+</div>
+
+<style>
+	.screenshot-sequence {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 420px));
+		gap: var(--base-gap);
+		justify-content: center;
+		margin-block: var(--base-gap);
+	}
+
+	.screenshot-sequence picture {
+		display: block;
+		min-width: 0;
+	}
+
+	.screenshot {
+		width: 100%;
+		height: auto;
+		border-radius: 16px;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+	}
+
+	@media (prefers-color-scheme: light) {
+		.screenshot {
+			box-shadow: 0 4px 20px rgba(15, 23, 42, 0.25);
+		}
+	}
+
+	@media (max-width: 700px) {
+		.screenshot-sequence {
+			display: flex;
+			justify-content: flex-start;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scroll-padding-inline: var(--base-pad);
+			padding-bottom: var(--base-pad);
+			gap: var(--base-pad);
+		}
+
+		.screenshot-sequence picture {
+			flex: 0 0 min(80vw, 360px);
+			scroll-snap-align: center;
+		}
+	}
+</style>
