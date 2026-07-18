@@ -22,7 +22,6 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 				h3 {
 					margin-top: 1.5em;
 					border-left-width: 2em;
-					border-left-color: var(--accent-color-1);
 					border-left-style: solid;
 					padding-left: 0.5em;
 				}
@@ -31,14 +30,29 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 					border-left-width: 1em;
 				}
 
-				h2:nth-of-type(2),
-				h3:nth-of-type(2) {
+				h2:nth-of-type(5n + 1),
+				h3:nth-of-type(5n + 1) {
+					border-left-color: var(--accent-color-1);
+				}
+
+				h2:nth-of-type(5n + 2),
+				h3:nth-of-type(5n + 2) {
 					border-left-color: var(--accent-color-2);
 				}
 
-				h2:nth-of-type(3),
-				h3:nth-of-type(3) {
+				h2:nth-of-type(5n + 3),
+				h3:nth-of-type(5n + 3) {
 					border-left-color: var(--accent-color-3);
+				}
+
+				h2:nth-of-type(5n + 4),
+				h3:nth-of-type(5n + 4) {
+					border-left-color: var(--accent-color-4);
+				}
+
+				h2:nth-of-type(5n + 5),
+				h3:nth-of-type(5n + 5) {
+					border-left-color: var(--accent-color-5);
 				}
 
 				.heroImage {
