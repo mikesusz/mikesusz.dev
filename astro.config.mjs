@@ -6,6 +6,41 @@ import sitemap from '@astrojs/sitemap';
 
 import { unified } from '@astrojs/markdown-remark';
 import rehypeExternalLinks from 'rehype-external-links';
+
+// Turn a standalone image that has a markdown title into a semantic
+// <figure><img><figcaption>. Alt stays as alt; the title becomes the caption.
+//   ![accessible alt text](/img.png "Visible caption")
+function rehypeImageFigures() {
+	return (tree) => {
+		const walk = (node) => {
+			if (!node.children) return;
+			node.children = node.children.map((child) => {
+				walk(child);
+				if (child.type !== 'element' || child.tagName !== 'p') return child;
+				const kids = child.children.filter((c) => !(c.type === 'text' && c.value.trim() === ''));
+				const img = kids[0];
+				if (kids.length !== 1 || img.tagName !== 'img' || !img.properties?.title) return child;
+				const caption = img.properties.title;
+				delete img.properties.title;
+				return {
+					type: 'element',
+					tagName: 'figure',
+					properties: {},
+					children: [
+						img,
+						{
+							type: 'element',
+							tagName: 'figcaption',
+							properties: {},
+							children: [{ type: 'text', value: caption }]
+						}
+					]
+				};
+			});
+		};
+		walk(tree);
+	};
+}
 import { readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -47,7 +82,10 @@ export default defineConfig({
 	],
 	markdown: {
 		processor: unified({
-			rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]]
+			rehypePlugins: [
+				[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+				rehypeImageFigures
+			]
 		})
 	},
 	experimental: {
