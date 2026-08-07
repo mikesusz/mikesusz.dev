@@ -15,15 +15,24 @@ import remarkDirective from 'remark-directive';
 //   ![b](/b.png)
 //   :::
 // becomes <div class="gallery"> wrapping the images. Style the class in CSS.
+//
+// A directive label captions the whole block — the container becomes a
+// <figure> and the label moves to a trailing <figcaption>:
+//   :::gallery[Caption for all four images.]
 function remarkDirectiveBlocks() {
 	return (tree) => {
 		const walk = (node) => {
 			if (node.type === 'containerDirective') {
 				const attrs = node.attributes || {};
 				const className = [node.name, ...(attrs.class ? attrs.class.split(/\s+/) : [])];
+				const label = node.children?.[0]?.data?.directiveLabel ? node.children[0] : null;
+				if (label) {
+					label.data = { ...label.data, hName: 'figcaption' };
+					node.children = [...node.children.slice(1), label];
+				}
 				node.data = {
 					...node.data,
-					hName: 'div',
+					hName: label ? 'figure' : 'div',
 					hProperties: { className, ...(attrs.id ? { id: attrs.id } : {}) }
 				};
 			}

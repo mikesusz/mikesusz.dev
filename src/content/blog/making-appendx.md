@@ -2,7 +2,7 @@
 title: 'Making AppendX'
 description: 'Why and How I built my iOS App, AppendX'
 pubDate: '03 Aug 2026'
-draft: false
+draft: true
 heroImage: '/images/AppendX-sketch.jpg'
 heroAlt: 'My initial design sketch for the AppendX icon'
 ---
@@ -116,9 +116,9 @@ What they hand over instead is inconsistent in ways I wasn't prepared for. Shari
 
 ![A screenshot of the AppendX debug view](/images/making-appendx-ss3.png 'AppendX debug view showing various Attachment payloads')
 
-I already had a debug view — an `#if DEBUG` screen I'd been using since early on to see what came through the share extension. That's how I collected the corpus in the first place: long-press the sheet, dump everything, copy it out, move to the next app.
+I already had a debug view — an `#if DEBUG` screen I'd been using since early on to see what came through the share extension. That's how I collected the corpus in the first place: long-press the sheet, dump everything, copy it out, move to the next app. Fifteen of them.
 
-That corpus became the normalization layer: a short pipeline that promotes a URL out of a text field when an app puts it in the wrong place, decodes the Apple News parameter, strips tracking junk, and generally tries to turn "whatever this app felt like sending" into "the thing the user meant to save." It also became a regression suite. Every time I changed the extraction logic, I re-ran all twenty-five and diffed the results.
+That corpus became the normalization layer: a short pipeline that promotes a URL out of a text field when an app puts it in the wrong place, decodes the Apple News parameter, strips tracking junk, and generally tries to turn "whatever this app felt like sending" into "the thing the user meant to save." It also became a regression suite. Every time I changed the extraction logic, I re-ran all fifteen and diffed the results.
 
 ### The Finding That Was My Own Bug
 
@@ -128,13 +128,13 @@ And in the course of writing it — re-testing to verify my claims — I found t
 
 I'd written up that a dozen apps were sending their own hostname where a page title belongs. Wikipedia handing me en.wikipedia.org. Bluesky handing me bsky.app. It was a good finding. It was also entirely my fault: when an app sent no title at all, my own normalization was filling the gap with the URL's hostname. The apps weren't sending junk. They were sending nothing, and I was manufacturing the junk myself.
 
-The problem was that the debug view showed me my own parsed output and presented it as though it were what the app had sent. There was no line between "iOS handed me this" and "my code decided this." Twenty-five captures, all filtered through a lens I couldn't see. The fix was to stop trusting my own output. I rebuilt the debug view to print two labeled sections — RAW, exactly what the app provided, and NORMALIZED, what my code did with it — and to print empty fields explicitly rather than omitting them. Absence is a finding. Omitting it is how I spent a week believing something that wasn't true.
+The problem was that the debug view showed me my own parsed output and presented it as though it were what the app had sent. There was no line between "iOS handed me this" and "my code decided this." Fifteen captures, all filtered through a lens I couldn't see. The fix was to stop trusting my own output. I rebuilt the debug view to print two labeled sections — RAW, exactly what the app provided, and NORMALIZED, what my code did with it — and to print empty fields explicitly rather than omitting them. Absence is a finding. Omitting it is how I spent a week believing something that wasn't true.
 
 ![A screenshot of the AppendX debug view](/images/making-appendx-ss2.png 'AppendX debug view showing nil title')
 
 Re-running the corpus against the new dump turned up four more bugs. Some were my assumptions. A couple were places where Claude Code had confidently traced the Apple News parsing logic and gotten it wrong — twice, with the same case, which is its own lesson: the trace is not the verification. It also disproved two of my seven normalization rules, which I deleted. The pipeline that shipped has five steps.
 
-You can read the whole expedition in [What iOS Shares](/blog/what-ios-shares).
+You can read the whole sharing expedition in [What iOS Shares](/blog/what-ios-shares).
 
 ### The UI That Lied
 
@@ -149,7 +149,7 @@ Then I shared a Wikipedia article to a target using the raw format and watched i
 ![A screenshot of the AppendX share sheet](/images/making-appendx-ss5.png 'AppendX telling you that some data will be lost.')
 :::
 
-The logic was reasonable and wrong. It checked whether the template's tokens had values — not whether all the data I'd received actually made it into the output. So a template that didn't reference the URL at all reported success, because nothing it asked for was missing. It was answering the wrong question with total confidence.
+The logic was reasonable, but wrong. It checked whether the template's tokens had values — not whether all the data I'd received actually made it into the output. So a template that didn't reference the URL at all reported success, because nothing it asked for was missing. It was answering the wrong question with total confidence.
 
 For an app whose entire pitch is "never lose data," a UI that lies about losing data is worse than one that crashes. A crash you notice.
 
@@ -163,14 +163,14 @@ There's a pattern here I keep running into. The debug view told me what it thoug
 
 Initially, I designed several different means of output in your markdown files: link, task, quote, note, and raw. Further, each of these types could be customized by the user.
 
-Then, through using this on my phone every day, I realized that the shape of what is being captured was much simpler: a _list_, or a _block_. Then further, for a List you may want a checkbox, or a date. For a block, you might want separators between, and a date.
+Then, through using this on my phone every day, I realized that the shape of what is being captured was much simpler: a _list_, or a _block_. Then further, for a _list_ you may want a checkbox, or a date. For a _block,_ you might want separators between, and a date.
 
 :::gallery
 ![A screenshot of the AppendX configuration UI](/images/making-appendx-ss6.png 'Configuration options for a List-type capture')
 ![A screenshot of the AppendX configuration UI](/images/making-appendx-ss7.png 'Configuration options for a Block-type capture')
 :::
 
-These simplified options actually retained most of the power that was available initially, but they broke down the decision making into steps. The user wasn't left staring at a list of tokens to insert into a template, they are making a series of simplified decisions. I don't think I could have arrived at this vision without having used the app and iterated upon my initial idea. (side note: this is why you shouldn't rush the 'beta' period!)
+These simplified options actually retained most of the power that was available initially, but they broke down the decision making into steps. The user wasn't left staring at a list of tokens to insert into a template, they are making a series of simplified decisions. I don't think I could have arrived at this vision without having used the app and iterated upon my initial idea.
 
 #### Helping With Emojis
 
@@ -221,7 +221,7 @@ within a few hours.
 
 ![A screenshot of the AppendX project in Xcode](/images/making-appendx-ss8.png 'AppendX project in Xcode, Distribution view')
 
-App Store Connect is a gauntlet. I had anticipated that there would be more paperwork since my app has a modest, yet non-essential In-App-Purchase "tip-jar" built into it. (Luckily I had already created a business entity with the IRS years back when I was a freelancer.) But the parts that caught me off-guard were procedural things that were hidden all over throughout the interface:
+App Store Connect is a gauntlet. I had anticipated that there would be more paperwork since my app has a modest, yet non-essential In-App-Purchase "tip-jar" built into it. (Luckily I had already created a business entity with the IRS years back when I was a freelancer.) But the parts that caught me off-guard were procedural things that were hidden all over throughout the website:
 
 - age ratings
 - countries of distribution
@@ -234,7 +234,7 @@ That last one really got me. In addition to the screenshots you provide as part 
 
 ### The Icon
 
-:::gallery
+:::gallery[The four native iOS icon modes: Default, Dark, Clear Light, Clear Dark.]
 ![AppendX icon, default](/images/AppendX-iOS-Default-512x512@1x.png)
 ![AppendX icon, dark](/images/AppendX-iOS-Dark-512x512@1x.png)
 ![AppendX icon, clear light](/images/AppendX-iOS-ClearLight-512x512@1x.png)
@@ -251,16 +251,10 @@ If it wasn't obvious already - the X is a variable. The idea of making it only a
 
 Later, when I added the direct input method to the app, I was glad I hadn't chosen 'ShareX.' And when searching for a domain name, finding AppendX.to was perfect. Append _X_ to... anything!
 
-### This Thing Exists Now, and It's Fine
+### What It's Like Now
 
-Having AppendX on my devices feels second-nature to me now. I wasn't expecting it to be exciting, I don't anticipate winning any design awards. It just becomes a predictable, easy part of a workflow. For the people who understand the problem it solves, it will probably be extremely useful. And it's free - because _I_ wanted this to exist, even if I was the only one able to use it. I added the tip-jar functionality on a lark, I'll declare success if someday it brings in enough revenue to offset the cost of my developer account and the domain name (.to is expensive!)
+Somebody in Slack mentions a band, tap tap 🎸, they're in my bands.md. I'm putting together a road trip and I can assemble details about destinations and restaurants in scratchpad.md ✏️. When I think of it, I find the label and jot down the model number of my grill into my inbox 📥, and later I file that into my 'reference - house' document.
 
-And I'm different now - I'm familiar with Swift. I've gone through the App Store Connect paid apps gauntlet. If I have another idea for an app that would be useful, I can just make it. That feels pretty empowering. And I learned a lesson about
+Having AppendX on my devices is second-nature now. For anyone who has the same problem, it'll be useful. It's free, because I wanted it to exist even if I was the only one who used it. The tip jar was a lark — I'll declare success if it ever covers the developer account and the domain (.to is expensive!).
 
-Also - not to be overlooked, this App wouldn't exist, at least not in seven weeks, without the assistance of AI. I know there are a lot of people who deride the usage of AI tools due to their impact on environment and resources. I also know, there are people who believe we should use AI for everything, no matter that downsides.
-
-I hope, once again, that I've proven there is a middle-ground, where you can evaluate and choose to adopt new tools where appropriate, as long as you put yourself in a position to verify what they produce and take responsibility for the product.
-
-It's not a panacea - I've experienced and documented the errors that AI made. But as a human programmer, I've made just as many on this project (and far more in my lifetime).
-
-So - I hope you enjoyed my journey of creating AppendX, and if it suits your needs - I also hope you enjoy AppendX. It will always be available, fully-functional and free.
+It's not a triumph, it's just a tool. And that's okay.

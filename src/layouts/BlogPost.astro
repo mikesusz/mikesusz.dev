@@ -83,9 +83,16 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 
 				.gallery {
 					display: flex;
+					flex-wrap: wrap;
 					gap: 0.75em;
 					margin: 1.5em 0;
 					align-items: flex-start;
+				}
+
+				/* a captioned gallery is a <figure>; the caption spans the row */
+				.gallery figcaption {
+					flex: 1 0 100%;
+					margin-top: 0;
 				}
 
 				/* unwrap the <p> markdown adds so the images become the columns,
