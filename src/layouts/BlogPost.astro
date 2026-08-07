@@ -108,6 +108,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 					height: auto;
 					display: block;
 				}
+
+				@media (max-width: 768px) {
+					.gallery img {
+						flex: 1 1 100%;
+					}
+				}
 			}
 			.blog-navigation {
 				margin-top: 2rem;

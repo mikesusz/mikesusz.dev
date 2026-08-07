@@ -9,7 +9,7 @@ heroAlt: 'My initial design sketch for the AppendX icon'
 
 ## Background
 
-My markdown vault (really, just a directory full of .md files) is where everything is stored. I use this compendium for capture, execution, and reference.
+My markdown vault (really, just a directory full of .md files) is where everything is stored. I use this compendium for three distinct modes: Capture, Execution, and Reference.
 
 ### Capture
 
@@ -62,7 +62,7 @@ I have reference files for ... nearly everything I interact with. Model numbers,
 
 I document all these things so I never have to wonder "what's the right water filter for the fridge?" And since these files are synced to all my devices, they're available to me everywhere, whether I'm at home or out.
 
-Productivity people might call this the "outboard brain." Some folks turn their system into its own meta-project. You may have even seen clickbait titles like "I deleted my outboard brain." I think those people maybe missed the point somewhere - a system like this is supposed to _reduce friction and hardship_ rather than become a new source of friction and hardship itself.
+Productivity people call this the "outboard brain." Some folks turn their system into its own meta-project. I've even seen people who take it so far they get frustrated with it - I've seen clickbait titles like "I deleted my outboard brain." I think maybe they missed the point somewhere - a system like this is supposed to _reduce friction and hardship_ rather than become a new source of friction and hardship itself.
 
 ## So.. why an App?
 
@@ -88,9 +88,9 @@ While I had this idea in my head for a while, I didn't formulate a plan until I 
 
 I've used Claude to draft specifications for a while. This project followed our typical workflow:
 
-I spell out in detail what I want to accomplish, the technologies I want to use, any dependencies or constraints.
+I spell out in detail what I want to accomplish, the technologies I want to use, and any dependencies or constraints.
 
-I ask Claude to create a Project document in (surprise!) my markdown vault, using my [Markdown Vault MCP](/projects/markdown-vault-mcp/) server. I give claude read/write ("edit") access.
+I ask Claude to create a new PROJECT document in (surprise!) my markdown vault, using my [Markdown Vault MCP](/projects/markdown-vault-mcp/) server. I give claude read/write ("edit") access.
 
 As the conversation progresses and I make more design decisions, Claude updates the document with me, and we ultimately arrive at a fully-formed design specification.
 
@@ -106,15 +106,15 @@ Since I hadn't used Xcode before, this was the first hurdle when establishing a 
 
 Besides the routine configurations, Claude also knew about various gotchas before I had to go searching the web. The App Scheme for the overall app periodically disappears from the list, causing me to accidentally archive and (attempt to) publish a build consisting of just the sharing extension. iCloud Document access mysteriously missing - because you need to upgrade to a paid developer account (something I had planned to do later in the process, but turned out to be essential for beginning it). These things would have sidetracked me to research 'what the heck' but thankfully, Claude was trained on the solutions.
 
-![A screenshot of the AppendX project in Xcode](/images/making-appendx-ss9.png 'AppendX project in Xcode, where the main app schema has disappeared due to a configuration change, and schemas need to be rebuilt')
+![A screenshot of the AppendX project in Xcode](/images/making-appendx-ss9.png 'AppendX project in Xcode, where the main app schema has disappeared due to a configuration change, and Schemas need to be rebuilt')
 
 ### The Sharing Challenges
 
 Initially I had envisioned that applications were going to hand over rich text that I would need to format in markdown. I created a `RichTextConverter` in anticipation of this. But through my testing, I discovered that none of them did. So that code went on the shelf.
 
-What they hand over instead is inconsistent in ways I wasn't prepared for. Sharing an article from the Wikipedia app gives you a bare URL and nothing else — no title, no text, no metadata of any kind. YouTube sends the URL as plain text and populates no URL field at all. Apple News URL-encodes your highlighted sentence into a query parameter, where no reasonable person would look for it. Maps hands you eleven kilobytes of opaque blob plus a ten-byte attachment containing the only human-readable thing in the payload.
+What they hand over instead is inconsistent in ways I wasn't prepared for. Sharing an article from the Wikipedia app gives you a bare URL and nothing else — no title, no text, no metadata of any kind. YouTube sends the URL as plain text and populates no URL field at all. Apple News URL-encodes your selected text into a URL query parameter, where no reasonable person would look for it. Maps hands you eleven kilobytes of opaque blob plus a ten-byte attachment containing the only human-readable thing in the payload.
 
-![A screenshot of the AppendX debug view](/images/making-appendx-ss3.png 'AppendX debug view showing various Attachment payloads')
+![A screenshot of the AppendX debug view](/images/making-appendx-ss3.png 'AppendX debug view showing various Attachment payloads from the Maps app')
 
 I already had a debug view — an `#if DEBUG` screen I'd been using since early on to see what came through the share extension. That's how I collected the corpus in the first place: long-press the sheet, dump everything, copy it out, move to the next app. Fifteen of them.
 
@@ -184,11 +184,11 @@ The obvious way to build this is an API call — hand the name to a model, get a
 
 ![A screenshot of the AppendX configuration](/images/making-appendx-ss11.png 'AppendX giving emoji suggestions based on the target name')
 
-What it does instead is run entirely on the device: Apple's NLTagger pulls the nouns out of whatever you typed, those get matched against a keyword map, and anything that misses falls through to broader family buckets so "bird" and "mushroom" and "stargazing" all land somewhere sensible even if the exact word isn't in the list.
+What it does instead is run entirely on the device: Apple's `NLTagger` pulls the nouns out of whatever you typed, those get matched against a keyword map, and anything that misses falls through to broader family buckets so "bird" and "mushroom" and "stargazing" all land somewhere sensible even if the exact word isn't in the list.
 
 ![A screenshot of the AppendX codebase](/images/making-appendx-ss12.png 'AppendX code with a sample of the dozens and dozens of different possible target names that I brainstormed')
 
-It's more code than the API call would have been. But it's instant, it works on a plane, and it costs nothing to run — which for a free app with a tip jar is the difference between a feature and a liability.
+It's more code than the API call would have been. But it's instant, it works on a plane, and it costs nothing to run — which for a free app is the difference between a feature and a liability.
 
 ### The Widget Side-Quest
 
@@ -200,9 +200,9 @@ The challenge for me, however, was that Widgets are finicky, especially ones whe
 
 So my next deduction was to reduce the scope of the widget to only invoke the capture mode in the app. It would be a second tap to choose your target. It felt like a compromise that was okay for a 1.0 product. But quickly thereafter, I realized a single-use widget was about the same as tapping on the App icon itself.
 
-![A screenshot of the AppendX input view with pasted markdown](/images/making-appendx-ss10.png "AppendX input view's 'Paste as Markdown' converts rich text")
-
 So, the text input view remains in the App. You can paste, type, quickly edit before saving, even use the iOS microphone to dictate what you want to capture. And the Paste-as-Markdown button will convert the rich text that you copied.
+
+![A screenshot of the AppendX input view with pasted markdown](/images/making-appendx-ss10.png "AppendX input view's 'Paste as Markdown' converts rich text")
 
 ### The Final Boss: Apple App Store Connect
 
@@ -255,6 +255,6 @@ Later, when I added the direct input method to the app, I was glad I hadn't chos
 
 Somebody in Slack mentions a band, tap tap 🎸, they're in my bands.md. I'm putting together a road trip and I can assemble details about destinations and restaurants in scratchpad.md ✏️. When I think of it, I find the label and jot down the model number of my grill into my inbox 📥, and later I file that into my 'reference - house' document.
 
-Having AppendX on my devices is second-nature now. For anyone who has the same problem, it'll be useful. It's free, because I wanted it to exist even if I was the only one who used it. The tip jar was a lark — I'll declare success if it ever covers the developer account and the domain (.to is expensive!).
+Having AppendX on my devices is second-nature now. For anyone who has the same problem, it'll be useful. It's free, because I wanted it to exist even if I was the only one who used it. The tip jar was a lark — I'll declare success if it ever covers the cost of developer account and the domain name (registering a .to is expensive!).
 
 It's not a triumph, it's just a tool. And that's okay.
