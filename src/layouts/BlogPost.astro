@@ -80,6 +80,40 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 					opacity: 0.75;
 					text-wrap: pretty;
 				}
+
+				.gallery {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 0.75em;
+					margin: 1.5em 0;
+					align-items: flex-start;
+				}
+
+				/* a captioned gallery is a <figure>; the caption spans the row */
+				.gallery figcaption {
+					flex: 1 0 100%;
+					margin-top: 0;
+				}
+
+				/* unwrap the <p> markdown adds so the images become the columns,
+				   whether they're in one paragraph or several */
+				.gallery p {
+					display: contents;
+				}
+
+				.gallery img {
+					flex: 1 1 0;
+					min-width: 0;
+					width: 100%;
+					height: auto;
+					display: block;
+				}
+
+				@media (max-width: 768px) {
+					.gallery img {
+						flex: 1 1 100%;
+					}
+				}
 			}
 			.blog-navigation {
 				margin-top: 2rem;
@@ -95,7 +129,9 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 				<article>
 					{
 						heroImage && (
-							<img class="heroImage" width={720} height={360} src={heroImage} alt={heroAlt} />
+							<figure>
+								<img class="heroImage" width={720} height={360} src={heroImage} alt={heroAlt} />
+							</figure>
 						)
 					}
 					<h1 class="title">{title}</h1>
