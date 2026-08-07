@@ -6,6 +6,32 @@ import sitemap from '@astrojs/sitemap';
 
 import { unified } from '@astrojs/markdown-remark';
 import rehypeExternalLinks from 'rehype-external-links';
+import remarkDirective from 'remark-directive';
+
+// Render any container directive as <div class="{name}">, merging any
+// {.extra-class}/{#id} attributes. Gives a reusable block primitive:
+//   :::gallery
+//   ![a](/a.png)
+//   ![b](/b.png)
+//   :::
+// becomes <div class="gallery"> wrapping the images. Style the class in CSS.
+function remarkDirectiveBlocks() {
+	return (tree) => {
+		const walk = (node) => {
+			if (node.type === 'containerDirective') {
+				const attrs = node.attributes || {};
+				const className = [node.name, ...(attrs.class ? attrs.class.split(/\s+/) : [])];
+				node.data = {
+					...node.data,
+					hName: 'div',
+					hProperties: { className, ...(attrs.id ? { id: attrs.id } : {}) }
+				};
+			}
+			node.children?.forEach(walk);
+		};
+		walk(tree);
+	};
+}
 
 // Turn a standalone image that has a markdown title into a semantic
 // <figure><img><figcaption>. Alt stays as alt; the title becomes the caption.
@@ -82,6 +108,7 @@ export default defineConfig({
 	],
 	markdown: {
 		processor: unified({
+			remarkPlugins: [remarkDirective, remarkDirectiveBlocks],
 			rehypePlugins: [
 				[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
 				rehypeImageFigures
