@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import BlueMondayStrip from '../components/BlueMondayStrip.astro';
+import '../styles/prose.css';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -58,62 +59,6 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 				.heroImage {
 					margin-top: 1em;
 				}
-
-				img {
-					max-width: 100%;
-					height: auto;
-					border-radius: 4px;
-				}
-
-				p:has(> img:only-child) {
-					text-align: center;
-				}
-
-				figure {
-					margin: 1.5em 0;
-					text-align: center;
-				}
-
-				figcaption {
-					margin-top: 0.5em;
-					font-size: 0.8em;
-					opacity: 0.75;
-					text-wrap: pretty;
-				}
-
-				.gallery {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 0.75em;
-					margin: 1.5em 0;
-					align-items: flex-start;
-				}
-
-				/* a captioned gallery is a <figure>; the caption spans the row */
-				.gallery figcaption {
-					flex: 1 0 100%;
-					margin-top: 0;
-				}
-
-				/* unwrap the <p> markdown adds so the images become the columns,
-				   whether they're in one paragraph or several */
-				.gallery p {
-					display: contents;
-				}
-
-				.gallery img {
-					flex: 1 1 0;
-					min-width: 0;
-					width: 100%;
-					height: auto;
-					display: block;
-				}
-
-				@media (max-width: 768px) {
-					.gallery img {
-						flex: 1 1 100%;
-					}
-				}
 			}
 			.blog-navigation {
 				margin-top: 2rem;
@@ -126,7 +71,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.p
 		<div class="page">
 			<Header />
 			<main>
-				<article>
+				<article class="prose">
 					{
 						heroImage && (
 							<figure>

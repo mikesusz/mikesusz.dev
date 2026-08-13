@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ExternalLink from '../components/ExternalLink.astro';
 import BlueMondayStrip from '../components/BlueMondayStrip.astro';
+import '../styles/prose.css';
 
 type Props = CollectionEntry<'education'>['data'];
 
@@ -63,7 +64,7 @@ const { title, description, category, institution, date, credential, heroImage, 
 		<div class="page">
 			<Header />
 			<main>
-				<article>
+				<article class="prose">
 					{
 						heroImage && (
 							<img class="heroImage" width={720} height={360} src={heroImage} alt={heroAlt} />

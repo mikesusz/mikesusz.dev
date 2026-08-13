@@ -1,0 +1,69 @@
+/* Shared styling for rendered markdown content.
+ *
+ * Any layout that drops a <Content /> into the page adds class="prose" to the
+ * wrapping <article> and imports this file. Kept outside the layouts' scoped
+ * <style> blocks so every collection — blog, projects, education, static pages
+ * — picks up the same block primitives.
+ *
+ * The `:::name` container directives in astro.config.mjs render as
+ * <div class="name">, so a new block primitive is just a new class here.
+ */
+
+.prose {
+	img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 4px;
+	}
+
+	p:has(> img:only-child) {
+		text-align: center;
+	}
+
+	figure {
+		margin: 1.5em 0;
+		text-align: center;
+	}
+
+	figcaption {
+		margin-top: 0.5em;
+		font-size: 0.8em;
+		opacity: 0.75;
+		text-wrap: pretty;
+	}
+
+	/* :::gallery — images sit side by side, wrapping on narrow screens */
+	.gallery {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+		margin: 1.5em 0;
+		align-items: flex-start;
+	}
+
+	/* a captioned gallery is a <figure>; the caption spans the row */
+	.gallery figcaption {
+		flex: 1 0 100%;
+		margin-top: 0;
+	}
+
+	/* unwrap the <p> markdown adds so the images become the columns,
+	   whether they're in one paragraph or several */
+	.gallery p {
+		display: contents;
+	}
+
+	.gallery img {
+		flex: 1 1 0;
+		min-width: 0;
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	@media (max-width: 768px) {
+		.gallery img {
+			flex: 1 1 100%;
+		}
+	}
+}

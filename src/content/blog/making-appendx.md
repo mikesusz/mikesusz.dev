@@ -1,11 +1,14 @@
 ---
 title: 'Making AppendX'
 description: 'Why and How I built my iOS App, AppendX'
-pubDate: '03 Aug 2026'
-draft: true
+pubDate: '13 Aug 2026'
+draft: false
 heroImage: '/images/AppendX-sketch.jpg'
 heroAlt: 'My initial design sketch for the AppendX icon'
+projectSlug: 'appendx'
 ---
+
+(AppendX is [available on the App Store](https://apps.apple.com/app/appendx/id6781391045) now. You can read more about what it does at [AppendX.to](https://appendx.to))
 
 ## Background
 
@@ -64,19 +67,19 @@ I document all these things so I never have to wonder "what's the right water fi
 
 Productivity people call this the "outboard brain." Some folks turn their system into its own meta-project. I've even seen people who take it so far they get frustrated with it - I've seen clickbait titles like "I deleted my outboard brain." I think maybe they missed the point somewhere - a system like this is supposed to _reduce friction and hardship_ rather than become a new source of friction and hardship itself.
 
-## So.. why an App?
+## So... Why an App?
 
-Let's look at the old workflow. I'm in my 'dads' Slack. Someone posts to our '#recommendations' channel about a new movie they liked. I copy the title or the link to imdb or whatever. I switch to the app where I maintain my markdown files. I scroll through a huge list of files and find movies.md. I open the document and scroll to the bottom, make a new bullet point, paste the text.
+Let's look at the old Capture workflow. I'm in my 'dads' Slack. Someone posts to our '#recommendations' channel about a new movie they liked. I copy the title or the link to imdb or whatever. I switch to the app where I maintain my markdown files. I scroll through a huge list of files and find movies.md. I open the document and scroll to the bottom, make a new bullet point, paste the text.
 
 friction, friction, friction.
 
-Let's imagine a new way. I select text, tap, Share. pick an app, tap on 'Movies.' done.
+Let's imagine a new way. I select text, tap, Share. pick an app, tap on '🎬 Movies.' done. The share-sheet closes and I'm right back in Slack.
 
 This is exactly what AppendX does. It removes friction.
 
 ![A screenshot of the AppendX share sheet](/images/making-appendx-ss1.png 'When you share to AppendX, you see a grid of your configured markdown file targets and icons')
 
-## The making of AppendX
+## The Making of AppendX
 
 The first thing you might think when considering a new app, might be "where do you find the time?"
 
@@ -84,9 +87,9 @@ While I had this idea in my head for a while, I didn't formulate a plan until I 
 
 30 years of web development experience includes a lot of different technologies, but I was completely new to Swift, Swift UI, and the Xcode/App Store Connect ecosystem.
 
-### So, I turned to some friends for help
+### I Turned to some Friends for Help
 
-I've used Claude to draft specifications for a while. This project followed our typical workflow:
+I've used Claude to help draft specifications for a while. This project followed our typical workflow:
 
 I spell out in detail what I want to accomplish, the technologies I want to use, and any dependencies or constraints.
 
@@ -208,7 +211,7 @@ So, the text input view remains in the App. You can paste, type, quickly edit be
 
 The stark contrast between publishing a website, and publishing an iOS App Store app, cannot be overstated.
 
-I've built up my skills and infrastructure to where I can:
+I've built up my skills and infrastructure over the years to where I can:
 
 - register a domain name
 - configure DNS
@@ -255,6 +258,6 @@ Later, when I added the direct input method to the app, I was glad I hadn't chos
 
 Somebody in Slack mentions a band, tap tap 🎸, they're in my bands.md. I'm putting together a road trip and I can assemble details about destinations and restaurants in scratchpad.md ✏️. When I think of it, I find the label and jot down the model number of my grill into my inbox 📥, and later I file that into my 'reference - house' document.
 
-Having AppendX on my devices is second-nature now. For anyone who has the same problem, it'll be useful. It's free, because I wanted it to exist even if I was the only one who used it. The tip jar was a lark — I'll declare success if it ever covers the cost of developer account and the domain name (registering a .to is expensive!).
+Having AppendX on my devices is second-nature now. For anyone who has the same problem, it'll be useful. It's free, because I wanted it to exist even if I was the only one who used it. The tip jar was a lark — I'll declare success if it ever covers the cost of my developer account and the domain name (registering a .to is expensive!).
 
 It's not a triumph, it's just a tool. And that's okay.
