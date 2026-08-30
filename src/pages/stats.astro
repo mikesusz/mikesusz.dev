@@ -12,6 +12,8 @@ import {
 	getRecentPageViews,
 	getHistoricalTotalViews,
 	getDatabaseStats,
+	getReferrerStats,
+	referrerHostname,
 	isLikelyBot
 } from '../lib/db';
 
@@ -112,6 +114,11 @@ const pageViews = getPageViewsByPath();
 const dailyViews = getDailyPageViews(30);
 const recentViews = getRecentPageViews(20);
 const dbStats = getDatabaseStats();
+const referrerStats = getReferrerStats(25);
+const referrerTotal = referrerStats.external + referrerStats.direct + referrerStats.internal;
+
+const percentOfTraffic = (views: number) =>
+	referrerTotal > 0 ? `${((views / referrerTotal) * 100).toFixed(1)}%` : '—';
 ---
 
 <!doctype html>
@@ -203,6 +210,59 @@ const dbStats = getDatabaseStats();
 				font-size: 0.85rem;
 			}
 
+			.card-note {
+				margin-top: -0.5rem;
+				margin-bottom: 1rem;
+				font-size: 0.85rem;
+				color: var(--text-secondary);
+			}
+
+			.empty-note {
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+			}
+
+			.source-summary {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.source-stat {
+				flex: 1 1 8rem;
+				background: var(--background-primary);
+				border-radius: 6px;
+				padding: 0.75rem 1rem;
+			}
+
+			.source-label {
+				display: block;
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: var(--text-secondary);
+			}
+
+			.source-value {
+				display: block;
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: var(--accent);
+			}
+
+			.source-percent {
+				font-size: 0.85rem;
+				color: var(--text-secondary);
+			}
+
+			.referrer-url {
+				display: block;
+				font-size: 0.75rem;
+				color: var(--text-secondary);
+				word-break: break-all;
+			}
+
 			.grid-2 {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
@@ -281,6 +341,66 @@ const dbStats = getDatabaseStats();
 				</div>
 
 				<div class="stat-card">
+					<h2>Referrers</h2>
+					<p class="card-note">
+						Outside links only — self-referrals and localhost are counted separately. Referrers are
+						kept with detailed pageviews, so this covers the retention window rather than all time.
+					</p>
+
+					<div class="source-summary">
+						<div class="source-stat">
+							<span class="source-label">External</span>
+							<span class="source-value">{referrerStats.external.toLocaleString()}</span>
+							<span class="source-percent">{percentOfTraffic(referrerStats.external)}</span>
+						</div>
+						<div class="source-stat">
+							<span class="source-label">Direct / none</span>
+							<span class="source-value">{referrerStats.direct.toLocaleString()}</span>
+							<span class="source-percent">{percentOfTraffic(referrerStats.direct)}</span>
+						</div>
+						<div class="source-stat">
+							<span class="source-label">Internal</span>
+							<span class="source-value">{referrerStats.internal.toLocaleString()}</span>
+							<span class="source-percent">{percentOfTraffic(referrerStats.internal)}</span>
+						</div>
+					</div>
+
+					{
+						referrerStats.referrers.length === 0 ? (
+							<p class="empty-note">No external referrers recorded yet.</p>
+						) : (
+							<table class="stats-table">
+								<thead>
+									<tr>
+										<th>Source</th>
+										<th class="views-column">Views</th>
+										<th class="views-column">Share</th>
+										<th class="date-column">Last seen</th>
+									</tr>
+								</thead>
+								<tbody>
+									{referrerStats.referrers.map((referrer) => (
+										<tr>
+											<td class="path-column">
+												{referrer.hostname}
+												{referrer.topUrl !== referrer.hostname && (
+													<span class="referrer-url">{referrer.topUrl}</span>
+												)}
+											</td>
+											<td class="views-column">{referrer.views.toLocaleString()}</td>
+											<td class="views-column">{percentOfTraffic(referrer.views)}</td>
+											<td class="date-column">
+												{new Date(referrer.lastSeen).toLocaleDateString()}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						)
+					}
+				</div>
+
+				<div class="stat-card">
 					<h2>Recent Pageviews</h2>
 					{
 						recentViews.map((view: any) => {
@@ -292,7 +412,8 @@ const dbStats = getDatabaseStats();
 									</div>
 									<div class="recent-time">
 										{new Date(view.timestamp).toLocaleString()}
-										{view.referrer && ` • from ${new URL(view.referrer).hostname}`}
+										{referrerHostname(view.referrer) &&
+											` • from ${referrerHostname(view.referrer)}`}
 									</div>
 								</div>
 							);
