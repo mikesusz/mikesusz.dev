@@ -57,6 +57,14 @@ export interface DailyStats {
 	views: number;
 }
 
+export interface ReferrerStats {
+	hostname: string;
+	views: number;
+	lastSeen: number;
+	// Most-seen full URL for this host, useful for finding the exact thread/post
+	topUrl: string;
+}
+
 // Insert a new pageview
 export function recordPageView(pageview: PageView) {
 	const stmt = db.prepare(`
@@ -110,6 +118,95 @@ export function getDailyPageViews(days: number = 30): DailyStats[] {
   `
 		)
 		.all(cutoffTime) as DailyStats[];
+}
+
+// Hosts that count as our own traffic rather than an outside referral
+// (local + private-network hosts keep dev traffic out of the referral numbers)
+const INTERNAL_HOST_PATTERNS = [
+	/(^|\.)mikesusz\.dev$/i,
+	/^localhost$/i,
+	/^127\.\d+\.\d+\.\d+$/,
+	/^\[::1\]$/,
+	/^10\.\d+\.\d+\.\d+$/,
+	/^192\.168\.\d+\.\d+$/,
+	/^172\.(1[6-9]|2\d|3[01])\.\d+\.\d+$/
+];
+
+// Parse a referrer into a hostname, tolerating junk values
+export function referrerHostname(referrer: string | null | undefined): string | null {
+	if (!referrer) return null;
+	const raw = referrer.trim();
+	if (!raw) return null;
+
+	try {
+		return new URL(raw).hostname || raw;
+	} catch {
+		// Not a valid URL — show whatever was sent rather than dropping it
+		return raw;
+	}
+}
+
+export function isInternalReferrer(hostname: string): boolean {
+	return INTERNAL_HOST_PATTERNS.some((pattern) => pattern.test(hostname));
+}
+
+// Group pageviews by referring host. Only covers the detailed pageviews table,
+// since daily_stats does not retain referrers.
+export function getReferrerStats(limit: number = 25) {
+	const rows = db
+		.prepare(
+			`
+    SELECT referrer, COUNT(*) as views, MAX(timestamp) as lastSeen
+    FROM pageviews
+    GROUP BY referrer
+  `
+		)
+		.all() as { referrer: string | null; views: number; lastSeen: number }[];
+
+	const byHost = new Map<string, ReferrerStats>();
+	const topUrlViews = new Map<string, number>();
+	let direct = 0;
+	let internal = 0;
+	let external = 0;
+
+	for (const row of rows) {
+		const hostname = referrerHostname(row.referrer);
+
+		if (!hostname) {
+			direct += row.views;
+			continue;
+		}
+
+		if (isInternalReferrer(hostname)) {
+			internal += row.views;
+			continue;
+		}
+
+		external += row.views;
+		const existing = byHost.get(hostname);
+
+		if (existing) {
+			existing.views += row.views;
+			existing.lastSeen = Math.max(existing.lastSeen, row.lastSeen);
+			if (row.views > (topUrlViews.get(hostname) ?? 0)) {
+				existing.topUrl = row.referrer!.trim();
+				topUrlViews.set(hostname, row.views);
+			}
+		} else {
+			byHost.set(hostname, {
+				hostname,
+				views: row.views,
+				lastSeen: row.lastSeen,
+				topUrl: row.referrer!.trim()
+			});
+		}
+	}
+
+	const referrers = [...byHost.values()]
+		.sort((a, b) => b.views - a.views || b.lastSeen - a.lastSeen)
+		.slice(0, limit);
+
+	return { referrers, direct, internal, external };
 }
 
 // Detect if a user agent is likely a bot
