@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/StaticPage.astro';
+
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<Layout
+	title="Working with Mike Susz: front-end, design systems, accessibility"
+	description="What it's like to bring me onboard."
+>
+	<section id="introduction" aria-label="Introduction">
+		<p>
+			In 30 years of work I've joined many teams, and there's a pattern to making both an initial
+			and a lasting impact. In a nod to the 30/60/90-day format of many of the job descriptions I've
+			seen – here's what it will be like to bring me onboard.
+		</p>
+	</section>
+
+	<!-- first 30 days -->
+
+	<section id="first30" aria-label="First 30 Days">
+		<h2>First 30 days: Observe, absorb</h2>
+
+		<p>
+			I listen more than I speak. I get to know the team, the codebase, and the people everything
+			quietly depends on, and I learn which processes everyone actually follows and which are
+			aspirational.
+		</p>
+
+		<p>
+			Beyond ramping-up, I like to deliver a quick win – identify and relieve a pain point that the
+			team may or may not even have known they had. I want everyone to be better off on day 30 than
+			they were on day 0.
+		</p>
+	</section>
+
+	<!-- 30 - 60 days -->
+	<section id="30-to-90" aria-label="30 to 90 Days">
+		<h2>30 to 90 days: Adapt, suggest, improve</h2>
+
+		<p>
+			I start to make small, low-risk improvements. I set an example of engineering discipline –
+			atomic commits, documentation, communication, and testing. We begin addressing the pain points
+			I've observed.
+		</p>
+
+		<p>
+			I also use my 'new guy' perspective to ask difficult questions on behalf of the team –
+			addressing technical debt, fixing broken or tedious workflows, considering things like
+			maintainability and accessibility that sometimes get overlooked when under timeline pressure.
+		</p>
+
+		<!-- 90 days + -->
+		<section id="90-plus" aria-label="90 plus days">
+			<h2>90+ Days: Lead, support, reflect, iterate</h2>
+
+			<p>
+				Now we're building and refining the tools, patterns, and systems that will remain beyond my
+				tenure. I'm mentoring other devs on accessibility, performance and responsive design. I'm
+				leading conversations that examine our processes and productivity, identifying ways we can
+				continue to improve.
+			</p>
+
+			<p>
+				Success isn't measured in 'what Mike did,' rather it's how the team has gotten better since
+				Mike arrived.
+			</p>
+		</section>
+
+		<section>
+			<h2>What I'm looking for</h2>
+
+			<p>
+				I'm seeking an environment where design and engineering respect and collaborate closely with
+				each other. I want to join a team that embraces reflection and optimization. I want to be
+				part of a company who knows that supporting their employees will lead to greater efficiency
+				and delighted users.
+			</p>
+
+			<p>
+				If I sound like the type of teammate you're looking for, let's talk. You can contact me via
+				the social links above or <a href=`mailto:${CONTACT_EMAIL}`>reach out</a>.
+			</p>
+		</section>
+	</section>
+</Layout>
